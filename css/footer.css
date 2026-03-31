@@ -1,0 +1,26 @@
+footer {
+  border-top: 1px solid var(--border);
+  background: var(--surface);
+  padding: 3rem 2.5rem;
+}
+
+.footer-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.footer-brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  color: var(--accent);
+  font-weight: 300;
+  letter-spacing: 0.05em;
+}
+
+footer p { font-size: 0.8rem; color: var(--text-dim); }
+.orgs { font-size: 0.78rem; color: var(--text-dim); margin-top: 0.4rem; line-height: 1.6; }

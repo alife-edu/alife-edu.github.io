@@ -1,0 +1,51 @@
+.dates-banner { border-bottom: 1px solid var(--border); background: var(--surface); }
+
+.dates-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1.25rem 2.5rem;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.date-block {
+  display: flex;
+  flex-direction: column;
+  padding: 0 2rem;
+  border-right: 1px solid var(--border);
+}
+.date-block:first-of-type { padding-left: 0; }
+.date-block:last-of-type { border-right: none; }
+
+.date-label {
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 0.25rem;
+}
+
+.date-value {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  font-weight: 300;
+  color: var(--text);
+}
+
+.date-sub { font-size: 0.78rem; color: var(--text-mid); }
+
+.dates-register {
+  margin-left: auto;
+  font-size: 0.78rem;
+  color: var(--accent);
+  text-decoration: none;
+  border: 1px solid var(--accent-mid);
+  padding: 0.5rem 1.25rem;
+  border-radius: 0.25rem;
+  letter-spacing: 0.05em;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+.dates-register:hover { background: var(--accent-dim); }

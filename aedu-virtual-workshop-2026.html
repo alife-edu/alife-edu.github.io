@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AEDU — Virtual Workshop, May 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/nav.css">
+<link rel="stylesheet" href="css/layout.css">
+<link rel="stylesheet" href="css/hero.css">
+<link rel="stylesheet" href="css/buttons.css">
+<link rel="stylesheet" href="css/cards.css">
+<link rel="stylesheet" href="css/blocks.css">
+<link rel="stylesheet" href="css/dates.css">
+<link rel="stylesheet" href="css/footer.css">
+<link rel="stylesheet" href="css/responsive.css">
+<link rel="stylesheet" href="css/aedu-workshop.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-brand">ALife-Edu</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="aedu-virtual-workshop-2026.html" class="active">AEDU Workshop</a></li>
+    <li><a href="tal-alife-2026.html">TAL Workshop</a></li>
+    <li><a href="resources.html">Resources</a></li>
+    <li><a href="community.html">Community</a></li>
+    <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSeQ-ngpkBxr58mm8rGCKmU9Dna8DVHER3gXP8aZ6n0YpuO77A/viewform" class="nav-register">Register</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div style="border-bottom: 1px solid var(--border);">
+  <div class="hero hero--full hero--no-grid">
+    <div class="hero-overline">Virtual Workshop · May 2026</div>
+    <h1>Artificial Life<br>Education <em>Virtual Workshop</em></h1>
+    <p class="hero-sub">A free, fully virtual two-day workshop in May 2026 — bringing together educators and professionals across time zones to develop shared learning goals for ALife and build a community around best practices.</p>
+    <div class="hero-actions">
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSeQ-ngpkBxr58mm8rGCKmU9Dna8DVHER3gXP8aZ6n0YpuO77A/viewform" class="btn-primary">Register now →</a>
+      <a href="#about" class="btn-ghost">View details</a>
+    </div>
+  </div>
+</div>
+
+<!-- DATES -->
+<div class="dates-banner">
+  <div class="dates-inner">
+    <div class="date-block">
+      <div class="date-label">North America</div>
+      <div class="date-value">May 18–19, 2026</div>
+      <div class="date-sub">10 AM – 2 PM Eastern</div>
+    </div>
+    <div class="date-block">
+      <div class="date-label">Japan</div>
+      <div class="date-value">May 25–26, 2026</div>
+      <div class="date-sub">10 AM – 2 PM JST</div>
+    </div>
+    <div class="date-block">
+      <div class="date-label">Format</div>
+      <div class="date-value">Virtual</div>
+      <div class="date-sub">Two time-zone cohorts</div>
+    </div>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSeQ-ngpkBxr58mm8rGCKmU9Dna8DVHER3gXP8aZ6n0YpuO77A/viewform" class="dates-register">Register by May 1 →</a>
+  </div>
+</div>
+
+<!-- MAIN -->
+<main>
+  <section class="section" id="about">
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <h2>About the workshop</h2>
+    </div>
+
+    <!-- PAMPHLET VIEWER -->
+    <div class="pamphlet">
+      <div class="pamphlet-stage" id="stage">
+
+        <div class="pamphlet-slide active">
+          <img src="assets/poster.png" alt="AEDU 2026 Workshop Poster" loading="eager">
+        </div>
+
+        <div class="pamphlet-slide">
+          <img src="assets/speakers.png" alt="AEDU Speakers" loading="lazy">
+        </div>
+
+        <button class="pamphlet-prev" id="prev" aria-label="Previous">
+          <div class="arrow">‹</div>
+        </button>
+        <button class="pamphlet-next" id="next" aria-label="Next">
+          <div class="arrow">›</div>
+        </button>
+
+        <div class="zoom-hint">click to enlarge</div>
+      </div>
+
+      <!-- thumbnail strip -->
+      <div class="pamphlet-thumbs" id="thumbs">
+        <button class="pamphlet-thumb-btn active" data-i="0">
+          <img src="assets/poster.png" alt="Poster" loading="eager">
+        </button>
+        <button class="pamphlet-thumb-btn" data-i="1">
+          <img src="assets/speakers.png" alt="Speakers" loading="lazy">
+        </button>
+      </div>
+
+      <!-- counter + dots -->
+      <div class="pamphlet-counter">
+        <span id="counter-text">1 / 2</span>
+        <div class="pamphlet-dots" id="dots">
+          <div class="dot active" data-i="0"></div>
+          <div class="dot" data-i="1"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- content below pamphlet -->
+    <div class="featured-block" style="margin-bottom: 2rem;">
+      <p>Each two-day workshop explores fundamental questions about teaching Artificial Life — Day 1 focuses on the <em>"Why?"</em> and Day 2 on the <em>"How?"</em></p>
+    </div>
+
+    <div class="days-grid">
+      <div class="day-panel">
+        <div class="day-num">Day 1</div>
+        <h3>"Why teach ALife?"</h3>
+        <p>Align on shared goals and learning outcomes for ALife education. Small group discussions surface the challenges and opportunities ALife presents as a teaching domain. Features curated presentations and lightning talks showcasing ALife education success stories.</p>
+      </div>
+      <div class="day-panel">
+        <div class="day-num">Day 2</div>
+        <h3>"How to teach ALife?"</h3>
+        <p>Building on Day 1 goals, shift to practical strategies. Small group feedback exchanges let you workshop your own ideas and teaching artifacts with peers. Experienced educators lead introductory tutorials on effective pedagogical practices.</p>
+      </div>
+    </div>
+
+    <div class="format-items" style="margin-top: 2rem;">
+      <div class="format-item"><span class="format-mark">◇</span> Virtual presentations & invited talks</div>
+      <div class="format-item"><span class="format-mark">◇</span> Community lightning talks</div>
+      <div class="format-item"><span class="format-mark">◇</span> Small group discussions</div>
+      <div class="format-item"><span class="format-mark">◇</span> Peer feedback exchanges</div>
+      <div class="format-item"><span class="format-mark">◇</span> Pedagogical tutorials</div>
+      <div class="format-item"><span class="format-mark">◇</span> Community planning session</div>
+    </div>
+  </section>
+
+  <section class="section" id="speakers">
+    <div class="section-header">
+      <span class="section-num">02</span>
+      <h2>Speakers & facilitators</h2>
+    </div>
+
+    <div class="speakers-grid">
+      <div class="speaker">
+        <div class="speaker-init">JY</div>
+        <h4>Jason Yoder</h4>
+        <p>Rose-Hulman Institute of Technology</p>
+      </div>
+      <div class="speaker">
+        <div class="speaker-init">QD</div>
+        <h4>Q. Tyrell Davis</h4>
+        <p></p>
+      </div>
+      <div class="speaker">
+        <div class="speaker-init">JA</div>
+        <h4>Jean Alfonso-Decena</h4>
+        <p>In Silence AI</p>
+      </div>
+      <div class="speaker">
+        <div class="speaker-init">IK</div>
+        <h4>Imran Khan</h4>
+        <p>University of Warwick</p>
+      </div>
+      <div class="speaker">
+        <div class="speaker-init">AV</div>
+        <h4>Anya E. Vostinar</h4>
+        <p>Carleton College</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">ALife-Edu — Artificial Life Education</div>
+      <p class="orgs">Organized in collaboration with Rose-Hulman Institute · Cross Labs · Carleton College · University of Warwick · In Silence AI</p>
+    </div>
+    <p>Registration closes May 1, 2026</p>
+  </div>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <button class="lightbox-prev" onclick="event.stopPropagation(); lbNav(-1)">‹</button>
+  <button class="lightbox-next" onclick="event.stopPropagation(); lbNav(1)">›</button>
+  <div class="lightbox-img-wrap" onclick="event.stopPropagation()">
+    <img id="lightbox-img" src="" alt="">
+  </div>
+  <div class="lightbox-counter" id="lb-counter">1 / 2</div>
+</div>
+
+<script>
+  const SLIDES = [
+    { src: 'assets/poster.png', alt: 'AEDU 2026 Workshop Poster' },
+    { src: 'assets/speakers.png', alt: 'AEDU Speakers' }
+  ];
+
+  let current = 0;
+
+  const slides   = document.querySelectorAll('.pamphlet-slide');
+  const thumbBtns = document.querySelectorAll('.pamphlet-thumb-btn');
+  const dots     = document.querySelectorAll('.dot');
+  const counter  = document.getElementById('counter-text');
+
+  function goTo(i) {
+    slides[current].classList.remove('active');
+    thumbBtns[current].classList.remove('active');
+    dots[current].classList.remove('active');
+    current = (i + SLIDES.length) % SLIDES.length;
+    slides[current].classList.add('active');
+    thumbBtns[current].classList.add('active');
+    dots[current].classList.add('active');
+    counter.textContent = (current + 1) + ' / ' + SLIDES.length;
+  }
+
+  document.getElementById('prev').addEventListener('click', () => goTo(current - 1));
+  document.getElementById('next').addEventListener('click', () => goTo(current + 1));
+
+  thumbBtns.forEach(btn => btn.addEventListener('click', () => goTo(+btn.dataset.i)));
+  dots.forEach(dot => dot.addEventListener('click', () => goTo(+dot.dataset.i)));
+
+  // click stage → open lightbox at current slide
+  document.getElementById('stage').addEventListener('click', function(e) {
+    if (e.target.closest('.pamphlet-prev') || e.target.closest('.pamphlet-next')) return;
+    openLightbox(current);
+  });
+
+  // swipe support
+  let touchStartX = 0;
+  const stage = document.getElementById('stage');
+  stage.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+  stage.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(dx) > 40) goTo(dx < 0 ? current + 1 : current - 1);
+  });
+
+  // keyboard
+  document.addEventListener('keydown', e => {
+    if (document.getElementById('lightbox').classList.contains('open')) {
+      if (e.key === 'ArrowLeft')  lbNav(-1);
+      if (e.key === 'ArrowRight') lbNav(1);
+      if (e.key === 'Escape')     closeLightbox();
+    } else {
+      if (e.key === 'ArrowLeft')  goTo(current - 1);
+      if (e.key === 'ArrowRight') goTo(current + 1);
+    }
+  });
+
+  // lightbox
+  let lbIndex = 0;
+
+  function openLightbox(i) {
+    lbIndex = i;
+    document.getElementById('lightbox-img').src = SLIDES[lbIndex].src;
+    document.getElementById('lightbox-img').alt = SLIDES[lbIndex].alt;
+    document.getElementById('lb-counter').textContent = (lbIndex + 1) + ' / ' + SLIDES.length;
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function lbNav(dir) {
+    lbIndex = (lbIndex + dir + SLIDES.length) % SLIDES.length;
+    document.getElementById('lightbox-img').src = SLIDES[lbIndex].src;
+    document.getElementById('lightbox-img').alt = SLIDES[lbIndex].alt;
+    document.getElementById('lb-counter').textContent = (lbIndex + 1) + ' / ' + SLIDES.length;
+    goTo(lbIndex);
+  }
+
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+</script>
+</body>
+</html>

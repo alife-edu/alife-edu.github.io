@@ -1,0 +1,30 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #0e0e0c;
+  --surface: #161614;
+  --surface2: #1d1d1a;
+  --border: rgba(255,255,255,0.08);
+  --border-strong: rgba(255,255,255,0.15);
+  --text: #f0ede6;
+  --text-mid: #a09d96;
+  --text-dim: #5a5854;
+  --accent: #3dcba0;
+  --accent-dim: rgba(61, 203, 160, 0.12);
+  --accent-mid: rgba(61, 203, 160, 0.25);
+  --gold: #c8a96a;
+  --gold-dim: rgba(200, 169, 106, 0.15);
+  --gold-mid: rgba(200, 169, 106, 0.3);
+  --indigo: #7b8cde;
+  --indigo-dim: rgba(123, 140, 222, 0.12);
+  --indigo-mid: rgba(123, 140, 222, 0.28);
+}
+
+html { font-size: 16px; scroll-behavior: smooth; }
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+}

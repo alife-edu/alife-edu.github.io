@@ -1,0 +1,37 @@
+main { max-width: 1100px; margin: 0 auto; padding: 5rem 2.5rem; }
+
+.section { margin-bottom: 5rem; }
+.section:last-child { margin-bottom: 0; }
+
+.section-header {
+  display: flex;
+  align-items: baseline;
+  gap: 1.25rem;
+  margin-bottom: 2.5rem;
+}
+
+.section-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3rem;
+  font-weight: 300;
+  color: var(--text-dim);
+  line-height: 1;
+}
+
+.section h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: 2rem;
+  line-height: 1.2;
+  color: var(--text);
+}
+
+.section-intro {
+  font-size: 0.95rem;
+  color: var(--text-mid);
+  line-height: 1.8;
+  font-weight: 300;
+  max-width: 680px;
+  margin-bottom: 2rem;
+  margin-top: -1rem;
+}
