@@ -35,6 +35,60 @@ nav {
 .nav-links a.active { color: var(--accent); }
 .nav-links a.active--gold { color: var(--gold); }
 
+/* ── Dropdown subnav ─────────────────────────────────── */
+.nav-has-sub {
+  position: relative;
+  height: 60px;
+  display: flex;
+  align-items: center;
+}
+
+.nav-has-sub > a::after {
+  content: '\00a0▾';
+  font-size: 0.7em;
+  opacity: 0.5;
+}
+
+.nav-sub {
+  display: none;
+  position: absolute;
+  top: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  border-radius: 0 0 0.4rem 0.4rem;
+  list-style: none;
+  min-width: 168px;
+  padding: 0.3rem 0;
+  z-index: 200;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.45);
+}
+
+.nav-has-sub:hover .nav-sub,
+.nav-has-sub:focus-within .nav-sub {
+  display: block;
+}
+
+.nav-sub li + li {
+  border-top: 1px solid var(--border);
+}
+
+.nav-sub li a {
+  display: block;
+  padding: 0.5rem 1.25rem;
+  font-size: 0.72rem;
+  color: var(--text-mid);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+  font-weight: 400;
+  transition: color 0.15s, background 0.15s;
+}
+
+.nav-sub li a:hover { color: var(--text); background: var(--surface2); }
+.nav-sub li a.active { color: var(--accent); }
+
 .nav-cta,
 .nav-register {
   color: var(--accent) !important;

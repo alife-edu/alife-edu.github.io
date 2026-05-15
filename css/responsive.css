@@ -5,6 +5,14 @@
 }
 
 @media (max-width: 680px) {
+  /* Subnav: drop left-aligned so it doesn't clip off-screen */
+  .nav-sub {
+    left: 0;
+    transform: none;
+  }
+}
+
+@media (max-width: 680px) {
   .hero h1 { font-size: 2.8rem; }
   nav { padding: 0 1.25rem; }
   .nav-links { gap: 1rem; }
