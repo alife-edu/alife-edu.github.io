@@ -230,6 +230,10 @@
   font-weight: 500;
 }
 
+.sched-talk-list li .sched-link {
+  vertical-align: middle;
+}
+
 .sched-note {
   font-size: 0.72rem;
   color: var(--text-dim);
