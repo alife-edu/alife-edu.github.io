@@ -222,6 +222,34 @@
 .speaker h4 { font-size: 0.92rem; font-weight: 500; margin-bottom: 0.2rem; color: var(--text); }
 .speaker p { font-size: 0.78rem; color: var(--text-mid); line-height: 1.4; font-weight: 300; }
 
+.speaker-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin-top: 0.6rem;
+}
+
+.speaker-tag {
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.15rem 0.5rem;
+  border-radius: 2rem;
+}
+
+.speaker-tag--west {
+  color: var(--accent);
+  background: var(--accent-dim);
+  border: 1px solid var(--accent-mid);
+}
+
+.speaker-tag--east {
+  color: var(--gold);
+  background: var(--gold-dim);
+  border: 1px solid var(--gold-mid);
+}
+
 /* Format items */
 .format-items {
   display: grid;
