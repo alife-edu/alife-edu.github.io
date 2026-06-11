@@ -232,6 +232,12 @@
 
 .sched-talk-list li .sched-link {
   vertical-align: middle;
+  white-space: nowrap;
+}
+
+.sched-link-group {
+  white-space: nowrap;
+  display: inline;
 }
 
 .sched-note {
@@ -240,6 +246,9 @@
   margin: 0.2rem 0 0;
   font-style: italic;
   font-weight: 300;
+}
+.sched-note--highlight {
+  color: #e2a93b;
 }
 
 /* ── Link button area ──────────────────────────────── */
