@@ -350,6 +350,35 @@
   z-index: 1001;
 }
 
+/* Condensed About paragraph — emphasize the Day 1 / Day 2 framing */
+.section-intro strong { color: var(--text); font-weight: 500; }
+
+/* Recordings & slides intro (links to full videos + archive pages) */
+.archive-intro-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: 1.5rem;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+}
+.archive-intro-text {
+  font-size: 0.95rem;
+  color: var(--text-mid);
+  line-height: 1.8;
+  font-weight: 300;
+  max-width: 680px;
+}
+.archive-intro-text a {
+  color: #5ad1ec;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(90, 209, 236, 0.4);
+  transition: color 0.2s, border-color 0.2s;
+}
+.archive-intro-text a:hover {
+  color: #8fe3f5;
+  border-color: #5ad1ec;
+}
+
 /* AEDU workshop responsive */
 @media (max-width: 680px) {
   .days-grid { grid-template-columns: 1fr; }

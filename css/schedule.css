@@ -2,6 +2,26 @@
    schedule.css — AEDU Workshop Schedule
    ==================================================== */
 
+/* The compact header style (.hero--compact) lives in hero.css so the
+   AEDU overview page can share it with the schedule/archive pages. */
+
+/* Archive pages: pull the schedule up under the compact hero
+   (overrides the global main padding in layout.css). */
+main { padding-top: 2.5rem; }
+
+/* ── Intro cue + legend zone ───────────────────────── */
+.sched-meta { margin-bottom: 1.75rem; }
+.sched-meta-text {
+  font-size: 0.9rem;
+  color: var(--text-mid);
+  line-height: 1.7;
+  font-weight: 300;
+  max-width: 680px;
+  margin-bottom: 1rem;
+}
+.sched-meta-text strong { color: var(--text); font-weight: 500; }
+.sched-meta .sched-legend { margin-bottom: 0; }
+
 /* ── Draft notice banner ───────────────────────────── */
 .sched-draft-notice {
   background: var(--gold-dim);
