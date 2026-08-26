@@ -1,0 +1,8 @@
+{% assign r = include.resource %}
+<a href="{{ r.link }}" target="_blank" rel="noopener" class="link-item">
+  <div class="link-item-left">
+    <div class="link-item-title">{{ r.title }}</div>
+    <div class="link-item-desc">{{ r.description }}</div>
+  </div>
+  <div class="link-item-arrow">↗</div>
+</a>

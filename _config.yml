@@ -1,0 +1,22 @@
+title: ALife-Edu
+description: "ALife-Edu is a community of educators, learners, and practitioners working to make artificial life teachable, findable, and worth teaching."
+url: "https://alife-edu.github.io"
+baseurl: ""
+
+markdown: kramdown
+
+collections:
+  resources:
+    output: false
+
+theme: null
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - README.md
+  - "AEDU event schedule.xlsx"
+  - agendas-and-minutes
+  - "_resources/README.md"
+  - node_modules

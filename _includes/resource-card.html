@@ -1,0 +1,16 @@
+{% assign r = include.resource %}
+{% if r.link %}
+<a href="{{ r.link }}" target="_blank" rel="noopener" class="card c-{{ r.color | default: "teal" }}">
+  <div class="card-eyebrow">{{ r.eyebrow }}</div>
+  <div class="card-title">{{ r.title }}</div>
+  <div class="card-body">{{ r.description }}</div>
+  <div class="card-link">{{ r.link_text | default: "Visit ↗" }}</div>
+</a>
+{% else %}
+<div class="card c-{{ r.color | default: "teal" }}" style="cursor: default;">
+  <div class="card-eyebrow">{{ r.eyebrow }}</div>
+  <div class="card-title">{{ r.title }}</div>
+  <div class="card-body">{{ r.description }}</div>
+  <div class="card-placeholder">{{ r.placeholder_text | default: "Content forthcoming" }}</div>
+</div>
+{% endif %}

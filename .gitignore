@@ -1,1 +1,13 @@
 .devcontainer/
+
+# Jekyll build output & Ruby gems
+_site/
+vendor/
+.bundle/
+.jekyll-cache/
+.jekyll-metadata
+.sass-cache/
+
+# OS cruft
+.DS_Store
+Thumbs.db

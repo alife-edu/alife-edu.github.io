@@ -1,26 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AEDU — Virtual Workshop, May 2026</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/base.css">
-<link rel="stylesheet" href="css/nav.css">
-<link rel="stylesheet" href="css/layout.css">
-<link rel="stylesheet" href="css/hero.css">
-<link rel="stylesheet" href="css/buttons.css">
-<link rel="stylesheet" href="css/cards.css">
-<link rel="stylesheet" href="css/blocks.css">
-<link rel="stylesheet" href="css/dates.css">
-<link rel="stylesheet" href="css/footer.css">
-<link rel="stylesheet" href="css/responsive.css">
-<link rel="stylesheet" href="css/aedu-workshop.css">
-</head>
-<body>
-
-<div id="nav-placeholder"></div> <!-- Loaded by Javascript at the bottom of page --> 
+---
+layout: default
+title: "AEDU — Virtual Workshop, May 2026"
+extra_css:
+  - css/aedu-workshop.css
+footer_orgs: long
+footer_message: "Held May 2026 · Recordings available"
+---
 
 <!-- HERO -->
 <div style="border-bottom: 1px solid var(--border);">
@@ -201,17 +186,6 @@
     </div>
   </section>
 </main>
-
-<footer>
-  <div class="footer-inner">
-    <div>
-      <div class="footer-brand">ALife-Edu — Artificial Life Education</div>
-      <p class="orgs">Organized in collaboration with Rose-Hulman Institute · Cross Labs · Carleton College · University of Warwick · In Silence AI</p>
-    </div>
-    <p>Held May 2026 · Recordings available</p>
-  </div>
-</footer>
-
 <!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox" onclick="closeLightbox()">
   <button class="lightbox-close" onclick="closeLightbox()">✕</button>
@@ -305,7 +279,3 @@
     document.body.style.overflow = '';
   }
 </script>
-
-<script src="/main.js"></script>
-</body>
-</html>

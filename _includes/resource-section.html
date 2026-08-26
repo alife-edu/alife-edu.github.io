@@ -1,0 +1,28 @@
+{% assign items = site.resources | where: "category", include.category | sort: "order" %}
+<section class="section" id="{{ include.id }}">
+  <div class="section-header">
+    <span class="section-num">{{ include.num }}</span>
+    <h2>{{ include.title }}</h2>
+  </div>
+
+  {% if include.intro %}<p class="section-intro">{{ include.intro }}</p>{% endif %}
+
+  {% if include.featured_intro %}
+  <div class="featured-block featured-block--indigo" style="margin-bottom: 2rem;">
+    <p>{{ include.featured_intro }}</p>
+    <p class="detail">{{ include.featured_detail }}</p>
+  </div>
+  {% endif %}
+
+  {% if items.size > 0 %}
+  {% if include.style == "card" %}
+    <div class="card-grid card-grid--2">
+      {% for r in items %}{% include resource-card.html resource=r %}{% endfor %}
+    </div>
+  {% elsif include.style == "link-item" %}
+    <div class="link-list">
+      {% for r in items %}{% include resource-link-item.html resource=r %}{% endfor %}
+    </div>
+  {% endif %}
+  {% endif %}
+</section>
