@@ -1,18 +1,46 @@
 <!-- NAV -->
+{% assign page_path = page.url | remove_first: "/" %}
 <nav>
   <a href="index.html" class="nav-brand">ALife-Edu</a>
   <ul class="nav-links">
     <li><a href="index.html"{% if page.url == '/' %} class="active"{% endif %}>Home</a></li>
-    <li><a href="tal-alife-2026.html"{% if page.url == '/tal-alife-2026.html' %} class="active"{% endif %}>TAL Workshop 2026</a></li>
+
+    {% assign upcoming_events = site.events | where: "archived", false | sort: "order" %}
+    {% for e in upcoming_events %}
+      {% if e.children and e.children.size > 0 %}
+      <li class="nav-has-sub">
+        <a href="{{ e.event_url }}"{% if page_path == e.event_url %} class="active"{% endif %}>{{ e.nav_label }}</a>
+        <ul class="nav-sub">
+          {% for c in e.children %}
+          <li><a href="{{ c.url }}"{% if page_path == c.url %} class="active"{% endif %}>{{ c.label }}</a></li>
+          {% endfor %}
+        </ul>
+      </li>
+      {% else %}
+      <li><a href="{{ e.event_url }}"{% if page_path == e.event_url %} class="active"{% endif %}>{{ e.nav_label }}</a></li>
+      {% endif %}
+    {% endfor %}
+
     <li><a href="resources.html"{% if page.url == '/resources.html' %} class="active"{% endif %}>Resources</a></li>
     <li><a href="community.html"{% if page.url == '/community.html' %} class="active"{% endif %}>Community</a></li>
+
+    {% assign archived_events = site.events | where: "archived", true | sort: "order" %}
+    {% if archived_events.size > 0 %}
     <li class="nav-has-sub">
-      <a href="aedu-virtual-workshop-2026.html"{% if page.url == '/aedu-virtual-workshop-2026.html' %} class="active"{% endif %}>AEDU Workshop 2026</a>
+      <a href="#">Event Archive</a>
       <ul class="nav-sub">
-        <li><a href="aedu-virtual-workshop-2026.html">Overview</a></li>
-        <li><a href="schedule-west.html"{% if page.url == '/schedule-west.html' %} class="active"{% endif %}>Archive: West · 2026 May 18&ndash;19</a></li>
-        <li><a href="schedule-east.html"{% if page.url == '/schedule-east.html' %} class="active"{% endif %}>Archive: East · 2026 May 25</a></li>
+        {% for e in archived_events %}
+        <li class="nav-sub-group-label">{{ e.group_label }}</li>
+        {% if e.children and e.children.size > 0 %}
+          {% for c in e.children %}
+          <li><a href="{{ c.url }}"{% if page_path == c.url %} class="active"{% endif %}>{{ c.label }}</a></li>
+          {% endfor %}
+        {% else %}
+          <li><a href="{{ e.event_url }}"{% if page_path == e.event_url %} class="active"{% endif %}>{{ e.nav_label }}</a></li>
+        {% endif %}
+        {% endfor %}
       </ul>
     </li>
+    {% endif %}
   </ul>
 </nav>

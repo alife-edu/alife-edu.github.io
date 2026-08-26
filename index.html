@@ -55,24 +55,18 @@ footer_message: "Spring 2026"
     </div>
   </section>
 
-  <!-- EVENTS -->
+  <!-- UPCOMING EVENTS -->
   <section class="section" id="events">
     <div class="section-header">
       <span class="section-num">02</span>
-      <h2>Events</h2>
+      <h2>Upcoming Events</h2>
     </div>
 
     <div class="card-grid card-grid--2">
-      <!-- TAL Workshop -->
-      <a href="tal-alife-2026.html" class="card c-gold">
-        <div class="card-eyebrow">In-Person · August 2026</div>
-        <div class="card-title">TAL — Teaching Artificial Life</div>
-        <div class="card-date">August 17–21, 2026 &nbsp;·&nbsp; Waterloo, Canada</div>
-        <div class="card-body">An in-person and virtual workshop at ALIFE 2026 in Waterloo, Canada — focused on pedagogy, curriculum design, and hands-on approaches to teaching Artificial Life. Details forthcoming.</div>
-        <div class="card-link">View TAL workshop →</div>
-      </a>
+      {% assign upcoming_events = site.events | where: "archived", false | sort: "order" %}
+      {% for e in upcoming_events %}{% include event-card.html event=e %}{% endfor %}
 
-      <!-- ALIFE 2026 -->
+      <!-- ALIFE 2026 (external conference, not organized by ALife-Edu) -->
       <a href="https://2026.alife.org/" target="_blank" rel="noopener" class="card c-gold">
         <div class="card-eyebrow">Annual Conference</div>
         <div class="card-title">ALIFE 2026 Conference</div>
@@ -80,8 +74,6 @@ footer_message: "Spring 2026"
         <div class="card-body">The premier international conference on Artificial Life, held jointly with the AMMCS Congress. Theme: <em>"Living and Lifelike Complex Adaptive Systems."</em> Hosted at Wilfrid Laurier University and the University of Waterloo. Hybrid format.</div>
         <div class="card-link">Visit 2026.alife.org ↗</div>
       </a>
-
-
 
     </div>
   </section>
@@ -117,17 +109,8 @@ footer_message: "Spring 2026"
     </div>
 
     <div class="card-grid card-grid--2">
-
-      <!-- AEDU Workshop -->
-      <a href="aedu-virtual-workshop-2026.html" class="card c-teal">
-        <div class="card-eyebrow">Virtual · Free · May 2026</div>
-        <div class="card-title">AEDU Virtual Workshop 2026</div>
-        <div class="card-date">May 18–19 (North America) &nbsp;·&nbsp; May 25 (Japan) &nbsp;·&nbsp; Fully virtual</div>
-        <div class="card-body">A free, fully virtual two-day workshop exploring fundamental questions about teaching ALife. Day 1: Why teach it? Day 2: How to teach it? Two time-zone cohorts so anyone can join. The workshop is over, but recordings and artifacts are linked.</div>
-        <div class="card-link">View virtual workshop →</div>
-      </a>
-
-
+      {% assign past_events = site.events | where: "archived", true | sort: "order" %}
+      {% for e in past_events %}{% include event-card.html event=e %}{% endfor %}
     </div>
   </section>
 

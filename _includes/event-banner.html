@@ -1,0 +1,7 @@
+{% assign page_path = page.url | remove_first: "/" %}
+{% assign this_event = site.events | where: "event_url", page_path | first %}
+{% if this_event and this_event.archived %}
+<div class="event-concluded-notice">
+  <div><strong>This event has concluded.</strong> {% if this_event.concluded_message %}{{ this_event.concluded_message }}{% endif %}</div>
+</div>
+{% endif %}

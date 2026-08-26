@@ -1,0 +1,27 @@
+{% assign item = include.item %}
+<div class="sched-row{% if item.row_style %} sched-row--{{ item.row_style }}{% endif %}">
+  <div class="sched-time">{{ item.time }}</div>
+  <div class="sched-main">
+    {% if item.row_style == "break" %}
+    <span class="sched-break-label">{{ item.break_label }}</span>
+    {% else %}
+    {% if item.type %}<span class="sched-type">{{ item.type }}</span>{% endif %}
+    <p class="sched-title">{{ item.title }}</p>
+    {% for s in item.speakers %}<p class="sched-speaker">{{ s }}</p>
+    {% endfor %}
+    {% for n in item.notes %}<p class="sched-note{% if n.highlight %} sched-note--highlight{% endif %}">{{ n.text }}</p>
+    {% endfor %}
+    {% if item.talks %}
+    <ul class="sched-talk-list">
+      {% for t in item.talks %}<li><strong>{{ t.speaker }}</strong> — {{ t.title }} &nbsp;<span class="sched-link-group">{% for l in t.links %}{% if l.url and l.url != "" %}<a href="{{ l.url }}" class="sched-link sched-link--live" target="_blank" rel="noopener">{{ l.text }}</a> {% else %}<a href="#" class="sched-link sched-link--pending">{{ l.text }}</a> {% endif %}{% endfor %}</span></li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+    {% endif %}
+  </div>
+  <div class="sched-actions">
+    {% for a in item.actions %}{% if a.url and a.url != "" %}<a href="{{ a.url }}" class="sched-link sched-link--live" target="_blank" rel="noopener">{{ a.text }}</a>
+    {% else %}<a href="#" class="sched-link sched-link--pending">{{ a.text }}</a>
+    {% endif %}{% endfor %}
+  </div>
+</div>

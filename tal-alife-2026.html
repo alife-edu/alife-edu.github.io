@@ -2,6 +2,8 @@
 layout: default
 title: "TAL — Teaching (with) Artificial Life at ALIFE 2026"
 description: "TAL: Teaching (with) Artificial Life — an in-person and virtual workshop at ALIFE 2026 in Waterloo, Canada. August 2026."
+extra_css:
+  - css/schedule.css
 footer_orgs: short
 footer_message: "ALIFE 2026 · Waterloo, Canada"
 ---
@@ -13,7 +15,7 @@ footer_message: "ALIFE 2026 · Waterloo, Canada"
     <h1>Teaching (with)<br><em>Artificial Life</em></h1>
     <p class="hero-sub">An in-person workshop at ALIFE 2026 in Waterloo, Canada — bringing together educators and researchers to explore pedagogy, curriculum design, and hands-on approaches to teaching about and with Artificial Life.</p>
     <div class="hero-actions">
-      <a href="https://forms.gle/kJuAD6H9HEHbS4vt8" target="_blank" rel="noopener" class="btn-primary btn-primary--gold">Apply to give a lightning talk ↗</a>
+      <!-- <a href="https://forms.gle/kJuAD6H9HEHbS4vt8" target="_blank" rel="noopener" class="btn-primary btn-primary--gold">Apply to give a lightning talk ↗</a> -->
       <a href="https://2026.alife.org/" target="_blank" rel="noopener" class="btn-ghost">Visit ALIFE 2026 ↗</a>
       <a href="index.html" class="btn-ghost">Back to ALife-Edu</a>
     </div>
@@ -44,42 +46,30 @@ footer_message: "ALIFE 2026 · Waterloo, Canada"
 
 <!-- MAIN -->
 <main>
+  {% include event-banner.html %}
   <section class="section">
     <div class="section-header">
       <span class="section-num">01</span>
       <h2>Schedule</h2>
     </div>
 
-    <div class="featured-block featured-block--gold">
-      <p>10:00-10:15 - Opening</p>
-      <p class="detail"> Jason Yoder </p>
+    <div class="sched-meta">
+      <p class="sched-meta-text">Slides and video recordings will be linked here as they become available.</p>
+      <div class="sched-legend">
+        <div class="sched-legend-item"><div class="legend-bar legend-bar--talk"></div>Talk</div>
+        <div class="sched-legend-item"><div class="legend-bar legend-bar--panel"></div>Panel / Activity</div>
+        <div class="sched-legend-item"><div class="legend-bar legend-bar--break"></div>Break</div>
+      </div>
     </div>
 
-    <div class="featured-block featured-block--gold">
-      <p>10:15-10:35 - Lightning talks</p>
-      <p class="detail"> James Stovold, Martha Emerson, Matthew A. Moreno, Emily Dolson, Imy Khan</p>
-    </div>
-
-    <div class="featured-block featured-block--gold">
-      <p>10:35-11:05 - Artifact Exchange</p>
-    </div>
-
-    <div class="featured-block featured-block--gold">
-      <p>11:05-11:10 - Break</p>
-    </div>
-
-    <div class="featured-block featured-block--gold">
-      <p>11:10-11:55 - Panel Discussion: Learning from a Century of ALife Education</p>
-      <p class="detail"> Charles Ofria, Susan Stepney, Steen Rasmussen, Hiroki Sayama</p>
-    </div>
-
-    <div class="featured-block featured-block--gold">
-      <p>11:55-12:00 - Wrap Up</p>
+    <div class="sched-list">
+      {% assign rows = site.schedules | where: "event", "tal-2026" | sort: "order" %}
+      {% for item in rows %}{% include sched-row.html item=item %}{% endfor %}
     </div>
   </section>
 
   <!-- LIGHTNING TALKS -->
-  <section class="section">
+  <!-- <section class="section">
     <div class="section-header">
       <span class="section-num">02</span>
       <h2>Call for lightning talks</h2>
@@ -104,10 +94,10 @@ footer_message: "ALIFE 2026 · Waterloo, Canada"
         </div>
       </div>
     </div>
-  </section>
+  </section> -->
 
   <!-- WHY IT MATTERS -->
-  <section class="section">
+  <!-- <section class="section">
     <div class="section-header">
       <span class="section-num">03</span>
       <h2>Why this matters</h2>
@@ -125,5 +115,5 @@ footer_message: "ALIFE 2026 · Waterloo, Canada"
         <p>Shared educational foundations can close that gap — but only if the community deliberately builds them. Each ALife educator brings a unique perspective and approach; this workshop embraces that diversity while identifying common ground and leveraging it as a strength.</p>
       </div>
     </div>
-  </section>
+  </section> -->
 </main>

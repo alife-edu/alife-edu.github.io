@@ -1,0 +1,10 @@
+{% assign e = include.event %}
+{% assign color = "gold" %}
+{% if e.archived %}{% assign color = "teal" %}{% endif %}
+<a href="{{ e.event_url }}" class="card c-{{ color }}">
+  <div class="card-eyebrow">{{ e.eyebrow }}</div>
+  <div class="card-title">{{ e.card_title | default: e.nav_label }}</div>
+  <div class="card-date">{{ e.dates }}</div>
+  <div class="card-body">{{ e.description }}</div>
+  <div class="card-link">{{ e.link_text }}</div>
+</a>

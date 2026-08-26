@@ -8,6 +8,10 @@ markdown: kramdown
 collections:
   resources:
     output: false
+  schedules:
+    output: false
+  events:
+    output: false
 
 theme: null
 
@@ -19,4 +23,6 @@ exclude:
   - "AEDU event schedule.xlsx"
   - agendas-and-minutes
   - "_resources/README.md"
+  - "_schedules/README.md"
+  - "_events/README.md"
   - node_modules
