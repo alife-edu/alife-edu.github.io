@@ -49,8 +49,8 @@ footer_message: "Spring 2026"
       </div>
       <div class="card">
         <div class="panel-icon">◇ &nbsp; How to get involved</div>
-        <h3>Start with the ALIFE 2026</h3>
-        <p>Our next workshop is in August at ALIFE 2026, in-person as well as virtual. Join us at the conference to help shape the shared vision — the curriculum goals, the resources, and the norms — that will carry this community forward beyond any single event. If you can't make the conference, join the community on Discord or email.</p>
+        <h3>Join our next event!</h3>
+        <p>Check out the section below for our <a href="#events">upcoming events</a>, everyone is welcome! In the meantime, <a href = "community.html">join the community</a> on Discord or email.</p>
       </div>
     </div>
   </section>
@@ -65,15 +65,6 @@ footer_message: "Spring 2026"
     <div class="card-grid card-grid--2">
       {% assign upcoming_events = site.events | where: "archived", false | sort: "order" %}
       {% for e in upcoming_events %}{% include event-card.html event=e %}{% endfor %}
-
-      <!-- ALIFE 2026 (external conference, not organized by ALife-Edu) -->
-      <a href="https://2026.alife.org/" target="_blank" rel="noopener" class="card c-gold">
-        <div class="card-eyebrow">Annual Conference</div>
-        <div class="card-title">ALIFE 2026 Conference</div>
-        <div class="card-date">August 17–21, 2026 &nbsp;·&nbsp; Waterloo, Canada</div>
-        <div class="card-body">The premier international conference on Artificial Life, held jointly with the AMMCS Congress. Theme: <em>"Living and Lifelike Complex Adaptive Systems."</em> Hosted at Wilfrid Laurier University and the University of Waterloo. Hybrid format.</div>
-        <div class="card-link">Visit 2026.alife.org ↗</div>
-      </a>
 
     </div>
   </section>

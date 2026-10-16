@@ -28,3 +28,11 @@ body {
   color: var(--text);
   line-height: 1.7;
 }
+
+a:not([class]) {
+  color: var(--accent);
+}
+
+a:not([class]):visited {
+  color: var(--accent);
+}

@@ -26,13 +26,14 @@ Nothing else needs to change.
 1. Copy `tal-2026.md` (simple, no sub-links) or `aedu-2026.md` (has sub-links, e.g. multiple schedule archive pages) as a starting point.
 2. Rename it, e.g. `my-event-2027.md`.
 3. Fill in the fields below.
+4. Go make the `.html` you decided on for `event_url` at the top level directory (yeah, not ideal, we're working on it).
 
 | Field | Required? | Notes |
 |---|---|---|
 | `nav_label` | yes | Top-level nav link text, e.g. `"TAL Workshop 2026"`. Also used as the card title if `card_title` isn't set. |
 | `card_title` | no | Card title on the home page, if it should read differently than `nav_label` (e.g. `"TAL — Teaching Artificial Life"` vs. the shorter nav text). Falls back to `nav_label` if omitted. |
 | `group_label` | yes | Short label shown as a header in the "Event Archive" dropdown once archived, e.g. `"TAL"`. |
-| `event_url` | yes | The event's own page, e.g. `"tal-alife-2026.html"`. **No leading slash** — this is a plain filename like everywhere else on this site. (Note: the field is called `event_url`, not `url` — `url` is a reserved word Jekyll uses internally and won't work here.) |
+| `event_url` | yes | The event's own page, e.g. `"tal-alife-2026.html"`. **No leading slash** — this is a plain filename like everywhere else on this site. (Note: the field is called `event_url`, not `url` — `url` is a reserved word Jekyll uses internally and won't work here.) This can also be an external link if that makes more sense. |
 | `archived` | yes | `false` = upcoming, `true` = archived. See above. |
 | `order` | no | Sort key (lower = earlier). Leave gaps of 10. |
 | `eyebrow` | yes | Small label on the card, e.g. `"In-Person · August 2026"`. |
