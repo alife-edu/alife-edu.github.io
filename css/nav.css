@@ -13,27 +13,26 @@ nav {
 }
 
 .nav-brand {
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 300;
-  font-size: 1.25rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.3rem;
   color: var(--accent);
   text-decoration: none;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.01em;
 }
 
 .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
 .nav-links a {
-  font-size: 0.78rem;
+  font-size: 0.95rem;
   font-weight: 400;
   color: var(--text-mid);
   text-decoration: none;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  letter-spacing: 0.01em;
   transition: color 0.2s;
 }
 .nav-links a:hover { color: var(--text); }
 .nav-links a.active { color: var(--accent); }
-.nav-links a.active--gold { color: var(--gold); }
+.nav-links a.active--flare { color: var(--flare); }
 
 /* ── Dropdown subnav ─────────────────────────────────── */
 .nav-has-sub {
@@ -52,7 +51,7 @@ nav {
 .nav-sub {
   display: none;
   position: absolute;
-  top: 60px;
+  top: 100%;
   left: 50%;
   transform: translateX(-50%);
   background: var(--surface);
@@ -77,10 +76,9 @@ nav {
 .nav-sub li a {
   display: block;
   padding: 0.5rem 1.25rem;
-  font-size: 0.72rem;
+  font-size: 0.8rem;
   color: var(--text-mid);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.01em;
   white-space: nowrap;
   font-weight: 400;
   transition: color 0.15s, background 0.15s;
@@ -91,10 +89,9 @@ nav {
 
 .nav-sub li.nav-sub-group-label {
   padding: 0.5rem 1.25rem 0.2rem;
-  font-size: 0.68rem;
+  font-size: 0.8rem;
   color: var(--text-dim);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.01em;
   font-weight: 500;
 }
 .nav-sub li.nav-sub-group-label + li { border-top: none; }
@@ -113,9 +110,9 @@ nav {
 /* Upcoming Events dropdown: date line above each event's name */
 .nav-sub li a .nav-sub-date {
   display: block;
-  font-size: 0.62rem;
-  color: var(--gold);
-  letter-spacing: 0.12em;
+  font-size: 0.8rem;
+  color: var(--flare);
+  letter-spacing: 0.01em;
   margin-bottom: 0.15rem;
 }
 .nav-sub li a.nav-sub-child { padding-left: 2rem; }

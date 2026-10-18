@@ -3,8 +3,8 @@
   align-items: center;
   gap: 0.5rem;
   background: var(--accent);
-  color: #0a1f18;
-  font-size: 0.88rem;
+  color: #1a0700;
+  font-size: 0.95rem;
   font-weight: 500;
   padding: 0.85rem 2rem;
   border-radius: 0.25rem;
@@ -14,15 +14,15 @@
 }
 .btn-primary:hover { opacity: 0.85; }
 
-.btn-primary--gold {
-  background: var(--gold);
-  color: #1a1508;
+.btn-primary--flare {
+  background: var(--flare);
+  color: #1a0d00;
 }
 
 .btn-ghost {
   display: inline-block;
   color: var(--text-mid);
-  font-size: 0.88rem;
+  font-size: 0.95rem;
   font-weight: 400;
   padding: 0.85rem 1.5rem;
   text-decoration: none;
@@ -31,4 +31,4 @@
   transition: all 0.2s;
   letter-spacing: 0.03em;
 }
-.btn-ghost:hover { color: var(--text); border-color: rgba(255,255,255,0.3); }
+.btn-ghost:hover { color: var(--text); border-color: var(--text-dim); }

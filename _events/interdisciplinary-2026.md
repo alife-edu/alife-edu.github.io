@@ -9,7 +9,7 @@ links:
 eyebrow: "Virtual Oct 2026"
 dates: "October 29th, 2026 9AM EDT on Zoom"
 description: "Interdisciplinarity is becoming a fundamental element of both academia and industry — but teaching in interdisciplinary spaces is challenging. This talk covers how to handle those challenges, with resources for interdisciplinary courses in a flipped classroom setting."
-link_text: "Talk details →"
+link_text: "Talk details"
 concluded_message: "Thanks to everyone who joined us for the talk — recording is linked below."
 ---
 
