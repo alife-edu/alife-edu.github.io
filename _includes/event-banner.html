@@ -1,7 +1,10 @@
+{% include event-lists.html %}
 {% assign page_path = page.url | remove_first: "/" %}
-{% assign this_event = site.events | where: "event_url", page_path | first %}
-{% if this_event and this_event.archived %}
+{% for e in past_events %}
+  {% assign href = e.event_url | default: e.url | remove_first: "/" %}
+  {% if href == page_path or e.url == page.url %}
 <div class="event-concluded-notice">
-  <div><strong>This event has concluded.</strong> {% if this_event.concluded_message %}{{ this_event.concluded_message }}{% endif %}</div>
+  <div><strong>This event has concluded.</strong> {% if e.concluded_message %}{{ e.concluded_message }}{% endif %}</div>
 </div>
-{% endif %}
+  {% endif %}
+{% endfor %}

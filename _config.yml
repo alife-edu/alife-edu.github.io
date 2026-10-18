@@ -5,13 +5,23 @@ baseurl: ""
 
 markdown: kramdown
 
+# Upcoming events have future dates; without this Jekyll silently skips them.
+future: true
+
 collections:
   resources:
     output: false
   schedules:
     output: false
   events:
-    output: false
+    output: true
+    permalink: /:name.html
+
+defaults:
+  - scope:
+      type: events
+    values:
+      layout: event
 
 theme: null
 

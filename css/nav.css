@@ -109,3 +109,13 @@ nav {
 }
 .nav-cta:hover,
 .nav-register:hover { background: var(--accent-dim) !important; }
+
+/* Upcoming Events dropdown: date line above each event's name */
+.nav-sub li a .nav-sub-date {
+  display: block;
+  font-size: 0.62rem;
+  color: var(--gold);
+  letter-spacing: 0.12em;
+  margin-bottom: 0.15rem;
+}
+.nav-sub li a.nav-sub-child { padding-left: 2rem; }

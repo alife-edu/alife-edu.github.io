@@ -8,7 +8,7 @@ footer_message: "Spring 2026"
 
 <!-- HERO -->
 <div style="border-bottom: 1px solid var(--border);">
-  <div class="hero hero--full">
+  <div class="hero hero--home">
     <div class="hero-overline">Artificial Life Education</div>
     <h1>A community for<br>those who teach about <em>life as it could be</em></h1>
     <p class="hero-sub">ALife-Edu brings together educators, researchers, and practitioners dedicated to teaching Artificial Life — building shared resources, pedagogy, and a lasting network across institutions and disciplines.</p>
@@ -19,12 +19,29 @@ footer_message: "Spring 2026"
   </div>
 </div>
 
-<main>
+<main class="home">
 
-  <!-- MISSION -->
-  <section class="section">
+  <!-- UPCOMING EVENTS -->
+  <section class="section" id="events">
     <div class="section-header">
       <span class="section-num">01</span>
+      <h2>Upcoming Events</h2>
+    </div>
+
+    {% include event-lists.html %}
+    {% if upcoming_events.size > 0 %}
+    <div class="event-schedule">
+      {% for e in upcoming_events %}{% include event-row.html event=e %}{% endfor %}
+    </div>
+    {% else %}
+    <p class="section-intro">Nothing on the calendar right now — <a href="community.html">join the community</a> to hear about the next event.</p>
+    {% endif %}
+  </section>
+
+  <!-- MISSION -->
+  <section class="section" id="mission">
+    <div class="section-header">
+      <span class="section-num">02</span>
       <h2>Why this community exists</h2>
     </div>
 
@@ -50,22 +67,8 @@ footer_message: "Spring 2026"
       <div class="card">
         <div class="panel-icon">◇ &nbsp; How to get involved</div>
         <h3>Join our next event!</h3>
-        <p>Check out the section below for our <a href="#events">upcoming events</a>, everyone is welcome! In the meantime, <a href = "community.html">join the community</a> on Discord or email.</p>
+        <p>Check out our <a href="#events">upcoming events</a> above, everyone is welcome! In the meantime, <a href = "community.html">join the community</a> on Discord or email.</p>
       </div>
-    </div>
-  </section>
-
-  <!-- UPCOMING EVENTS -->
-  <section class="section" id="events">
-    <div class="section-header">
-      <span class="section-num">02</span>
-      <h2>Upcoming Events</h2>
-    </div>
-
-    <div class="card-grid card-grid--2">
-      {% assign upcoming_events = site.events | where: "archived", false | sort: "order" %}
-      {% for e in upcoming_events %}{% include event-card.html event=e %}{% endfor %}
-
     </div>
   </section>
 
@@ -100,8 +103,7 @@ footer_message: "Spring 2026"
     </div>
 
     <div class="card-grid card-grid--2">
-      {% assign past_events = site.events | where: "archived", true | sort: "order" %}
-      {% for e in past_events %}{% include event-card.html event=e %}{% endfor %}
+      {% for e in past_events %}{% include event-card.html event=e past=true %}{% endfor %}
     </div>
   </section>
 

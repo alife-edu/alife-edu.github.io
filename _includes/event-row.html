@@ -1,0 +1,16 @@
+{% assign e = include.event %}
+{% assign href = e.event_url | default: e.url | remove_first: "/" %}
+<a href="{{ href }}" class="event-row">
+  <div class="event-row-date">
+    <span class="event-row-month">{{ e.date | date: "%b" }}</span>
+    <span class="event-row-day">{% if e.date_tbd %}TBD{% else %}{{ e.date | date: "%-d" }}{% endif %}</span>
+    <span class="event-row-year">{{ e.date | date: "%Y" }}</span>
+  </div>
+  <div class="event-row-main">
+    <div class="card-eyebrow">{{ e.eyebrow }}</div>
+    <div class="card-title">{{ e.card_title | default: e.nav_label }}</div>
+    <div class="card-date">{{ e.dates }}</div>
+    <div class="card-body">{{ e.description }}</div>
+  </div>
+  <div class="card-link">{{ e.link_text }}</div>
+</a>

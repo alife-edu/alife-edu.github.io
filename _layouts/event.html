@@ -1,0 +1,37 @@
+---
+layout: default
+footer_orgs: short
+---
+{% comment %}
+  Events that set `event_url` already have their own page (or live elsewhere),
+  so the page generated for them here just forwards there.
+{% endcomment %}
+{% if page.event_url and page.event_url != "" %}
+<meta http-equiv="refresh" content="0; url={{ page.event_url }}">
+<main><p class="section-intro">This event lives at <a href="{{ page.event_url }}">{{ page.event_url }}</a>.</p></main>
+{% else %}
+
+<!-- HERO -->
+<div style="border-bottom: 1px solid var(--border);">
+  <div class="hero hero--compact hero--no-grid hero--gold">
+    <div class="hero-overline">{{ page.eyebrow }}</div>
+    <h1>{{ page.card_title | default: page.nav_label }}</h1>
+    <p class="hero-sub">{{ page.dates }}</p>
+    <div class="hero-actions">
+      {% for l in page.links %}<a href="{{ l.url }}" target="_blank" rel="noopener" class="btn-primary btn-primary--gold">{{ l.text }}</a>
+      {% endfor %}
+      <a href="index.html#events" class="btn-ghost">Back to ALife-Edu</a>
+    </div>
+  </div>
+</div>
+
+<main class="event-page">
+  {% include event-banner.html %}
+  <section class="section">
+    <div class="about-text event-body">
+      {% assign body = content | strip %}
+      {% if body != "" %}{{ content }}{% else %}<p>{{ page.description }}</p>{% endif %}
+    </div>
+  </section>
+</main>
+{% endif %}

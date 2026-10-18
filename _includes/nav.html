@@ -1,42 +1,45 @@
 <!-- NAV -->
 {% assign page_path = page.url | remove_first: "/" %}
+{% include event-lists.html %}
 <nav>
   <a href="index.html" class="nav-brand">ALife-Edu</a>
   <ul class="nav-links">
     <li><a href="index.html"{% if page.url == '/' %} class="active"{% endif %}>Home</a></li>
 
-    {% assign upcoming_events = site.events | where: "archived", false | sort: "order" %}
-    {% for e in upcoming_events %}
-      {% if e.children and e.children.size > 0 %}
-      <li class="nav-has-sub">
-        <a href="{{ e.event_url }}"{% if page_path == e.event_url %} class="active"{% endif %}>{{ e.nav_label }}</a>
-        <ul class="nav-sub">
-          {% for c in e.children %}
-          <li><a href="{{ c.url }}"{% if page_path == c.url %} class="active"{% endif %}>{{ c.label }}</a></li>
-          {% endfor %}
-        </ul>
-      </li>
-      {% else %}
-      <li><a href="{{ e.event_url }}"{% if page_path == e.event_url %} class="active"{% endif %}>{{ e.nav_label }}</a></li>
-      {% endif %}
-    {% endfor %}
+    {% if upcoming_events.size > 0 %}
+    <li class="nav-has-sub">
+      <a href="index.html#events">Upcoming Events</a>
+      <ul class="nav-sub">
+        {% for e in upcoming_events %}
+        {% assign href = e.event_url | default: e.url | remove_first: "/" %}
+        <li><a href="{{ href }}"{% if page_path == href %} class="active"{% endif %}>
+          <span class="nav-sub-date">{% if e.date_tbd %}{{ e.date | date: "%b %Y" }} · TBD{% else %}{{ e.date | date: "%b %-d" }}{% if e.end_date %} – {{ e.end_date | date: "%b %-d" }}{% endif %}, {{ e.date | date: "%Y" }}{% endif %}</span>
+          {{ e.nav_label }}
+        </a></li>
+        {% for c in e.children %}
+        <li><a href="{{ c.url }}" class="nav-sub-child{% if page_path == c.url %} active{% endif %}">{{ c.label }}</a></li>
+        {% endfor %}
+        {% endfor %}
+      </ul>
+    </li>
+    {% endif %}
 
     <li><a href="resources.html"{% if page.url == '/resources.html' %} class="active"{% endif %}>Resources</a></li>
     <li><a href="community.html"{% if page.url == '/community.html' %} class="active"{% endif %}>Community</a></li>
 
-    {% assign archived_events = site.events | where: "archived", true | sort: "order" %}
-    {% if archived_events.size > 0 %}
+    {% if past_events.size > 0 %}
     <li class="nav-has-sub">
       <a href="#">Event Archive</a>
       <ul class="nav-sub">
-        {% for e in archived_events %}
+        {% for e in past_events %}
+        {% assign href = e.event_url | default: e.url | remove_first: "/" %}
         <li class="nav-sub-group-label">{{ e.group_label }}</li>
         {% if e.children and e.children.size > 0 %}
           {% for c in e.children %}
           <li><a href="{{ c.url }}"{% if page_path == c.url %} class="active"{% endif %}>{{ c.label }}</a></li>
           {% endfor %}
         {% else %}
-          <li><a href="{{ e.event_url }}"{% if page_path == e.event_url %} class="active"{% endif %}>{{ e.nav_label }}</a></li>
+          <li><a href="{{ href }}"{% if page_path == href %} class="active"{% endif %}>{{ e.nav_label }}</a></li>
         {% endif %}
         {% endfor %}
       </ul>

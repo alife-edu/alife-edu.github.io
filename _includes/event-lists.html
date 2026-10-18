@@ -1,0 +1,19 @@
+{% comment %}
+  Splits site.events into `upcoming_events` (soonest first) and `past_events`
+  (most recent first). An event is past once its `end_date` (or `date`, if
+  there's no end date) is before the day the site was built, or if it sets
+  `archived: true`. Everything that lists events includes this first.
+{% endcomment %}
+{% assign today = site.time | date: "%Y%m%d" | plus: 0 %}
+{% assign upcoming_events = "" | split: "" %}
+{% assign past_events = "" | split: "" %}
+{% assign sorted_events = site.events | sort: "date" %}
+{% for e in sorted_events %}
+  {% assign last_day = e.end_date | default: e.date | date: "%Y%m%d" | plus: 0 %}
+  {% if e.archived == true or last_day < today %}
+    {% assign past_events = past_events | push: e %}
+  {% else %}
+    {% assign upcoming_events = upcoming_events | push: e %}
+  {% endif %}
+{% endfor %}
+{% assign past_events = past_events | reverse %}

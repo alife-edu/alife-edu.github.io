@@ -35,3 +35,16 @@ main { max-width: 1100px; margin: 0 auto; padding: 5rem 2.5rem; }
   margin-bottom: 2rem;
   margin-top: -1rem;
 }
+
+/* Home page: tighter sections and mission cards */
+main.home { padding-top: 3rem; }
+main.home .section { margin-bottom: 3.5rem; }
+main.home .section-header { margin-bottom: 1.5rem; }
+main.home .section-num { font-size: 2.25rem; }
+main.home .section h2 { font-size: 1.65rem; }
+main.home #mission .card { padding: 1.5rem 1.75rem; }
+main.home #mission .card .panel-icon { margin-bottom: 0.6rem; }
+main.home #mission .card h3 { font-size: 1.2rem; margin-bottom: 0.4rem; }
+main.home #mission .card p { font-size: 0.88rem; line-height: 1.7; }
+main.home #mission .card-grid { margin-bottom: 1rem !important; }
+main.home #mission .card-grid:last-child { margin-bottom: 0 !important; }

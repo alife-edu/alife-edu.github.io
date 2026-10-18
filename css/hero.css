@@ -97,3 +97,18 @@
 .hero--indigo .hero-overline { color: var(--indigo); }
 .hero--indigo .hero-overline::before { background: var(--indigo); }
 .hero--indigo h1 em { color: var(--indigo); }
+
+/* Home page — shorter than .hero--full so the events are reachable
+   without a long scroll. */
+.hero--home { padding-top: 3.5rem; padding-bottom: 3rem; }
+.hero--home .hero-overline { margin-bottom: 1.25rem; }
+.hero--home h1 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  margin-bottom: 1.25rem;
+}
+.hero--home .hero-sub {
+  font-size: 0.98rem;
+  line-height: 1.75;
+  max-width: 640px;
+  margin-bottom: 1.75rem;
+}

@@ -241,3 +241,69 @@
   color: var(--accent);
   font-weight: 500;
 }
+
+/* Event page body (generated from _events/*.md) */
+main.event-page { padding-top: 2.5rem; }
+.event-body h2, .event-body h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  color: var(--text);
+  line-height: 1.25;
+  margin: 2rem 0 0.75rem;
+}
+.event-body h2 { font-size: 1.75rem; }
+.event-body h3 { font-size: 1.35rem; }
+.event-body ul, .event-body ol {
+  color: var(--text-mid);
+  font-weight: 300;
+  line-height: 1.9;
+  margin: 0 0 1.25rem 1.25rem;
+}
+
+/* Upcoming-events schedule on the home page */
+.event-schedule {
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+.event-row {
+  display: grid;
+  grid-template-columns: 5.5rem 1fr auto;
+  gap: 2rem;
+  align-items: start;
+  padding: 2rem 2.25rem;
+  background: var(--surface);
+  border-left: 2px solid var(--gold);
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.event-row + .event-row { border-top: 1px solid var(--border); }
+.event-row:hover { background: var(--surface2); }
+.event-row-date {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  line-height: 1.1;
+}
+.event-row-month {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.event-row-day {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.6rem;
+  font-weight: 300;
+  color: var(--text);
+}
+.event-row-year {
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  letter-spacing: 0.08em;
+}
+.event-row .card-eyebrow { color: var(--gold); margin-bottom: 0.6rem; }
+.event-row .card-body { margin-bottom: 0; }
+.event-row .card-link { color: var(--gold); white-space: nowrap; padding-top: 0.25rem; }
