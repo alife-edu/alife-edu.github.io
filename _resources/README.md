@@ -15,7 +15,7 @@ Every entry on the [Resources page](../resources.html) is one file in this folde
 | `link` | no | Link to the resource. Omit it entirely for a "coming soon" style card with no link. (Note: the field is called `link`, not `url` — `url` is a reserved word Jekyll uses internally and won't work here.) |
 | `category` | yes | Which section of the Resources page it appears in: `orgs-and-refs`, `courses`, `explorables`, `labs`, `overview`, or `pedagogy`. |
 | `style` | yes | `card` (a boxed card with an eyebrow/title/body) or `link-item` (a simple one-line list entry). Must match whatever the other entries in that category use. |
-| `color` | only for `style: card` | `ember`, `magenta`, or `flare`. |
+| `color` | only for `style: card` | `teal`, `indigo`, or `gold`. |
 | `eyebrow` | only for `style: card` | Short label above the title, e.g. "Wiki" or "Conference". |
 | `description` | yes | One or two sentences describing the resource. |
 | `link_text` | only for `style: card` with a `link` | The call-to-action text, e.g. `"Visit wiki ↗"`. |
@@ -29,7 +29,7 @@ title: "ALife Wiki"
 link: "https://alife.org/encyclopedia/"
 category: "orgs-and-refs"
 style: "card"
-color: "ember"
+color: "teal"
 eyebrow: "Wiki"
 description: "The community-maintained wiki for Artificial Life — key concepts, history, research areas, and links to seminal papers."
 link_text: "Visit wiki ↗"

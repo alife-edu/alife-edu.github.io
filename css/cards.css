@@ -32,9 +32,9 @@
   top: 0; left: 0; right: 0;
   height: 2px;
 }
-.card.c-ember::before  { background: var(--accent); }
-.card.c-flare::before  { background: var(--flare); }
-.card.c-magenta::before { background: var(--magenta); }
+.card.c-teal::before  { background: var(--accent); }
+.card.c-gold::before  { background: var(--gold); }
+.card.c-indigo::before { background: var(--indigo); }
 
 /* Card content elements */
 .card-eyebrow {
@@ -43,9 +43,9 @@
   letter-spacing: 0.01em;
   margin-bottom: 1rem;
 }
-.c-ember .card-eyebrow  { color: var(--accent); }
-.c-flare .card-eyebrow  { color: var(--flare); }
-.c-magenta .card-eyebrow { color: var(--magenta); }
+.c-teal .card-eyebrow  { color: var(--accent); }
+.c-gold .card-eyebrow  { color: var(--gold); }
+.c-indigo .card-eyebrow { color: var(--indigo); }
 
 .card-title {
   font-family: var(--font-display);
@@ -78,9 +78,9 @@
   letter-spacing: 0.01em;
   margin-top: auto;
 }
-.c-ember .card-link  { color: var(--accent); }
-.c-flare .card-link  { color: var(--flare); }
-.c-magenta .card-link { color: var(--magenta); }
+.c-teal .card-link  { color: var(--accent); }
+.c-gold .card-link  { color: var(--gold); }
+.c-indigo .card-link { color: var(--indigo); }
 
 .card-placeholder {
   font-size: 0.8rem;
@@ -107,7 +107,7 @@
   font-size: 0.8rem;
   font-weight: 500;
   letter-spacing: 0.01em;
-  color: var(--magenta);
+  color: var(--indigo);
   margin-bottom: 1rem;
 }
 

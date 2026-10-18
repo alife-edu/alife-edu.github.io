@@ -1,6 +1,6 @@
 /*
   Home page hero: a Gray–Scott reaction–diffusion culture in the "mitosis"
-  regime (Pearson's type λ), coloured with the inferno ramp from our poster.
+  regime (Pearson's type λ), drawn in the site's teal accent.
   Spots grow and divide until they fill the dish; now and then a region is
   slowly culled so the colony keeps recolonising instead of freezing.
 
@@ -20,8 +20,8 @@
 
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-  // inferno colour map, black → plum → magenta → ember → flare → pale yellow
-  var STOPS = [[0,0,4],[40,11,84],[101,21,110],[159,42,99],[212,72,66],[245,125,21],[250,193,39],[252,255,164]];
+  // page background (#0e0e0c) → deep teal → accent teal (#3dcba0) → pale mint
+  var STOPS = [[14,14,12],[12,40,34],[20,88,72],[38,150,118],[61,203,160],[150,232,208],[226,248,240]];
   var lut = new Uint8ClampedArray(256 * 3);
   for (var i = 0; i < 256; i++) {
     var t = i / 255 * (STOPS.length - 1);
@@ -104,7 +104,7 @@
   function draw() {
     var d = img.data;
     for (var k = 0, p = 0; k < w * h; k++, p += 4) {
-      // peak v is ~0.4; cap below the palest stop so spots glow ember, not white
+      // peak v is ~0.4; cap below the palest stop so spots stay teal, not white
       var t = v[k] / 0.52;
       t = t <= 0 ? 0 : t >= 1 ? 230 : (Math.pow(t, 0.8) * 230) | 0;
       d[p] = lut[t * 3]; d[p + 1] = lut[t * 3 + 1]; d[p + 2] = lut[t * 3 + 2]; d[p + 3] = 255;

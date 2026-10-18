@@ -13,12 +13,12 @@ footer_orgs: short
 
 <!-- HERO -->
 <div style="border-bottom: 1px solid var(--border);">
-  <div class="hero hero--compact hero--no-grid hero--flare">
+  <div class="hero hero--compact hero--no-grid hero--gold">
     <div class="hero-overline">{{ page.eyebrow }}</div>
     <h1>{{ page.card_title | default: page.nav_label }}</h1>
     <p class="hero-sub">{{ page.dates }}</p>
     <div class="hero-actions">
-      {% for l in page.links %}<a href="{{ l.url }}" target="_blank" rel="noopener" class="btn-primary btn-primary--flare">{{ l.text }}</a>
+      {% for l in page.links %}<a href="{{ l.url }}" target="_blank" rel="noopener" class="btn-primary btn-primary--gold">{{ l.text }}</a>
       {% endfor %}
       <a href="index.html#events" class="btn-ghost">Back to ALife-Edu</a>
     </div>

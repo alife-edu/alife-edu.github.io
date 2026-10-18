@@ -1,7 +1,7 @@
 {% assign e = include.event %}
 {% assign href = e.event_url | default: e.url | remove_first: "/" %}
-{% assign color = "flare" %}
-{% if include.past %}{% assign color = "magenta" %}{% endif %}
+{% assign color = "gold" %}
+{% if include.past %}{% assign color = "teal" %}{% endif %}
 <a href="{{ href }}" class="card c-{{ color }}">
   <div class="card-eyebrow">{{ e.eyebrow }}</div>
   <div class="card-title">{{ e.card_title | default: e.nav_label }}</div>

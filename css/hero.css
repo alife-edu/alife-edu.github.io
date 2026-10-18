@@ -56,8 +56,8 @@
 
 .hero-actions { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; position: relative; }
 
-.hero--flare .hero-overline { color: var(--flare); }
-.hero--magenta .hero-overline { color: var(--magenta); }
+.hero--gold .hero-overline { color: var(--gold); }
+.hero--indigo .hero-overline { color: var(--indigo); }
 
 /* ── Home page: a live reaction–diffusion culture behind the headline ── */
 .hero-band {

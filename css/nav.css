@@ -32,7 +32,7 @@ nav {
 }
 .nav-links a:hover { color: var(--text); }
 .nav-links a.active { color: var(--accent); }
-.nav-links a.active--flare { color: var(--flare); }
+.nav-links a.active--gold { color: var(--gold); }
 
 /* ── Dropdown subnav ─────────────────────────────────── */
 .nav-has-sub {
@@ -111,7 +111,7 @@ nav {
 .nav-sub li a .nav-sub-date {
   display: block;
   font-size: 0.8rem;
-  color: var(--flare);
+  color: var(--gold);
   letter-spacing: 0.01em;
   margin-bottom: 0.15rem;
 }

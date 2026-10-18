@@ -24,8 +24,8 @@ main { padding-top: 2.5rem; }
 
 /* ── Draft notice banner ───────────────────────────── */
 .sched-draft-notice {
-  background: var(--flare-dim);
-  border: 1px solid var(--flare-mid);
+  background: var(--gold-dim);
+  border: 1px solid var(--gold-mid);
   border-radius: 0.4rem;
   padding: 0.75rem 1.25rem;
   margin-bottom: 2.5rem;
@@ -40,7 +40,7 @@ main { padding-top: 2.5rem; }
 
 
 .sched-draft-notice strong {
-  color: var(--flare);
+  color: var(--gold);
   font-weight: 500;
 }
 
@@ -74,7 +74,7 @@ main { padding-top: 2.5rem; }
 }
 
 .sched-day-num--east {
-  color: var(--flare);
+  color: var(--gold);
 }
 
 .sched-day-date {
@@ -126,30 +126,30 @@ main { padding-top: 2.5rem; }
   background: var(--surface2);
 }
 
-/* ── Talk rows (ember left border) ──────────────────── */
+/* ── Talk rows (teal left border) ──────────────────── */
 .sched-row--talk {
   border-left: 2px solid var(--accent);
   padding-left: calc(1.25rem - 2px);
 }
 
-/* ── Panel rows (flare left border) ─────────────────── */
+/* ── Panel rows (gold left border) ─────────────────── */
 .sched-row--panel {
-  border-left: 2px solid var(--flare);
+  border-left: 2px solid var(--gold);
   padding-left: calc(1.25rem - 2px);
 }
 
 /* ── Break rows ────────────────────────────────────── */
 .sched-row--break {
-  background: var(--surface2);
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
+  background: #2a2a27;
+  border-top: 1px solid rgba(255,255,255,0.13);
+  border-bottom: 1px solid rgba(255,255,255,0.13);
   padding-top: 0.4rem;
   padding-bottom: 0.4rem;
   align-items: center;
 }
 
 .sched-row--break:hover {
-  background: var(--surface2);
+  background: #2e2e2b;
 }
 
 .sched-row--break .sched-time {
@@ -162,7 +162,7 @@ main { padding-top: 2.5rem; }
   align-items: center;
   gap: 0.5rem;
   font-size: 0.8rem;
-  color: var(--text-dim);
+  color: rgba(255,255,255,0.38);
   font-weight: 500;
   letter-spacing: 0.01em;
 }
@@ -199,7 +199,7 @@ main { padding-top: 2.5rem; }
 }
 
 .sched-row--panel .sched-type {
-  color: var(--flare);
+  color: var(--gold);
 }
 
 .sched-title {
@@ -259,7 +259,7 @@ main { padding-top: 2.5rem; }
   font-weight: 300;
 }
 .sched-note--highlight {
-  color: var(--flare);
+  color: #e2a93b;
 }
 
 /* ── Link button area ──────────────────────────────── */
@@ -310,13 +310,13 @@ main { padding-top: 2.5rem; }
 }
 
 .sched-link--live:hover {
-  background: var(--accent-mid);
+  background: rgba(61, 203, 160, 0.2);
 }
 
 /* ── AEDU-East intro note ──────────────────────────── */
 .sched-east-note {
-  background: var(--flare-dim);
-  border: 1px solid var(--flare-mid);
+  background: var(--gold-dim);
+  border: 1px solid var(--gold-mid);
   border-radius: 0.5rem;
   padding: 1.25rem 1.5rem;
   margin-bottom: 1.75rem;
@@ -356,8 +356,8 @@ main { padding-top: 2.5rem; }
 }
 
 .legend-bar--talk { background: var(--accent-mid); border: 1px solid var(--accent); }
-.legend-bar--panel { background: var(--flare-dim); border: 1px solid var(--flare); }
-.legend-bar--break { background: var(--surface2); border: 1px solid var(--border); }
+.legend-bar--panel { background: var(--gold-dim); border: 1px solid var(--gold); }
+.legend-bar--break { background: #2a2a27; border: 1px solid rgba(255,255,255,0.13); }
 
 /* ── Responsive ────────────────────────────────────── */
 @media (max-width: 720px) {
