@@ -33,7 +33,7 @@ Events are sorted by `date`. Once an event's `end_date` (or `date`, for a one-da
 | `eyebrow` | yes | Small label above the title, e.g. `"Virtual · Oct 2026"`. |
 | `dates` | yes | Human-readable date/time line, e.g. `"October 29th, 2026 9AM EDT on Zoom"`. |
 | `description` | yes | A short (2–3 sentence) blurb for the schedule row and card. Put the long version in the body below the `---`. |
-| `link_text` | yes | Call-to-action text on the schedule row/card, e.g. `"Talk details →"`. |
+| `link_text` | yes | Call-to-action text on the schedule row/card, e.g. `"Talk details"`. |
 | `links` | no | Buttons at the top of the event page — a list of `{text, url}`, e.g. a Zoom link or registration form. |
 | `concluded_message` | no | Shown in the "this event has concluded" banner once it's over. |
 | `event_url` | no | Only if the event's page lives somewhere else — a hand-built `.html` page (like `tal-alife-2026.html`) or an external site. The schedule, card, and nav then link there instead. **No leading slash.** (Called `event_url`, not `url`, because Jekyll reserves `url`.) |
@@ -51,7 +51,7 @@ date: 2026-11-19
 eyebrow: "Virtual · Nov 2026"
 dates: "November 19th, 2026 · 10AM EST on Zoom"
 description: "A short blurb that shows on the home page schedule."
-link_text: "Talk details →"
+link_text: "Talk details"
 links:
   - text: "Join on Zoom ↗"
     url: "https://zoom.us/j/123456789"

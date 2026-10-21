@@ -15,10 +15,10 @@ footer {
 }
 
 .footer-brand {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: var(--font-display);
   font-size: 1.1rem;
   color: var(--accent);
-  font-weight: 300;
+  font-weight: 600;
   letter-spacing: 0.05em;
 }
 

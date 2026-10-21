@@ -1,7 +1,6 @@
 {% assign items = site.resources | where: "category", include.category | sort: "order" %}
 <section class="section" id="{{ include.id }}">
   <div class="section-header">
-    <span class="section-num">{{ include.num }}</span>
     <h2>{{ include.title }}</h2>
   </div>
 

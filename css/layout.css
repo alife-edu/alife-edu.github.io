@@ -10,41 +10,27 @@ main { max-width: 1100px; margin: 0 auto; padding: 5rem 2.5rem; }
   margin-bottom: 2.5rem;
 }
 
-.section-num {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 3rem;
-  font-weight: 300;
-  color: var(--text-dim);
-  line-height: 1;
-}
 
 .section h2 {
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 300;
+  font-family: var(--font-display);
+  font-weight: 600;
   font-size: 2rem;
-  line-height: 1.2;
+  line-height: 1.15;
+  text-wrap: balance;
   color: var(--text);
 }
 
 .section-intro {
-  font-size: 0.95rem;
+  font-size: 1rem;
   color: var(--text-mid);
-  line-height: 1.8;
-  font-weight: 300;
-  max-width: 680px;
+  line-height: 1.75;
+  max-width: 40em;
   margin-bottom: 2rem;
   margin-top: -1rem;
 }
 
-/* Home page: tighter sections and mission cards */
+/* Home page: tighter sections */
 main.home { padding-top: 3rem; }
 main.home .section { margin-bottom: 3.5rem; }
 main.home .section-header { margin-bottom: 1.5rem; }
-main.home .section-num { font-size: 2.25rem; }
-main.home .section h2 { font-size: 1.65rem; }
-main.home #mission .card { padding: 1.5rem 1.75rem; }
-main.home #mission .card .panel-icon { margin-bottom: 0.6rem; }
-main.home #mission .card h3 { font-size: 1.2rem; margin-bottom: 0.4rem; }
-main.home #mission .card p { font-size: 0.88rem; line-height: 1.7; }
-main.home #mission .card-grid { margin-bottom: 1rem !important; }
-main.home #mission .card-grid:last-child { margin-bottom: 0 !important; }
+main.home .section h2 { font-size: 1.75rem; }

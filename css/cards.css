@@ -38,10 +38,9 @@
 
 /* Card content elements */
 .card-eyebrow {
-  font-size: 0.65rem;
+  font-size: 0.8rem;
   font-weight: 500;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
+  letter-spacing: 0.01em;
   margin-bottom: 1rem;
 }
 .c-teal .card-eyebrow  { color: var(--accent); }
@@ -49,8 +48,8 @@
 .c-indigo .card-eyebrow { color: var(--indigo); }
 
 .card-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 300;
+  font-family: var(--font-display);
+  font-weight: 600;
   font-size: 1.4rem;
   color: var(--text);
   line-height: 1.25;
@@ -74,10 +73,9 @@
 }
 
 .card-link {
-  font-size: 0.78rem;
+  font-size: 0.92rem;
   font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  letter-spacing: 0.01em;
   margin-top: auto;
 }
 .c-teal .card-link  { color: var(--accent); }
@@ -85,10 +83,9 @@
 .c-indigo .card-link { color: var(--indigo); }
 
 .card-placeholder {
-  font-size: 0.72rem;
+  font-size: 0.8rem;
   font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  letter-spacing: 0.01em;
   color: var(--text-dim);
   margin-top: auto;
   padding: 0.4rem 0.75rem;
@@ -99,27 +96,25 @@
 
 /* Panel icon (mission panels) */
 .card .panel-icon {
-  font-size: 0.7rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.01em;
   color: var(--accent);
   margin-bottom: 1rem;
 }
 
 /* Card icon (involve cards) */
 .card .card-icon {
-  font-size: 0.65rem;
+  font-size: 0.8rem;
   font-weight: 500;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
+  letter-spacing: 0.01em;
   color: var(--indigo);
   margin-bottom: 1rem;
 }
 
 /* Card headings (mission panels, involve cards) */
 .card h3 {
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 300;
+  font-family: var(--font-display);
+  font-weight: 600;
   font-size: 1.35rem;
   color: var(--text);
   margin-bottom: 0.75rem;
