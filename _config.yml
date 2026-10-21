@@ -40,3 +40,4 @@ exclude:
   - "_schedules/README.md"
   - "_events/README.md"
   - node_modules
+  - scripts
