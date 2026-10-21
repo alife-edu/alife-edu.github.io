@@ -25,6 +25,10 @@ defaults:
 
 theme: null
 
+# Jekyll skips files whose names start with "_" unless they're listed here.
+include:
+  - __AEdu-East-10-Closing.pdf
+
 exclude:
   - Gemfile
   - Gemfile.lock
