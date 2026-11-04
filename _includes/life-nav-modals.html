@@ -1,0 +1,95 @@
+{% comment %}
+  Modals opened by the gold blocks in the home page Game of Life panel.
+  "Upcoming events" and "Event archive" are generated from _events/ (via
+  event-lists.html), so they follow the same upcoming/past split as the nav
+  and the home page schedule. Resources and Community are written by hand.
+{% endcomment %}
+{% include event-lists.html %}
+
+<dialog class="block-modal" id="dlg-events" aria-labelledby="dlg-events-h">
+  <div class="bm">
+    <div class="bm-top">
+      <div><div class="bm-eyebrow"><i></i><span class="bm-origin">Block 1 of 4</span></div><h2 id="dlg-events-h">Upcoming events</h2></div>
+      <button type="button" class="bm-close" aria-label="Close">×</button>
+    </div>
+    <p>Talks, meetups and workshops for people who teach artificial life. Everything is free, and most of it is online.</p>
+    {% if upcoming_events.size > 0 %}
+    <ul class="bm-list">
+      {% for e in upcoming_events %}
+      {% assign href = e.event_url | default: e.url | remove_first: "/" %}
+      <li><a href="{{ href }}">
+        <span class="when">{{ e.dates }}</span>
+        <span class="t">{{ e.card_title | default: e.nav_label }}</span>
+        <span class="d">{{ e.description | strip_html | truncatewords: 24 }}</span>
+        <span class="arr" aria-hidden="true">→</span>
+      </a></li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <p class="bm-empty">Nothing is scheduled right now. <a href="community.html">Join the mailing list</a> to hear about the next event.</p>
+    {% endif %}
+    <div class="bm-actions"><a class="btn-primary" href="#events" data-close>See the schedule</a></div>
+  </div>
+</dialog>
+
+<dialog class="block-modal" id="dlg-resources" aria-labelledby="dlg-resources-h">
+  <div class="bm">
+    <div class="bm-top">
+      <div><div class="bm-eyebrow"><i></i><span class="bm-origin">Block 2 of 4</span></div><h2 id="dlg-resources-h">Resources for teaching artificial life</h2></div>
+      <button type="button" class="bm-close" aria-label="Close">×</button>
+    </div>
+    <p>A curated, living collection of references, tools, courses and interactive explorables for anyone teaching or learning about artificial life. Contributions welcome.</p>
+    <ul class="bm-list">
+      <li><a href="resources.html#organizations"><span class="t">Organizations &amp; reference</span><span class="arr" aria-hidden="true">→</span></a></li>
+      <li><a href="resources.html#topics"><span class="t">Topic collections</span><span class="d">Readings, exercises and assignments by ALife topic</span><span class="arr" aria-hidden="true">→</span></a></li>
+      <li><a href="resources.html#courses"><span class="t">Courses &amp; curricula</span><span class="arr" aria-hidden="true">→</span></a></li>
+      <li><a href="resources.html#explorables"><span class="t">Explorables &amp; interactives</span><span class="arr" aria-hidden="true">→</span></a></li>
+      <li><a href="resources.html#pedagogy"><span class="t">Pedagogy</span><span class="arr" aria-hidden="true">→</span></a></li>
+    </ul>
+    <div class="bm-actions"><a class="btn-primary" href="resources.html">Browse all resources</a></div>
+  </div>
+</dialog>
+
+<dialog class="block-modal" id="dlg-community" aria-labelledby="dlg-community-h">
+  <div class="bm">
+    <div class="bm-top">
+      <div><div class="bm-eyebrow"><i></i><span class="bm-origin">Block 3 of 4</span></div><h2 id="dlg-community-h">A permanent home for ALife educators</h2></div>
+      <button type="button" class="bm-close" aria-label="Close">×</button>
+    </div>
+    <p>We gather on a Discord server and an email list. Share syllabi and assignments, workshop course ideas, coordinate around conferences like ALIFE, and find collaborators for education research. Both are open to anyone with an interest in teaching artificial life.</p>
+    <ul class="bm-list">
+      <li><a href="https://discord.gg/jEtVQCMYjh" target="_blank" rel="noopener"><span class="t">Join the Discord ↗</span><span class="d">discord.gg/jEtVQCMYjh</span><span class="arr" aria-hidden="true">→</span></a></li>
+      <li><a href="https://groups.io/g/alife-edu" target="_blank" rel="noopener"><span class="t">Subscribe to the list serv ↗</span><span class="d">groups.io/g/alife-edu</span><span class="arr" aria-hidden="true">→</span></a></li>
+    </ul>
+    <div class="bm-actions"><a class="btn-primary" href="community.html">Visit the community page</a></div>
+  </div>
+</dialog>
+
+<dialog class="block-modal" id="dlg-archive" aria-labelledby="dlg-archive-h">
+  <div class="bm">
+    <div class="bm-top">
+      <div><div class="bm-eyebrow"><i></i><span class="bm-origin">Block 4 of 4</span></div><h2 id="dlg-archive-h">Event archive</h2></div>
+      <button type="button" class="bm-close" aria-label="Close">×</button>
+    </div>
+    <p>Recordings, slides and artifacts from past events.</p>
+    {% if past_events.size > 0 %}
+    <ul class="bm-list">
+      {% for e in past_events %}
+      {% assign href = e.event_url | default: e.url | remove_first: "/" %}
+      <li><a href="{{ href }}">
+        <span class="when">{{ e.dates }}</span>
+        <span class="t">{{ e.card_title | default: e.nav_label }}</span>
+        <span class="d">{{ e.link_text }}</span>
+        <span class="arr" aria-hidden="true">→</span>
+      </a></li>
+      {% for c in e.children %}{% if c.url != href %}
+      <li><a class="sub" href="{{ c.url }}"><span class="t">{{ c.label }}</span><span class="arr" aria-hidden="true">→</span></a></li>
+      {% endif %}{% endfor %}
+      {% endfor %}
+    </ul>
+    {% else %}
+    <p class="bm-empty">Past events will be listed here.</p>
+    {% endif %}
+    <div class="bm-actions"><a class="btn-primary" href="#previous-events" data-close>See previous events</a></div>
+  </div>
+</dialog>

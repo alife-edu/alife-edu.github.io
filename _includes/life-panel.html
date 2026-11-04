@@ -1,0 +1,43 @@
+{% comment %}
+  Game of Life panel for the home page hero. Behaviour lives in js/glider-nav.js,
+  scene data in _data/life_scenes.json, styles in css/life-panel.css.
+  The four .life-block buttons sit on the cells of the turner-chain scene's blocks;
+  data-dialog names the modal each opens (see _includes/life-nav-modals.html).
+  Captions: one per scene, matched by data-scene-cap = the scene's "id".
+{% endcomment %}
+<figure class="life-panel">
+  <div class="life-stage" role="img" aria-label="Game of Life">
+    <canvas aria-hidden="true"></canvas>
+    <button type="button" class="life-block is-pending" data-dialog="dlg-events" tabindex="-1" aria-hidden="true"><span class="sq"></span><span class="lbl">Upcoming events</span></button>
+    <button type="button" class="life-block is-pending" data-dialog="dlg-resources" tabindex="-1" aria-hidden="true"><span class="sq"></span><span class="lbl">Resources</span></button>
+    <button type="button" class="life-block is-pending" data-dialog="dlg-community" tabindex="-1" aria-hidden="true"><span class="sq"></span><span class="lbl">Community</span></button>
+    <button type="button" class="life-block is-pending" data-dialog="dlg-archive" tabindex="-1" aria-hidden="true"><span class="sq"></span><span class="lbl">Event archive</span></button>
+  </div>
+
+  <div class="life-bar">
+    <div class="life-tabs" role="tablist" aria-label="Scenes">
+      <button type="button" role="tab" data-scene-tab aria-selected="true">Turner chain</button>
+      <button type="button" role="tab" data-scene-tab aria-selected="false" tabindex="-1">ALIFE</button>
+      <button type="button" role="tab" data-scene-tab aria-selected="false" tabindex="-1">Soup</button>
+    </div>
+    <div class="life-controls" role="group" aria-label="Playback">
+      <button type="button" data-life="play" aria-pressed="false">Pause</button>
+      <button type="button" data-life="slower" aria-label="Slower">−</button>
+      <span class="life-speed" data-life="speed" aria-live="polite">1×</span>
+      <button type="button" data-life="faster" aria-label="Faster">+</button>
+    </div>
+  </div>
+
+  <figcaption class="life-caption">
+    <p data-scene-cap="chain">One glider strikes <span data-life="turners">eight</span> one-time turners and leaves four <span class="gold">gold blocks</span> behind. Each block is a link.</p>
+    <p data-scene-cap="alife" hidden><span data-life="gliders">80</span> gliders fly in from outside the panel. Each pair collides into one block, and the blocks spell ALIFE.</p>
+    <p data-scene-cap="soup" hidden>A random 20&times;20 soup, run until it settles. Click or drag to draw cells.
+      <span class="life-soup-tools" data-life="soup-tools" hidden>
+        <button type="button" data-life="soup-new">New soup</button>
+        <button type="button" data-life="soup-clear">Clear</button>
+        <span class="life-seed">seed <span data-life="soup-seed">1</span></span>
+      </span>
+    </p>
+    <p class="life-readout"><span data-life="gen">gen 0</span> · Conway's Game of Life, B3/S23</p>
+  </figcaption>
+</figure>

@@ -4,22 +4,27 @@ title: "ALife-Edu — Artificial Life Educators Community"
 description: "A growing community of educators, researchers, and practitioners dedicated to teaching and advancing Artificial Life."
 footer_orgs: short
 footer_message: "Spring 2026"
+extra_css:
+  - css/life-panel.css
 ---
 
-<!-- HERO -->
+<!-- HERO: headline on the left, Game of Life panel on the right -->
 <div class="hero-band">
-  <canvas class="hero-life" aria-hidden="true"></canvas>
-  <div class="hero hero--home">
-    <h1>A community for those who teach about life as it could be</h1>
-    <p class="hero-sub">ALife-Edu is a network of educators, researchers, and practitioners who teach artificial life. We share course materials, run workshops, and meet regularly.</p>
-    <div class="hero-actions">
-      <a href="#events" class="btn-primary">See upcoming events</a>
-      <a href="community.html" class="btn-ghost">Join the community</a>
+  <div class="hero-split">
+    <div class="hero hero--home">
+      <h1>A community for those who teach about life as it could be</h1>
+      <p class="hero-sub">ALife-Edu is a network of educators, researchers, and practitioners who teach artificial life. We share course materials, run workshops, and meet regularly.</p>
+      <div class="hero-actions">
+        <a href="#events" class="btn-primary">See upcoming events</a>
+        <a href="community.html" class="btn-ghost">Join the community</a>
+      </div>
     </div>
+    {% include life-panel.html %}
   </div>
-  <p class="hero-life-caption">Gray–Scott reaction–diffusion, F&nbsp;0.0367, k&nbsp;0.0649. Click to add a seed.</p>
 </div>
-<script src="js/life.js" defer></script>
+{% include life-nav-modals.html %}
+<script type="application/json" id="life-data">{{ site.data.life_scenes | jsonify }}</script>
+<script src="js/glider-nav.js" defer></script>
 
 <main class="home">
 
