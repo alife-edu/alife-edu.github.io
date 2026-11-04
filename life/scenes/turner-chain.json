@@ -4,7 +4,7 @@
   "kind": "links",
   "title": "Turner chain",
   "rule": "B3/S23",
-  "description": "One glider strikes 8 one-time turners and leaves four blocks behind. Each block is a link.",
+  "description": "One glider strikes eight one-time turners and leaves four blocks behind. Each block is a link.",
   "label": "Game of Life: one glider and 8 one-time turners leave four link blocks",
   "W": 100,
   "H": 80,

@@ -90,6 +90,7 @@
 .life-speed { min-width: 2.2rem; text-align: center; font-size: 0.8rem; color: var(--life-ui); font-variant-numeric: tabular-nums; }
 
 .life-caption { display: flex; flex-direction: column; gap: 0.3rem; font-size: 0.8rem; color: var(--life-ui-dim); line-height: 1.55; }
+.life-caption p { margin: 0; }
 .life-caption .gold { color: var(--life-link); }
 .life-readout { color: var(--life-ui-faint); font-variant-numeric: tabular-nums; }
 .life-soup-tools { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 0.35rem; margin-left: 0.35rem; vertical-align: middle; }
