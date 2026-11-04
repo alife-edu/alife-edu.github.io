@@ -59,7 +59,7 @@
 .hero--gold .hero-overline { color: var(--gold); }
 .hero--indigo .hero-overline { color: var(--indigo); }
 
-/* ── Home page hero band; the split layout and Life panel are in css/life-panel.css ── */
+/* ── Home page hero band; the split layout is in css/home-hero.css, the Life panel in life/ ── */
 .hero-band {
   border-bottom: 1px solid var(--border);
   background: var(--bg);

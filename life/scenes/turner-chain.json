@@ -1,0 +1,23 @@
+{
+  "format": "alife-edu life scene 1",
+  "id": "chain",
+  "kind": "links",
+  "title": "Turner chain",
+  "rule": "B3/S23",
+  "description": "One glider strikes 8 one-time turners and leaves four blocks behind. Each block is a link.",
+  "label": "Game of Life: one glider and 8 one-time turners leave four link blocks",
+  "W": 100,
+  "H": 80,
+  "ox": 30,
+  "oy": 30,
+  "GW": 160,
+  "GH": 140,
+  "seconds": 24,
+  "endGen": 1463,
+  "start": [[5,13],[6,11],[6,13],[7,12],[7,13],[14,41],[14,42],[15,41],[16,39],[16,41],[17,39],[17,40],[30,70],[30,71],[31,69],[31,71],[32,44],[32,68],[32,70],[33,43],[33,45],[33,69],[34,13],[34,44],[34,45],[35,13],[35,14],[35,15],[36,16],[37,15],[37,16],[51,68],[51,69],[52,69],[53,67],[54,67],[54,68],[62,12],[62,13],[63,12],[64,10],[64,12],[65,10],[65,11],[66,41],[66,42],[67,40],[67,42],[68,40],[69,39],[69,40],[70,33],[71,32],[71,34],[72,31],[72,33],[73,31],[73,32],[84,30],[85,30],[85,31],[85,32],[86,33],[87,32],[87,33]],
+  "final": [[29,57],[29,58],[30,57],[30,58],[30,73],[30,74],[31,72],[31,75],[32,73],[32,74],[50,8],[50,9],[51,8],[51,9],[65,70],[65,71],[66,70],[66,71],[71,32],[71,33],[72,31],[72,34],[73,31],[73,34],[74,32],[74,33],[88,18],[88,19],[89,18],[89,19]],
+  "links": [{"x":29,"y":57,"t":220},{"x":50,"y":8,"t":439},{"x":88,"y":18,"t":611},{"x":65,"y":70,"t":845}],
+  "stats": {"turners":8,"cells":65},
+  "collisions": [{"gen":64,"kind":"turn","target":"boat"},{"gen":279,"kind":"turn","target":"eater"},{"gen":455,"kind":"turn","target":"eater"},{"gen":681,"kind":"turn","target":"carrier"},{"gen":888,"kind":"turn","target":"eater"},{"gen":1014,"kind":"turn","target":"eater"},{"gen":1134,"kind":"turn","target":"eater"},{"gen":1264,"kind":"turn","target":"longboat"},{"gen":1399,"kind":"end","target":"longboat"}],
+  "provenance": {"tools":["tools/find_turner_reactions.py","tools/build_turner_chain.py --seed 24"]}
+}

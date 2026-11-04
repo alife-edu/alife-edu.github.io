@@ -11,3 +11,8 @@ vendor/
 # OS cruft
 .DS_Store
 Thumbs.db
+
+# Life tools: intermediate search results and logs
+life/tools/out/
+life/tools/*.log
+life/tools/__pycache__/

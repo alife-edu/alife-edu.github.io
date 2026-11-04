@@ -5,7 +5,8 @@ description: "A growing community of educators, researchers, and practitioners d
 footer_orgs: short
 footer_message: "Spring 2026"
 extra_css:
-  - css/life-panel.css
+  - life/panel.css
+  - css/home-hero.css
 ---
 
 <!-- HERO: headline on the left, Game of Life panel on the right -->
@@ -19,12 +20,13 @@ extra_css:
         <a href="community.html" class="btn-ghost">Join the community</a>
       </div>
     </div>
-    {% include life-panel.html %}
+    <div class="life-col">
+      {% include life-panel.html %}
+      <p class="life-more"><a href="life/playground.html">Open the simulator on its own page</a> · <a href="https://github.com/alife-edu/alife-edu.github.io/tree/main/life">how it works and the source</a></p>
+    </div>
   </div>
 </div>
 {% include life-nav-modals.html %}
-<script type="application/json" id="life-data">{{ site.data.life_scenes | jsonify }}</script>
-<script src="js/glider-nav.js" defer></script>
 
 <main class="home">
 
