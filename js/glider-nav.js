@@ -5,8 +5,8 @@
     chain  – one glider ricochets off one-time turners and leaves four 2×2 blocks.
              Each block is swapped for a real <button> the moment it settles, and
              opens a modal with links into the site.
-    spell  – about 80 gliders fly in from outside the panel; each pair collides into
-             one block, and the blocks spell ALIFE.
+    spell  – about 140 gliders fly in from outside the panel; each pair collides into
+             one block, and the blocks spell ALIFE over EDU.
     soup   – a random 20×20 soup that runs until it settles. Click or drag to draw.
 
   The chain and spell scenes were found offline by search and verified by simulation
