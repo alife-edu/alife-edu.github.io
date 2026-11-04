@@ -281,10 +281,26 @@ constructions.
 single letter A. It's a beam search over settled patterns, scored by how many of the letter's ten
 blocks are in place. Allowing period-2 debris between gliders (a "p2 slow salvo") made a big
 difference: a lone block has only three clean one-glider outcomes when everything must stay still.
-It moves, it becomes a honey farm, or it disappears. Early runs placed 3 of the 10 blocks within
-about a dozen gliders, then stalled. Finishing a letter will probably need a bigger beam (the
-script takes `--workers` to use many CPU cores), a smarter score, or the reaction libraries the
-real compilers use. Contributions welcome.
+It moves, it becomes a honey farm, or it disappears.
+
+Most of the work is simulating trial gliders, so the script uses three tricks:
+
+- **A reaction cache.** A glider usually hits one small group of objects, and the outcome depends
+  only on that group's shape and the glider's lane and phase relative to it. Each combination is
+  simulated once, alone, and reused wherever it is safe: the incoming lane, every cell the
+  reaction touches, and the paths of any escaping gliders must stay at least 3 cells from
+  everything else. `--benchmark` checks the cache against full simulation (identical results on
+  24 test patterns).
+- **Early stopping**, and a small simulation box that takes escaping gliders out as they leave.
+- **Many cores** with `--workers`.
+
+Together these make each pattern about 23 times faster to expand than the first version, on one
+core. A real two-core run went from about two minutes per glider to about 17 seconds.
+
+So far the search places 3 or 4 of the 10 blocks within 20 gliders and then stalls. The bottleneck
+is now the strategy, not the speed: a greedy beam keeps chasing the next block instead of setting
+up the debris that later blocks need. Real slow-salvo compilers build a target from the far end,
+keeping a single working "elbow" object to aim at. Contributions welcome.
 
 ## Sources
 
