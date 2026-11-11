@@ -129,3 +129,32 @@ nav {
   margin-bottom: 0.15rem;
 }
 .nav-sub li a.nav-sub-child { padding-left: 2rem; }
+
+/* Light/dark toggle (js/theme.js): shows the sun in dark mode, the moon in light mode */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  background: none;
+  border: 1px solid var(--border-strong);
+  border-radius: 50%;
+  color: var(--text-mid);
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+}
+.theme-toggle:hover { color: var(--text); border-color: var(--border-hover); }
+.theme-toggle svg {
+  width: 1rem;
+  height: 1rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.theme-toggle .theme-icon-moon { display: none; }
+:root[data-theme="light"] .theme-toggle .theme-icon-sun { display: none; }
+:root[data-theme="light"] .theme-toggle .theme-icon-moon { display: block; }

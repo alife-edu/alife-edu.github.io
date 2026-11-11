@@ -14,7 +14,8 @@
 
   Link blocks are the page's own <button>s, so a host can colour each one separately by
   setting --life-link (and --life-link-ring / --life-link-ink) on that button.
-  The defaults follow prefers-color-scheme; the panel redraws when the scheme changes.
+  The defaults are dark; data-theme="light" on <html> switches them to light, and the
+  panel redraws when that attribute changes.
 */
 .life-panel {
   --life-bg: #0e0f14;
@@ -42,26 +43,25 @@
   font-family: var(--life-font);
 }
 
-@media (prefers-color-scheme: light) {
-  .life-panel {
-    --life-bg: #ffffff;
-    --life-cell: #8a8ea0;
-    --life-word: #13141a;
-    --life-live: #0f7a4f;
-    --life-grid: rgba(19, 20, 26, 0.05);
-    --life-link: #0f7a4f;
-    --life-link-ring: rgba(15, 122, 79, 0.28);
-    --life-link-ink: #ffffff;
-    --life-label-bg: rgba(255, 255, 255, 0.9);
-    --life-line: rgba(19, 20, 26, 0.12);
-    --life-ui: #13141a;
-    --life-ui-dim: #555a6b;
-    --life-ui-faint: #636878;
-    --life-ui-line: rgba(19, 20, 26, 0.18);
-    --life-ui-hover: #eef0f6;
-    --life-ui-active: #0f7a4f;
-    --life-ui-active-ink: #ffffff;
-  }
+/* :where() keeps this at the specificity of .life-panel, so host overrides still win. */
+:where(:root[data-theme="light"]) .life-panel {
+  --life-bg: #ffffff;
+  --life-cell: #8a8ea0;
+  --life-word: #13141a;
+  --life-live: #0f7a4f;
+  --life-grid: rgba(19, 20, 26, 0.05);
+  --life-link: #0f7a4f;
+  --life-link-ring: rgba(15, 122, 79, 0.28);
+  --life-link-ink: #ffffff;
+  --life-label-bg: rgba(255, 255, 255, 0.9);
+  --life-line: rgba(19, 20, 26, 0.12);
+  --life-ui: #13141a;
+  --life-ui-dim: #555a6b;
+  --life-ui-faint: #636878;
+  --life-ui-line: rgba(19, 20, 26, 0.18);
+  --life-ui-hover: #eef0f6;
+  --life-ui-active: #0f7a4f;
+  --life-ui-active-ink: #ffffff;
 }
 
 /* The stage keeps the scene's aspect ratio (100 × 80 cells) at any width. */

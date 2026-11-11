@@ -22,6 +22,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700&family=Lexend:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="panel.css">
+<!-- Dark by default; a saved light choice (shared with the site) applies before the page draws -->
+<script>try { if (localStorage.getItem('theme') === 'light') document.documentElement.setAttribute('data-theme', 'light'); } catch (e) {}</script>
 <style>
   :root {
     color-scheme: dark;
@@ -29,14 +31,14 @@
     --line: rgba(255, 255, 255, 0.08); --accent: #4fe0a0; --focus: #6f9cf7;
     --ramp: linear-gradient(90deg, #4fe0a0, #3cc6d8, #6f9cf7, #a58cf0);
   }
-  @media (prefers-color-scheme: light) {
-    :root {
-      color-scheme: light;
-      --bg: #f6f7fb; --surface: #ffffff; --text: #13141a; --mid: #555a6b; --dim: #636878;
-      --line: rgba(19, 20, 26, 0.10); --accent: #0f7a4f; --focus: #2457c5;
-      --ramp: linear-gradient(90deg, #0f7a4f, #0b6f80, #2457c5, #6b48c9);
-    }
+  :root[data-theme="light"] {
+    color-scheme: light;
+    --bg: #f6f7fb; --surface: #ffffff; --text: #13141a; --mid: #555a6b; --dim: #636878;
+    --line: rgba(19, 20, 26, 0.10); --accent: #0f7a4f; --focus: #2457c5;
+    --ramp: linear-gradient(90deg, #0f7a4f, #0b6f80, #2457c5, #6b48c9);
   }
+  header nav .theme-toggle { margin-left: 1.25rem; background: none; border: 1px solid var(--line); border-radius: 1rem; color: var(--mid); font: inherit; font-size: 0.85rem; padding: 0.15rem 0.7rem; cursor: pointer; }
+  header nav .theme-toggle:hover { color: var(--text); }
   body::before { content: ""; display: block; height: 6px; background: var(--ramp); }
   * { box-sizing: border-box; }
   body { margin: 0; background: var(--bg); color: var(--text); font: 300 1rem/1.7 'Lexend', 'Segoe UI', system-ui, sans-serif; }
@@ -67,7 +69,7 @@
 <body>
 <header>
   <a class="brand" href="../index.html">ALife-Edu</a>
-  <nav><a href="../index.html">Home</a><a href="https://github.com/alife-edu/alife-edu.github.io/tree/main/life">Source and README</a></nav>
+  <nav><a href="../index.html">Home</a><a href="https://github.com/alife-edu/alife-edu.github.io/tree/main/life">Source and README</a><button type="button" class="theme-toggle" aria-pressed="false">Light mode</button></nav>
 </header>
 
 <main class="is-collapsed">
@@ -103,6 +105,20 @@
 
 <script src="engine.js"></script>
 <script src="panel.js"></script>
+<script>
+  // Light/dark toggle, same storage key as the site's js/theme.js
+  (function () {
+    var root = document.documentElement, btn = document.querySelector('.theme-toggle');
+    function sync() { btn.setAttribute('aria-pressed', root.getAttribute('data-theme') === 'light' ? 'true' : 'false'); }
+    btn.addEventListener('click', function () {
+      var light = root.getAttribute('data-theme') !== 'light';
+      if (light) root.setAttribute('data-theme', 'light'); else root.removeAttribute('data-theme');
+      try { localStorage.setItem('theme', light ? 'light' : 'dark'); } catch (e) {}
+      sync();
+    });
+    sync();
+  })();
+</script>
 <script>
   // The panel's "More info" button also reveals the notes beside it.
   document.addEventListener('life:details', function (e) {
