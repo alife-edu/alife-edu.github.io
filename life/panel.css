@@ -122,6 +122,10 @@
 
 .life-caption { display: flex; flex-direction: column; gap: 0.3rem; font-size: 0.8rem; color: var(--life-ui-dim); line-height: 1.55; }
 .life-caption p { margin: 0; }
+.life-caption[hidden], .life-tool-row[hidden] { display: none; }
+.life-tool-row { font-size: 0.8rem; color: var(--life-ui-dim); }
+.life-tool-row .life-soup-tools { margin-left: 0; }
+.life-controls .life-more-btn { margin-left: 0.5rem; width: auto !important; }
 .life-caption .gold { color: var(--life-link); }
 .life-readout { color: var(--life-ui-faint); font-variant-numeric: tabular-nums; }
 .life-soup-tools { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 0.35rem; margin-left: 0.35rem; vertical-align: middle; }

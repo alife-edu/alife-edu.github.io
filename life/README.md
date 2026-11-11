@@ -264,6 +264,7 @@ Each scene is a JSON object.
 - `data-scenes` lists the scene files, in tab order.
 - `data-extras="step rle"` adds a Step button and an RLE box.
 - `data-autoplay="false"` stops it from starting on its own.
+- `data-details` controls the caption under the controls (scene description, generation readout and rule, plus the RLE box): `show` (the default), `hide` (left out, as on the home page; a soup's New soup and Clear buttons get a row of their own), or `button` (collapsed behind a **More info** button, as on `playground.html`). Opening or closing it fires `life:details` with `detail.open`.
 - To recolour it, set `--life-bg`, `--life-live`, `--life-link` and the other properties listed at the top of `panel.css`.
 - `engine.js` works on its own too, for example in Node, with `new LifeEngine.Grid({...})`.
 

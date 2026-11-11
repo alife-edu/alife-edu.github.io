@@ -56,6 +56,10 @@
   .rule { display: grid; grid-template-columns: auto 1fr; gap: 0.35rem 0.9rem; font-size: 0.9rem; color: var(--mid); margin: 0.75rem 0; }
   .rule b { color: var(--text); font-weight: 500; font-variant-numeric: tabular-nums; }
   .panel-col { min-width: 0; position: sticky; top: 1rem; }
+  .panel-col h1 { font-size: clamp(1.6rem, 3vw, 2.1rem); margin-bottom: 1rem; }
+  /* Until someone presses "More info", only the simulator shows. */
+  main.is-collapsed { grid-template-columns: minmax(0, 760px); justify-content: center; }
+  .notes[hidden] { display: none; }
   .linkmsg { font-size: 0.8rem; color: var(--accent); min-height: 1.3em; margin-top: 0.5rem; }
   @media (max-width: 880px) { main { grid-template-columns: minmax(0, 1fr); } .panel-col { position: static; } }
 </style>
@@ -66,15 +70,15 @@
   <nav><a href="../index.html">Home</a><a href="https://github.com/alife-edu/alife-edu.github.io/tree/main/life">Source and README</a></nav>
 </header>
 
-<main>
+<main class="is-collapsed">
   <div class="panel-col">
-    <div data-life-panel data-extras="step rle"
+    <h1>Life playground</h1>
+    <div data-life-panel data-extras="step rle" data-details="button"
          data-scenes="scenes/turner-chain.json scenes/alife-edu.json scenes/soup.json"></div>
     <p class="linkmsg" id="linkmsg" aria-live="polite"></p>
   </div>
 
-  <div class="notes">
-    <h1>Life playground</h1>
+  <div class="notes" id="notes" hidden>
     <p>These are the three Game of Life scenes from the ALife-Edu home page, on their own. Pause, slow them down to ¼ speed, or press <strong>Step</strong> to go one generation at a time. Open "Starting pattern as RLE" to copy any scene into <a href="https://golly.sourceforge.io/">Golly</a> or <a href="https://conwaylife.com/wiki/LifeViewer">LifeViewer</a> and check it yourself.</p>
 
     <h2>The only rule</h2>
@@ -100,6 +104,12 @@
 <script src="engine.js"></script>
 <script src="panel.js"></script>
 <script>
+  // The panel's "More info" button also reveals the notes beside it.
+  document.addEventListener('life:details', function (e) {
+    document.querySelector('main').classList.toggle('is-collapsed', !e.detail.open);
+    document.getElementById('notes').hidden = !e.detail.open;
+    window.dispatchEvent(new Event('resize'));   // the panel's column changed width
+  });
   // On the home page these blocks open dialogs. Here we just say which block was clicked.
   document.addEventListener('life:link', function (e) {
     document.getElementById('linkmsg').textContent =

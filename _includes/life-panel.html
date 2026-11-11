@@ -10,15 +10,15 @@
   This include only supplies site-specific pieces:
     • one button per link block, in order. data-life-link names the dialog it opens
       (see _includes/life-nav-modals.html and js/home-life-links.js)
-    • our own caption for the turner chain (other scenes use their file's description)
+    • data-details="hide": no caption here. The scene descriptions, generation readout and
+      rule are on the simulator's own page (life/playground.html), behind "More info".
 {% endcomment %}
-<div class="life-home" data-life-panel
+<div class="life-home" data-life-panel data-details="hide"
      data-scenes="life/scenes/turner-chain.json life/scenes/alife-edu.json life/scenes/soup.json">
   <button data-life-link="dlg-events">Upcoming events</button>
   <button data-life-link="dlg-resources">Resources</button>
   <button data-life-link="dlg-community">Community</button>
   <button data-life-link="dlg-archive">Event archive</button>
-  <p data-scene-cap="chain">One glider strikes eight one-time turners and leaves four 2×2 blocks behind. Each block is a link, coloured like what it opens: <span class="c-up-t">upcoming events</span>, <span class="c-res-t">resources</span>, <span class="c-com-t">community</span> and the <span class="c-arch-t">archive</span>.</p>
   <noscript><p>An animation of Conway's Game of Life (needs JavaScript).</p></noscript>
 </div>
 <script src="life/engine.js" defer></script>

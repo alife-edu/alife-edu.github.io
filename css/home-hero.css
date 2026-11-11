@@ -98,4 +98,3 @@ dialog.block-modal[open] { animation: life-dlg 0.22s ease-out; }
 @media (prefers-reduced-motion: reduce) {
   dialog.block-modal[open] { animation: none; }
 }
-.c-up-t { color: var(--up); } .c-com-t { color: var(--com); } .c-res-t { color: var(--res); } .c-arch-t { color: var(--arch); }

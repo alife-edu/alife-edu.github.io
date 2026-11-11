@@ -29,6 +29,9 @@
       data-scenes="a.json b.json"    scene files, in tab order (required)
       data-extras="step rle"          extra controls: a Step button, an RLE box
       data-autoplay="false"           don't start playing on load
+      data-details="show|hide|button"  the caption (scene description, generation readout,
+                                      rule, RLE): shown (default), left out, or behind a
+                                      "More info" button that fires `life:details` {open}
 
   ─── Scene kinds ─────────────────────────────────────────────────────────────────────
       "links"   a precomputed run with link blocks (the turner chain)
@@ -58,9 +61,11 @@
     return e;
   }
 
+  var capCount = 0;
   function Panel(root, scenes) {
     this.root = root; this.scenes = scenes;
     this.extras = (root.getAttribute('data-extras') || '').split(/\s+/);
+    this.details = root.getAttribute('data-details') || 'show';     // show | hide | button
     this.speedIdx = 2; this.running = false; this.visible = true;
     this.acc = 0; this.last = 0; this.raf = 0; this.soupSeed = 1;
     this.build();
@@ -124,7 +129,21 @@
     this.slowBtn.addEventListener('click', function () { self.setSpeed(-1); });
     this.fastBtn.addEventListener('click', function () { self.setSpeed(1); });
 
-    var cap = el('div', { 'class': 'life-caption' });
+    var cap = el('div', { 'class': 'life-caption', id: 'life-cap-' + (++capCount) });
+    if (this.details === 'button') {
+      var more = el('button', { type: 'button', 'class': 'life-more-btn', 'aria-expanded': 'false', 'aria-controls': cap.id }, 'More info');
+      cap.hidden = true;
+      more.addEventListener('click', function () {
+        var open = cap.hidden;
+        cap.hidden = !open;
+        more.setAttribute('aria-expanded', String(open));
+        more.textContent = open ? 'Less info' : 'More info';
+        root.dispatchEvent(new CustomEvent('life:details', { bubbles: true, detail: { open: open } }));
+      });
+      ctl.appendChild(more);
+    }
+    // with the caption hidden or collapsed, the soup's New soup / Clear buttons get a row of their own
+    this.toolRow = el('div', { 'class': 'life-tool-row' });
     this.desc = el('p', { 'class': 'life-desc' });
     this.soupTools = el('span', { 'class': 'life-soup-tools' });
     var nb = el('button', { type: 'button' }, 'New soup'), cb = el('button', { type: 'button' }, 'Clear');
@@ -170,7 +189,9 @@
     });
 
     root.innerHTML = '';
-    root.appendChild(this.stage); root.appendChild(bar); root.appendChild(cap);
+    root.appendChild(this.stage); root.appendChild(bar);
+    if (this.details !== 'show') root.appendChild(this.toolRow);
+    if (this.details !== 'hide') root.appendChild(cap);
 
     // drawing on soups
     this.painting = -1;
@@ -205,9 +226,10 @@
     this.captions.forEach(function (c) { c.hidden = own.indexOf(c) < 0; });
     this.desc.hidden = own.length > 0;
     this.desc.textContent = s.description || '';
-    var where = own[0] || this.desc;
+    var where = this.details === 'show' ? own[0] || this.desc : this.toolRow;
     if (s.kind === 'soup') where.appendChild(this.soupTools);
     this.soupTools.hidden = s.kind !== 'soup';
+    this.toolRow.hidden = s.kind !== 'soup';
     this.stage.classList.toggle('is-drawable', s.kind === 'soup');
     this.stage.setAttribute('role', 'img');
     this.stage.setAttribute('aria-label', s.label || s.title || 'Game of Life');
