@@ -14,8 +14,9 @@
 }
 .btn-primary:hover { opacity: 0.85; }
 
+/* Was a blue variant; buttons are always the main-button green now (see css/base.css). */
 .btn-primary--gold {
-  background: var(--res);
+  background: var(--up);
   color: var(--on-up);
 }
 
