@@ -259,7 +259,7 @@ main { padding-top: 2.5rem; }
   font-weight: 300;
 }
 .sched-note--highlight {
-  color: var(--up);
+  color: var(--c1);
 }
 
 /* ── Link button area ──────────────────────────────── */

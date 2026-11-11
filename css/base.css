@@ -16,7 +16,15 @@
     --res   Resources (blue: kept, for reference)
     --arch  Archived events (violet: behind us)
   The gradient bar across the top of every page and the ALife-Edu wordmark (--ramp)
-  are built from these four, so they follow along.
+  are built from these four, so they follow along. Use them only for their meaning,
+  so a colour always tells you which part of the site you're looking at.
+
+  Content colours are for everything else that needs colour on a content page, with
+  no site-wide meaning: workshop talks vs. discussions, West vs. East cohorts, day
+  labels, highlighted boxes, a page's small accents.
+    --c1    first content colour (amber; e.g. talks, West, accents)
+    --c2    second content colour (magenta; e.g. discussions, East)
+  Both were taken from the AEDU poster's glow.
 
   The rest:
     --bg, --surface, --surface2   page background, cards and popups, hover fills
@@ -32,9 +40,11 @@
                                   text on its cards is still easy to read.
 
   Using the meaning colours in a page: give an element class="c-up" (or c-com, c-res,
-  c-arch), and a card with that class is tinted in that colour. The older names c-teal
-  (= c-res), c-indigo (= c-com) and c-gold (= c-up), and --accent (= --up), --gold
-  (= --res) and --indigo (= --com), still work so older pages keep their colours.
+  c-arch), and a card with that class is tinted in that colour. The older card names
+  c-teal (= c-res), c-indigo (= c-com) and c-gold (= c-up) still work.
+
+  Older stylesheets use --accent and --gold (with -dim and -mid tints); they now mean
+  --c1 and --c2. --indigo means --com (it's only used on the Community page).
 */
 :root {
   color-scheme: dark;
@@ -56,6 +66,10 @@
   --res: #6f9cf7;
   --arch: #a58cf0;
   --on-up: #0e0f14;                 /* text on a solid --up fill */
+
+  --c1: #f5b04a;
+  --c2: #e57ac8;
+
   --ramp: linear-gradient(90deg, var(--up), var(--com), var(--res), var(--arch));
 
   --wash: 10%;
@@ -67,12 +81,13 @@
   --wash-strong-hover: 22%;
   --card-shadow: 0 10px 24px rgba(0,0,0,0.45);
 
-  --accent: var(--up);
-  --accent-dim: color-mix(in srgb, var(--up) 12%, transparent);
-  --accent-mid: color-mix(in srgb, var(--up) 30%, transparent);
-  --gold: var(--res);
-  --gold-dim: color-mix(in srgb, var(--res) 14%, transparent);
-  --gold-mid: color-mix(in srgb, var(--res) 32%, transparent);
+  /* Older names (see the guide above) */
+  --accent: var(--c1);
+  --accent-dim: color-mix(in srgb, var(--c1) 12%, transparent);
+  --accent-mid: color-mix(in srgb, var(--c1) 30%, transparent);
+  --gold: var(--c2);
+  --gold-dim: color-mix(in srgb, var(--c2) 14%, transparent);
+  --gold-mid: color-mix(in srgb, var(--c2) 32%, transparent);
   --indigo: var(--com);
   --indigo-dim: color-mix(in srgb, var(--com) 12%, transparent);
   --indigo-mid: color-mix(in srgb, var(--com) 30%, transparent);
@@ -103,6 +118,9 @@
   --res: #2457c5;
   --arch: #6b48c9;
   --on-up: #ffffff;
+
+  --c1: #8f5a00;
+  --c2: #a3327f;
 
   --wash: 6%;
   --edge: 22%;

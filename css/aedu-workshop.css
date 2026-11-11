@@ -1,3 +1,13 @@
+/*
+  The poster slideshow and the full-screen viewer stay black in both light and dark
+  mode, like a gallery frame for the dark poster artwork. Their controls sit on that
+  black, so they use fixed light colours instead of the page's text colours.
+*/
+.pamphlet, .lightbox {
+  --on-black: #f0f1f5;
+  --on-black-mid: #a6a9b8;
+}
+
 /* Pamphlet viewer */
 .pamphlet {
   background: var(--surface);
@@ -68,7 +78,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--text);
+  color: var(--on-black);
   font-size: 1rem;
   transition: background 0.2s;
   flex-shrink: 0;
@@ -92,7 +102,7 @@
 .pamphlet-thumbs {
   display: flex;
   gap: 1px;
-  background: var(--border);
+  background: #0a0a08;            /* black behind the dimmed thumbnails, as in the frame */
   border-top: 1px solid var(--border);
 }
 
@@ -193,13 +203,14 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 1px;
-  background: var(--border);
+  background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 0.5rem;
   overflow: hidden;
 }
 
-.speaker { background: var(--surface); padding: 1.75rem; transition: background 0.2s; }
+/* The 1px outline draws the grid lines, so an empty slot in the last row stays plain. */
+.speaker { background: var(--surface); padding: 1.75rem; transition: background 0.2s; box-shadow: 0 0 0 1px var(--border); }
 .speaker:hover { background: var(--surface2); }
 
 .speaker-init {
@@ -294,14 +305,14 @@
   object-fit: contain;
   border-radius: 0.3rem;
   box-shadow: 0 24px 80px rgba(0,0,0,0.8);
-  border: 1px solid var(--border-strong);
+  border: 1px solid rgba(255,255,255,0.16);
 }
 
 .lightbox-close {
   position: fixed;
   top: 1.25rem;
   right: 1.5rem;
-  color: var(--text-mid);
+  color: var(--on-black-mid);
   font-size: 1.4rem;
   cursor: pointer;
   background: none;
@@ -310,7 +321,7 @@
   transition: color 0.2s;
   z-index: 1001;
 }
-.lightbox-close:hover { color: var(--text); }
+.lightbox-close:hover { color: var(--on-black); }
 
 .lightbox-prev,
 .lightbox-next {
@@ -319,7 +330,7 @@
   transform: translateY(-50%);
   background: rgba(255,255,255,0.08);
   border: 1px solid rgba(255,255,255,0.15);
-  color: var(--text);
+  color: var(--on-black);
   font-size: 1.2rem;
   width: 44px;
   height: 44px;
@@ -343,7 +354,7 @@
   transform: translateX(-50%);
   font-size: 0.8rem;
   letter-spacing: 0.01em;
-  color: var(--text-dim);
+  color: var(--on-black-mid);
   z-index: 1001;
 }
 
