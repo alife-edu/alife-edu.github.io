@@ -12,6 +12,13 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 SCENES = os.path.join(HERE, '..', 'scenes')
 W, H = 100, 80
 NUMBER = {5: 'five', 6: 'six', 7: 'seven', 8: 'eight'}
+# The panel draws a fading trail for TRAIL = 28 generations where cells died. Precomputed
+# runs keep going FADE generations past the moment they come to rest, so the trails have
+# faded before the run stops. The playback speed stays the same: `seconds` grows to match.
+FADE = 30
+
+def timing(rest, seconds):
+    return dict(seconds=round(seconds * (rest + FADE) / rest, 1), endGen=rest + FADE)
 
 def grid_for(cells, pad=4):
     """A grid just big enough for every starting cell, plus `pad`, and the view."""
@@ -38,7 +45,7 @@ def main():
         format='alife-edu life scene 1', id='chain', kind='links', title='Turner chain', rule='B3/S23',
         description=f'One glider strikes {NUMBER.get(turners, turners)} one-time turners and leaves four blocks behind. Each block is a link.',
         label=f'Game of Life: one glider and {turners} one-time turners leave four link blocks',
-        W=W, H=H, ox=30, oy=30, GW=W + 60, GH=H + 60, seconds=24, endGen=c['end_t'],
+        W=W, H=H, ox=30, oy=30, GW=W + 60, GH=H + 60, **timing(c['end_t'], 24),
         start=cells(c['start']), final=cells(c['final']), links=links,
         stats=dict(turners=turners, cells=len(c['start'])),
         collisions=[dict(gen=l['t_hit'], kind=l['kind'], target=l['name']) for l in c['log']],
@@ -50,7 +57,7 @@ def main():
         format='alife-edu life scene 1', id='alife', kind='run', title='ALIFE·EDU', rule='B3/S23',
         description=f'{ng} gliders fly in from outside the panel. Each pair collides into one block, and the blocks spell ALIFE over EDU.',
         label=f'Game of Life: {ng} gliders collide into {len(s["blocks"])} blocks that spell ALIFE over EDU',
-        W=W, H=H, **grid_for(s['start']), seconds=30, endGen=s['end'],
+        W=W, H=H, **grid_for(s['start']), **timing(s['end'], 30),
         start=cells(s['start']), final=cells(frozenset().union(*s['blocks'])),
         stats=dict(gliders=ng, blocks=len(s['blocks'])),
         pixels=[dict(x=l['x'], y=l['y'], t=l['t']) for l in s['log']],

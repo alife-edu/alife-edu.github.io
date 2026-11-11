@@ -84,7 +84,7 @@
 .life-block .sq { position: absolute; inset: 0; background: var(--life-link); border-radius: 1px; transition: box-shadow 0.2s; }
 .life-block::after { content: ""; position: absolute; inset: -14px; }      /* a bigger target than the 2×2 block */
 .life-block .lbl {
-  position: absolute; white-space: nowrap; pointer-events: none;
+  position: absolute; white-space: nowrap; cursor: pointer;   /* part of the button, so the label is clickable too */
   font: 500 0.8rem/1 var(--life-font); letter-spacing: 0.02em; color: var(--life-link);
   padding: 0.3rem 0.45rem; border-radius: 0.2rem; background: var(--life-label-bg);
   transition: color 0.2s, background 0.2s;

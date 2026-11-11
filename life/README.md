@@ -240,7 +240,7 @@ Each scene is a JSON object.
 | `W`, `H` | The visible window, in cells. |
 | `GW`, `GH`, `ox`, `oy` | The full grid, and where the window's (0, 0) sits in it. The grid's outer ring is dead. |
 | `start` | Live cells at generation 0, as `[x, y]` in window coordinates (they can be negative, outside the window). |
-| `endGen`, `final` | The generation the run ends, and the exact live cells then. |
+| `endGen`, `final` | The generation the run ends, and the exact live cells then. Runs end 30 generations after they come to rest, so the fading trails are gone by the last frame (see `FADE` in `tools/export_scenes.py`). |
 | `seconds` | How long the run takes at 1× speed. |
 | `links` | (`links` scenes) `[{x, y, t}]`: the top-left cell of each link block and the generation it settles. |
 | `collisions`, `pixels`, `stats` | Extra detail for the curious: what was hit when, when each pixel appeared, counts. |
