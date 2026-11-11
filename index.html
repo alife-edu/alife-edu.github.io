@@ -31,7 +31,10 @@ extra_css:
 <main class="home">
 
   <!-- UPCOMING EVENTS: the next event, featured, then one card each for the archive,
-       resources and community. Colours follow the four meanings (see css/base.css). -->
+       resources and community. Colours follow the four meanings (see css/base.css).
+       Nothing here is written by hand: events come from _events/, the Resources card from
+       the section marked home_card in _data/resource_sections.yml, and the Community card
+       from _data/community.yml. The Archive card opens the Event archive popup. -->
   <section class="section" id="events">
     <div class="section-header">
       <h2>Upcoming events</h2>
@@ -47,27 +50,27 @@ extra_css:
     {% endif %}
 
     <div class="card-grid card-grid--3 home-cards">
-      {% assign last = past_events.first %}
-      {% if last %}
-      {% assign href = last.event_url | default: last.url | remove_first: "/" %}
-      <a href="{{ href }}" class="card c-arch">
-        <div class="card-eyebrow">Archive · {{ last.eyebrow }}</div>
-        <div class="card-title">{{ last.card_title | default: last.nav_label }}</div>
-        <div class="card-body">{{ last.description | strip_html | truncatewords: 16 }}</div>
-        <div class="card-link">{{ last.link_text | default: "See the event" }} →</div>
-      </a>
+      {% if past_events.size > 0 %}
+      <button type="button" class="card c-arch" data-open-dialog="dlg-archive">
+        <span class="card-eyebrow">Archive</span>
+        <span class="card-title">Past events</span>
+        <span class="card-body">Recordings, slides and artifacts from {{ past_events.size }} past events.</span>
+        <span class="card-link">Browse the archive →</span>
+      </button>
       {% endif %}
-      <a href="resources.html#topics" class="card c-res">
+      {% assign rs = site.data.resource_sections | where: "home_card", true | first %}
+      <a href="resources.html#{{ rs.id }}" class="card c-res">
         <div class="card-eyebrow">Resources</div>
-        <div class="card-title">Topic collections</div>
-        <div class="card-body">Readings, exercises and assignments by ALife topic.</div>
+        <div class="card-title">{{ rs.title }}</div>
+        <div class="card-body">{{ rs.summary }}.</div>
         <div class="card-link">Browse resources →</div>
       </a>
-      <a href="https://discord.gg/jEtVQCMYjh" target="_blank" rel="noopener" class="card c-com">
+      {% assign discord = site.data.community.discord %}
+      <a href="{{ discord.url }}" target="_blank" rel="noopener" class="card c-com">
         <div class="card-eyebrow">Community</div>
-        <div class="card-title">Join the Discord</div>
-        <div class="card-body">Share syllabi and course ideas, and find collaborators.</div>
-        <div class="card-link">Join the conversation ↗</div>
+        <div class="card-title">{{ discord.card_title }}</div>
+        <div class="card-body">{{ discord.card_body }}</div>
+        <div class="card-link">{{ discord.card_link }}</div>
       </a>
     </div>
 

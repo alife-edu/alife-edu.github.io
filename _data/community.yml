@@ -1,0 +1,15 @@
+# Where the community gathers. These links are used on the Community page, the home
+# page's Community card and the Community popup (the Life panel's Community block),
+# so changing a link here changes it everywhere.
+
+discord:
+  url: "https://discord.gg/jEtVQCMYjh"
+  join_text: "Join the Discord ↗"
+  # The home page's Community card
+  card_title: "Join the Discord"
+  card_body: "Share syllabi and course ideas, and find collaborators."
+  card_link: "Join the conversation ↗"
+
+mailing_list:
+  url: "https://groups.io/g/alife-edu"
+  join_text: "Subscribe to the List Serv ↗"

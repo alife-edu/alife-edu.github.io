@@ -20,10 +20,15 @@
 .life-more a { color: var(--text-mid); }
 .life-more a:hover { color: var(--up); }
 
-/* Site colours for the Life panel (defaults are in life/panel.css). Each link block
-   takes the colour of what it opens. */
+/* Site colours for the Life panel (defaults are in life/panel.css), all taken from the
+   palette in css/base.css. Each link block takes the colour of what it opens. */
 .life-panel.life-home {
   --life-bg: var(--panel);
+  --life-cell: var(--text-dim);
+  --life-grid: color-mix(in srgb, var(--text) 4%, transparent);
+  --life-label-bg: color-mix(in srgb, var(--panel) 88%, transparent);
+  --life-line: var(--border);
+  --life-ui-line: var(--border-strong);
   --life-word: var(--text);
   --life-live: var(--up);
   --life-ui: var(--text);

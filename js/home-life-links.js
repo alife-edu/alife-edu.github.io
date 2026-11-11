@@ -17,11 +17,15 @@
     d.showModal();
   });
 
-  // Other controls on the page (the colour key's Archive chip) can open a dialog directly.
+  // Other controls on the page (the Archive card and the colour key's Archive chip) open a
+  // dialog directly; its eyebrow goes back to the section name.
   Array.prototype.forEach.call(document.querySelectorAll('[data-open-dialog]'), function (b) {
     b.addEventListener('click', function () {
       var d = document.getElementById(b.getAttribute('data-open-dialog'));
-      if (d && d.showModal) d.showModal();
+      if (!d || !d.showModal) return;
+      var origin = d.querySelector('.bm-origin');
+      if (origin) origin.textContent = origin.getAttribute('data-default');
+      d.showModal();
     });
   });
 

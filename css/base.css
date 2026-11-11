@@ -1,24 +1,40 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 /*
-  Colour tokens. The site is dark by default; the nav's theme button switches to light
-  by setting data-theme="light" on <html> (js/theme.js, remembered in localStorage).
+  ── THE COLOUR PALETTE ─────────────────────────────────────────────────────────────
 
-  Four colours carry meaning and read left to right as a time ramp:
-    --up    upcoming events (green: alive, coming next); also the primary action
-    --com   community (teal: here and now, join in)
-    --res   resources (blue: kept, for reference)
-    --arch  archived events (violet: behind us)
-  The full ramp (--ramp) appears only in the band across the top of every page and in
-  the wordmark. Everywhere else the colours are used one at a time.
+  Every colour on the site is set in this file, in two blocks below: `:root` is dark
+  mode (the default) and `:root[data-theme="light"]` is light mode (the nav's sun/moon
+  button). To change a colour, change it in both blocks. Values can be any CSS colour:
+  #4fe0a0, rgb(79 224 160), or a name like seagreen.
 
-  Tinted cards: give an element --m (a meaning colour, e.g. class="card c-up") and the
-  card styles mix its wash, border and label pill from it. --wash / --edge / --pill /
-  --wash-strong / --edge-strong (and the -hover washes) are the mixing percentages for the
-  theme; they are capped so that coloured text on a wash still passes WCAG AA (4.5:1).
+  The four meaning colours are the ones you're most likely to change. Each stands for
+  one part of the site, everywhere it appears: its nav link, its cards and their
+  borders, its popup and its block in the Game of Life panel.
+    --up    Upcoming events (green: alive, coming next); also the main buttons
+    --com   Community (teal: here and now, join in)
+    --res   Resources (blue: kept, for reference)
+    --arch  Archived events (violet: behind us)
+  The gradient bar across the top of every page and the ALife-Edu wordmark (--ramp)
+  are built from these four, so they follow along.
 
-  The older names --accent, --gold and --indigo are kept as aliases so page-specific
-  styles keep working: accent = up, gold = res, indigo = com.
+  The rest:
+    --bg, --surface, --surface2   page background, cards and popups, hover fills
+    --panel                       the Game of Life panel's background
+    --text, --text-mid, --text-dim  main text, secondary text, faint text
+    --border, --border-strong, --border-hover  lines, from faintest to strongest
+    --on-up                       text on a solid --up button
+    --shadow, --scrim, --card-shadow  shadows and the dimming behind a popup
+    --wash, --edge, --pill ...    how strongly a card is tinted with its meaning
+                                  colour (its background, border and label). They are
+                                  set so coloured text on a tint still passes WCAG AA
+                                  (4.5:1); if you change a meaning colour, check that
+                                  text on its cards is still easy to read.
+
+  Using the meaning colours in a page: give an element class="c-up" (or c-com, c-res,
+  c-arch), and a card with that class is tinted in that colour. The older names c-teal
+  (= c-res), c-indigo (= c-com) and c-gold (= c-up), and --accent (= --up), --gold
+  (= --res) and --indigo (= --com), still work so older pages keep their colours.
 */
 :root {
   color-scheme: dark;
@@ -40,7 +56,7 @@
   --res: #6f9cf7;
   --arch: #a58cf0;
   --on-up: #0e0f14;                 /* text on a solid --up fill */
-  --ramp: linear-gradient(90deg, #4fe0a0, #3cc6d8, #6f9cf7, #a58cf0);
+  --ramp: linear-gradient(90deg, var(--up), var(--com), var(--res), var(--arch));
 
   --wash: 10%;
   --edge: 28%;
@@ -87,7 +103,6 @@
   --res: #2457c5;
   --arch: #6b48c9;
   --on-up: #ffffff;
-  --ramp: linear-gradient(90deg, #0f7a4f, #0b6f80, #2457c5, #6b48c9);
 
   --wash: 6%;
   --edge: 22%;

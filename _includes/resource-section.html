@@ -1,24 +1,26 @@
-{% assign items = site.resources | where: "category", include.category | sort: "order" %}
-<section class="section" id="{{ include.id }}">
+{% comment %} One section of the Resources page; `section` is an entry from _data/resource_sections.yml. {% endcomment %}
+{% assign s = include.section %}
+{% assign items = site.resources | where: "category", s.category | sort: "order" %}
+<section class="section" id="{{ s.id }}">
   <div class="section-header">
-    <h2>{{ include.title }}</h2>
+    <h2>{{ s.title }}</h2>
   </div>
 
-  {% if include.intro %}<p class="section-intro">{{ include.intro }}</p>{% endif %}
+  {% if s.intro %}<p class="section-intro">{{ s.intro }}</p>{% endif %}
 
-  {% if include.featured_intro %}
+  {% if s.featured_intro %}
   <div class="featured-block featured-block--indigo" style="margin-bottom: 2rem;">
-    <p>{{ include.featured_intro }}</p>
-    <p class="detail">{{ include.featured_detail }}</p>
+    <p>{{ s.featured_intro }}</p>
+    <p class="detail">{{ s.featured_detail }}</p>
   </div>
   {% endif %}
 
   {% if items.size > 0 %}
-  {% if include.style == "card" %}
+  {% if s.style == "card" %}
     <div class="card-grid card-grid--2">
       {% for r in items %}{% include resource-card.html resource=r %}{% endfor %}
     </div>
-  {% elsif include.style == "link-item" %}
+  {% elsif s.style == "link-item" %}
     <div class="link-list">
       {% for r in items %}{% include resource-link-item.html resource=r %}{% endfor %}
     </div>
