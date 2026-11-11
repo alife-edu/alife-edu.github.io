@@ -17,7 +17,7 @@
     d.showModal();
   });
 
-  // Other controls on the page (the Archive card and the colour key's Archive chip) open a
+  // Other controls on the page (the Archive card and the colour key under the cards) open a
   // dialog directly; its eyebrow goes back to the section name.
   Array.prototype.forEach.call(document.querySelectorAll('[data-open-dialog]'), function (b) {
     b.addEventListener('click', function () {
