@@ -217,8 +217,8 @@
 
 /* ── Event concluded notice ─────────────────────────── */
 .event-concluded-notice {
-  background: var(--accent-dim);
-  border: 1px solid var(--accent-mid);
+  background: color-mix(in srgb, var(--arch) var(--wash), var(--surface));
+  border: 1px solid color-mix(in srgb, var(--arch) var(--edge), transparent);
   border-radius: 0.4rem;
   padding: 0.75rem 1.25rem;
   margin-bottom: 2rem;
@@ -231,7 +231,7 @@
   gap: 0.6rem;
 }
 .event-concluded-notice strong {
-  color: var(--accent);
+  color: var(--arch);
   font-weight: 500;
 }
 
@@ -253,37 +253,47 @@ main.event-page { padding-top: 2.5rem; }
   margin: 0 0 1.25rem 1.25rem;
 }
 
-/* Upcoming-events schedule on the home page */
+/* Upcoming-events schedule on the home page: tinted rows in the upcoming colour.
+   The soonest event (the first row) is featured: a stronger wash and a solid date tile. */
 .event-schedule {
-  border: 1px solid var(--border);
-  border-radius: 0.5rem;
-  overflow: hidden;
+  --m: var(--up);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 }
 .event-row {
   display: grid;
   grid-template-columns: 5.5rem 1fr auto;
   gap: 2rem;
   align-items: start;
-  padding: 2rem 2.25rem;
-  background: var(--surface);
-  border-left: 2px solid var(--gold);
+  padding: 1.6rem 2rem;
+  background: color-mix(in srgb, var(--m) var(--wash), var(--surface));
+  border: 1px solid color-mix(in srgb, var(--m) var(--edge), transparent);
+  border-radius: 12px;
   text-decoration: none;
-  transition: background 0.2s;
+  transition: background 0.18s, border-color 0.18s, box-shadow 0.18s, transform 0.18s;
 }
-.event-row + .event-row { border-top: 1px solid var(--border); }
-.event-row:hover { background: var(--surface2); }
+.event-row:hover, .event-row:focus-visible {
+  background: color-mix(in srgb, var(--m) var(--wash-hover), var(--surface));
+  border-color: var(--m);
+  box-shadow: var(--card-shadow);
+  transform: translateY(-3px);
+}
+.event-row:hover .card-link, .event-row:focus-visible .card-link { text-decoration: underline; text-underline-offset: 3px; }
 .event-row-date {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   line-height: 1.1;
+  padding: 0.55rem 0.25rem;
+  border-radius: 8px;
 }
 .event-row-month {
   font-size: 0.95rem;
   font-weight: 500;
   letter-spacing: 0.01em;
-  color: var(--gold);
+  color: var(--m);
 }
 .event-row-day {
   font-family: var(--font-display);
@@ -293,9 +303,25 @@ main.event-page { padding-top: 2.5rem; }
 }
 .event-row-year {
   font-size: 0.8rem;
-  color: var(--text-dim);
+  color: var(--text-mid);
   letter-spacing: 0.01em;
 }
-.event-row .card-eyebrow { color: var(--gold); margin-bottom: 0.6rem; }
+.event-row .card-eyebrow { color: var(--m); margin-bottom: 0.6rem; }
 .event-row .card-body { margin-bottom: 0; }
-.event-row .card-link { color: var(--gold); white-space: nowrap; padding-top: 0.25rem; }
+.event-row .card-date { color: var(--text-mid); }
+.event-row .card-link { color: var(--m); white-space: nowrap; padding-top: 0.25rem; }
+
+.event-row:first-child {
+  padding: 2rem 2.25rem;
+  background: color-mix(in srgb, var(--m) var(--wash-strong), var(--surface));
+  border-color: color-mix(in srgb, var(--m) var(--edge-strong), transparent);
+}
+.event-row:first-child:hover, .event-row:first-child:focus-visible {
+  background: color-mix(in srgb, var(--m) var(--wash-strong-hover), var(--surface));
+  border-color: var(--m);
+}
+.event-row:first-child .card-title { font-size: 1.6rem; }
+.event-row:first-child .event-row-date { background: var(--m); }
+.event-row:first-child .event-row-date span { color: var(--on-up); }
+.event-row:first-child .event-row-year { opacity: 0.8; }
+@media (prefers-reduced-motion: reduce) { .event-row:hover, .event-row:focus-visible { transform: none; } }

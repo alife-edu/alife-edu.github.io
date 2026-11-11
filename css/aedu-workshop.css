@@ -366,14 +366,14 @@
   max-width: 680px;
 }
 .archive-intro-text a {
-  color: #5ad1ec;
+  color: var(--arch);
   text-decoration: none;
-  border-bottom: 1px solid rgba(90, 209, 236, 0.4);
+  border-bottom: 1px solid color-mix(in srgb, var(--arch) 40%, transparent);
   transition: color 0.2s, border-color 0.2s;
 }
 .archive-intro-text a:hover {
-  color: #8fe3f5;
-  border-color: #5ad1ec;
+  color: var(--text);
+  border-color: var(--arch);
 }
 
 /* AEDU workshop responsive */

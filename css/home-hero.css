@@ -18,44 +18,73 @@
 .life-home { max-width: 100%; }
 .life-more { font-size: 0.8rem; color: var(--text-dim); margin-top: 0.4rem; }
 .life-more a { color: var(--text-mid); }
-.life-more a:hover { color: var(--accent); }
+.life-more a:hover { color: var(--up); }
 
-/* ── Block modals ── */
-dialog.block-modal {
-  margin: auto; border: 1px solid var(--border-strong); border-radius: 0.5rem; padding: 0;
-  background: var(--surface); color: var(--text); width: min(36rem, calc(100vw - 32px));
-  max-height: calc(100dvh - 48px); overflow: auto; box-shadow: 0 24px 64px rgba(0, 0, 0, 0.6);
+/* Site colours for the Life panel (defaults are in life/panel.css). Each link block
+   takes the colour of what it opens. */
+.life-panel.life-home {
+  --life-bg: var(--bg);
+  --life-word: var(--text);
+  --life-live: var(--up);
+  --life-ui: var(--text);
+  --life-ui-dim: var(--text-mid);
+  --life-ui-faint: var(--text-dim);
+  --life-ui-hover: var(--surface2);
+  --life-ui-active: var(--up);
+  --life-ui-active-ink: var(--on-up);
 }
-dialog.block-modal::backdrop { background: rgba(6, 6, 5, 0.72); backdrop-filter: blur(3px); }
+.life-home [data-life-link] {
+  --life-link-ring: color-mix(in srgb, var(--life-link) 32%, transparent);
+  --life-link-ink: var(--on-up);
+}
+.life-home [data-life-link="dlg-events"]    { --life-link: var(--up); }
+.life-home [data-life-link="dlg-community"] { --life-link: var(--com); }
+.life-home [data-life-link="dlg-resources"] { --life-link: var(--res); }
+.life-home [data-life-link="dlg-archive"]   { --life-link: var(--arch); }
+
+/* ── Block modals: each takes its block's colour (--m) ── */
+#dlg-events    { --m: var(--up); }
+#dlg-community { --m: var(--com); }
+#dlg-resources { --m: var(--res); }
+#dlg-archive   { --m: var(--arch); }
+dialog.block-modal {
+  margin: auto; border: 1px solid color-mix(in srgb, var(--m) var(--edge), transparent); border-radius: 12px; padding: 0;
+  background: var(--surface); color: var(--text); width: min(36rem, calc(100vw - 32px));
+  max-height: calc(100dvh - 48px); overflow: auto; box-shadow: 0 24px 64px var(--shadow);
+}
+dialog.block-modal::backdrop { background: var(--scrim); backdrop-filter: blur(3px); }
 dialog.block-modal[open] { animation: life-dlg 0.22s ease-out; }
 @keyframes life-dlg { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
 .bm { position: relative; padding: 2rem 2rem 1.75rem; display: flex; flex-direction: column; gap: 1.1rem; }
-.bm::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--gold); }
+.bm::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--m); }
 .bm-top { display: flex; justify-content: space-between; align-items: start; gap: 1rem; }
-.bm-eyebrow { font-size: 0.78rem; font-weight: 500; color: var(--gold); display: flex; align-items: center; gap: 0.5rem; }
-.bm-eyebrow i { width: 9px; height: 9px; background: var(--gold); display: inline-block; border-radius: 1px; }
+.bm-eyebrow { font-size: 0.78rem; font-weight: 500; color: var(--m); display: flex; align-items: center; gap: 0.5rem; }
+.bm-eyebrow i { width: 9px; height: 9px; background: var(--m); display: inline-block; border-radius: 1px; }
 .bm h2 { font-family: var(--font-display); font-weight: 600; font-size: 1.7rem; line-height: 1.1; text-wrap: balance; margin-top: 0.35rem; }
 .bm > p { color: var(--text-mid); font-size: 0.95rem; line-height: 1.75; }
 .bm-close {
   flex: none; width: 2.25rem; height: 2.25rem; border-radius: 0.25rem; border: 1px solid var(--border-strong);
   background: transparent; color: var(--text-mid); font-size: 1.25rem; line-height: 1; cursor: pointer;
 }
-.bm-close:hover { color: var(--text); border-color: rgba(255, 255, 255, 0.3); }
-.bm-list { list-style: none; border: 1px solid var(--border); border-radius: 0.4rem; overflow: hidden; }
-.bm-list li + li { border-top: 1px solid var(--border); }
+.bm-close:hover { color: var(--text); border-color: var(--border-hover); }
+.bm-list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
 .bm-list a {
   display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 0.15rem 1rem; padding: 0.85rem 1rem;
-  text-decoration: none; color: var(--text); background: var(--bg); transition: background 0.15s;
+  text-decoration: none; color: var(--text); border-radius: 10px;
+  background: color-mix(in srgb, var(--m) var(--wash), var(--surface));
+  border: 1px solid color-mix(in srgb, var(--m) var(--edge), transparent);
+  transition: background 0.18s, border-color 0.18s;
 }
-.bm-list a:hover { background: var(--surface2); }
-.bm-list .when { grid-column: 1; color: var(--gold); font-size: 0.78rem; font-weight: 500; }
+.bm-list a:hover, .bm-list a:focus-visible { background: color-mix(in srgb, var(--m) var(--wash-hover), var(--surface)); border-color: var(--m); }
+.bm-list .when { grid-column: 1; color: var(--m); font-size: 0.78rem; font-weight: 500; }
 .bm-list .t { grid-column: 1; font-weight: 400; font-size: 0.95rem; line-height: 1.4; }
-.bm-list .d { grid-column: 1; font-size: 0.8rem; color: var(--text-dim); line-height: 1.5; }
+.bm-list .d { grid-column: 1; font-size: 0.8rem; color: var(--text-mid); line-height: 1.5; }
 .bm-list .arr { grid-column: 2; grid-row: 1 / span 3; align-self: center; color: var(--text-dim); font-size: 0.9rem; }
-.bm-list a:hover .arr { color: var(--gold); }
+.bm-list a:hover .arr { color: var(--m); }
 .bm-list a.sub { padding-left: 2rem; }
 .bm-empty { color: var(--text-mid); font-size: 0.95rem; }
 .bm-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; padding-top: 0.25rem; }
+.bm-actions .btn-primary { background: var(--m); }
 
 @media (max-width: 900px) {
   .hero-split { grid-template-columns: minmax(0, 1fr); gap: 2rem; padding-top: 3rem; }
@@ -69,3 +98,4 @@ dialog.block-modal[open] { animation: life-dlg 0.22s ease-out; }
 @media (prefers-reduced-motion: reduce) {
   dialog.block-modal[open] { animation: none; }
 }
+.c-up-t { color: var(--up); } .c-com-t { color: var(--com); } .c-res-t { color: var(--res); } .c-arch-t { color: var(--arch); }

@@ -25,16 +25,26 @@
 <style>
   :root {
     color-scheme: dark;
-    --bg: #0e0e0c; --surface: #161614; --text: #f0ede6; --mid: #a09d96; --dim: #5a5854;
-    --line: rgba(255, 255, 255, 0.08); --accent: #3dcba0; --gold: #c8a96a;
+    --bg: #0e0f14; --surface: #171922; --text: #f0f1f5; --mid: #a6a9b8; --dim: #8a8ea0;
+    --line: rgba(255, 255, 255, 0.08); --accent: #4fe0a0; --focus: #6f9cf7;
+    --ramp: linear-gradient(90deg, #4fe0a0, #3cc6d8, #6f9cf7, #a58cf0);
   }
+  @media (prefers-color-scheme: light) {
+    :root {
+      color-scheme: light;
+      --bg: #f6f7fb; --surface: #ffffff; --text: #13141a; --mid: #555a6b; --dim: #636878;
+      --line: rgba(19, 20, 26, 0.10); --accent: #0f7a4f; --focus: #2457c5;
+      --ramp: linear-gradient(90deg, #0f7a4f, #0b6f80, #2457c5, #6b48c9);
+    }
+  }
+  body::before { content: ""; display: block; height: 6px; background: var(--ramp); }
   * { box-sizing: border-box; }
   body { margin: 0; background: var(--bg); color: var(--text); font: 300 1rem/1.7 'Lexend', 'Segoe UI', system-ui, sans-serif; }
   a { color: var(--accent); }
-  :focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+  :focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
   header, main { max-width: 1100px; margin: 0 auto; padding-left: max(1.25rem, env(safe-area-inset-left, 0px)); padding-right: max(1.25rem, env(safe-area-inset-right, 0px)); }
   header { padding-block: 1.25rem; display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; flex-wrap: wrap; border-bottom: 1px solid var(--line); max-width: none; }
-  header .brand { font-family: 'Chakra Petch', 'Arial Narrow', sans-serif; font-weight: 700; font-size: 1.2rem; color: var(--accent); text-decoration: none; }
+  header .brand { font-family: 'Chakra Petch', 'Arial Narrow', sans-serif; font-weight: 700; font-size: 1.2rem; color: var(--text); text-decoration: none; background: var(--ramp); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
   header nav a { color: var(--mid); text-decoration: none; font-size: 0.9rem; margin-left: 1.25rem; }
   header nav a:hover { color: var(--text); }
   main { padding-block: 2.5rem 4rem; display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 3rem; align-items: start; }
@@ -46,7 +56,7 @@
   .rule { display: grid; grid-template-columns: auto 1fr; gap: 0.35rem 0.9rem; font-size: 0.9rem; color: var(--mid); margin: 0.75rem 0; }
   .rule b { color: var(--text); font-weight: 500; font-variant-numeric: tabular-nums; }
   .panel-col { min-width: 0; position: sticky; top: 1rem; }
-  .linkmsg { font-size: 0.8rem; color: var(--gold); min-height: 1.3em; margin-top: 0.5rem; }
+  .linkmsg { font-size: 0.8rem; color: var(--accent); min-height: 1.3em; margin-top: 0.5rem; }
   @media (max-width: 880px) { main { grid-template-columns: minmax(0, 1fr); } .panel-col { position: static; } }
 </style>
 </head>

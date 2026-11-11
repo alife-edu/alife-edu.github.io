@@ -1,40 +1,43 @@
 /* Card grid */
 .card-grid {
   display: grid;
-  gap: 1px;
-  background: var(--border);
-  border: 1px solid var(--border);
-  border-radius: 0.5rem;
-  overflow: hidden;
+  gap: 1rem;
 }
 
 .card-grid--2 { grid-template-columns: repeat(2, 1fr); }
 .card-grid--3 { grid-template-columns: repeat(3, 1fr); }
 .card-grid--auto { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
 
-/* Base card */
+/*
+  Tinted cards. A card with a meaning class (c-up, c-com, c-res, c-arch; see base.css)
+  gets a wash of that colour, a border in it and a pill-shaped label. A card without
+  one stays neutral. Linked cards lift on hover.
+*/
 .card {
   background: var(--surface);
-  padding: 2.25rem;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 2rem;
   display: flex;
   flex-direction: column;
   gap: 0;
   text-decoration: none;
-  transition: background 0.2s;
   position: relative;
+  transition: background 0.18s, border-color 0.18s, box-shadow 0.18s, transform 0.18s;
 }
-.card:hover { background: var(--surface2); }
-
-/* Accent top border */
-.card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 2px;
+.card[class*="c-"] {
+  background: color-mix(in srgb, var(--m) var(--wash), var(--surface));
+  border-color: color-mix(in srgb, var(--m) var(--edge), transparent);
 }
-.card.c-teal::before  { background: var(--accent); }
-.card.c-gold::before  { background: var(--gold); }
-.card.c-indigo::before { background: var(--indigo); }
+a.card:hover, a.card:focus-visible {
+  background: color-mix(in srgb, var(--m, var(--text-mid)) var(--wash-hover), var(--surface));
+  border-color: var(--m, var(--border-hover));
+  box-shadow: var(--card-shadow);
+  transform: translateY(-3px);
+}
+.card[class*="c-"] .card-date { color: var(--text-mid); }
+a.card:hover .card-link, a.card:focus-visible .card-link { text-decoration: underline; text-underline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) { a.card:hover, a.card:focus-visible { transform: none; } }
 
 /* Card content elements */
 .card-eyebrow {
@@ -42,10 +45,14 @@
   font-weight: 500;
   letter-spacing: 0.01em;
   margin-bottom: 1rem;
+  color: var(--m, var(--text-mid));
 }
-.c-teal .card-eyebrow  { color: var(--accent); }
-.c-gold .card-eyebrow  { color: var(--gold); }
-.c-indigo .card-eyebrow { color: var(--indigo); }
+.card[class*="c-"] .card-eyebrow {
+  align-self: flex-start;
+  padding: 0.2rem 0.65rem;
+  border-radius: 2rem;
+  background: color-mix(in srgb, var(--m) var(--pill), transparent);
+}
 
 .card-title {
   font-family: var(--font-display);
@@ -77,10 +84,8 @@
   font-weight: 500;
   letter-spacing: 0.01em;
   margin-top: auto;
+  color: var(--m, var(--text-mid));
 }
-.c-teal .card-link  { color: var(--accent); }
-.c-gold .card-link  { color: var(--gold); }
-.c-indigo .card-link { color: var(--indigo); }
 
 .card-placeholder {
   font-size: 0.8rem;
@@ -98,7 +103,7 @@
 .card .panel-icon {
   font-size: 0.8rem;
   letter-spacing: 0.01em;
-  color: var(--accent);
+  color: var(--up);
   margin-bottom: 1rem;
 }
 
@@ -107,7 +112,7 @@
   font-size: 0.8rem;
   font-weight: 500;
   letter-spacing: 0.01em;
-  color: var(--indigo);
+  color: var(--com);
   margin-bottom: 1rem;
 }
 
