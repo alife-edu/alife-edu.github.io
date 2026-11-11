@@ -72,11 +72,10 @@
     var self = this;
     this.frame = function (now) { self._frame(now); };
     window.addEventListener('resize', function () { clearTimeout(self._rt); self._rt = setTimeout(function () { self.resize(); }, 120); });
-    // colours come from CSS custom properties; re-read them when the colour scheme flips
-    var scheme = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)');
-    if (scheme) {
-      var onScheme = function () { self.resize(); };
-      if (scheme.addEventListener) scheme.addEventListener('change', onScheme); else if (scheme.addListener) scheme.addListener(onScheme);
+    // colours come from CSS custom properties; re-read them when data-theme on <html> flips
+    if ('MutationObserver' in window) {
+      new MutationObserver(function () { self.resize(); })
+        .observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
     }
     if ('IntersectionObserver' in window) {
       new IntersectionObserver(function (e) { self.visible = e[0].isIntersecting; self.kick(); }).observe(this.stage);

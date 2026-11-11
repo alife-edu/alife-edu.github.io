@@ -6,6 +6,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AEDU Virtual Workshop 2026 — ALife-Edu</title>
 <meta name="description" content="A free, fully virtual two-day workshop exploring fundamental questions about teaching ALife. Day 1: Why teach it? Day 2: How to teach it? Two time-zone cohorts so anyone can join. The workshop is over, but recordings and artifacts are linked.">
+<!-- Apply a saved light/dark choice before the page draws (see js/theme.js) -->
+<script>try { if (localStorage.getItem('theme') === 'light') document.documentElement.setAttribute('data-theme', 'light'); } catch (e) {}</script>
+<script src="js/theme.js" defer></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Lexend:wght@300;400;500&display=swap" rel="stylesheet">
@@ -88,6 +91,10 @@
       </ul>
     </li>
     
+    <li><button type="button" class="theme-toggle" aria-label="Light mode" aria-pressed="false">
+      <svg class="theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      <svg class="theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4 8 8 0 1 0 20 14.5z"/></svg>
+    </button></li>
   </ul>
 </nav>
 

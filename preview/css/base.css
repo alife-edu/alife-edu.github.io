@@ -1,8 +1,8 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 /*
-  Colour tokens. The site follows the reader's system setting: dark by default,
-  light under prefers-color-scheme: light.
+  Colour tokens. The site is dark by default; the nav's theme button switches to light
+  by setting data-theme="light" on <html> (js/theme.js, remembered in localStorage).
 
   Four colours carry meaning and read left to right as a time ramp:
     --up    upcoming events (green: alive, coming next); also the primary action
@@ -67,38 +67,36 @@
   --font-body: 'Lexend', 'Segoe UI', system-ui, sans-serif;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color-scheme: light;
-    --bg: #f6f7fb;
-    --panel: #ffffff;
-    --surface: #ffffff;
-    --surface2: #eef0f6;
-    --border: rgba(19,20,26,0.10);
-    --border-strong: rgba(19,20,26,0.18);
-    --border-hover: rgba(19,20,26,0.36);
-    --text: #13141a;
-    --text-mid: #555a6b;
-    --text-dim: #636878;
-    --shadow: rgba(20,30,60,0.14);
-    --scrim: rgba(19,20,26,0.45);
+:root[data-theme="light"] {
+  color-scheme: light;
+  --bg: #f6f7fb;
+  --panel: #ffffff;
+  --surface: #ffffff;
+  --surface2: #eef0f6;
+  --border: rgba(19,20,26,0.10);
+  --border-strong: rgba(19,20,26,0.18);
+  --border-hover: rgba(19,20,26,0.36);
+  --text: #13141a;
+  --text-mid: #555a6b;
+  --text-dim: #636878;
+  --shadow: rgba(20,30,60,0.14);
+  --scrim: rgba(19,20,26,0.45);
 
-    --up: #0f7a4f;
-    --com: #0b6f80;
-    --res: #2457c5;
-    --arch: #6b48c9;
-    --on-up: #ffffff;
-    --ramp: linear-gradient(90deg, #0f7a4f, #0b6f80, #2457c5, #6b48c9);
+  --up: #0f7a4f;
+  --com: #0b6f80;
+  --res: #2457c5;
+  --arch: #6b48c9;
+  --on-up: #ffffff;
+  --ramp: linear-gradient(90deg, #0f7a4f, #0b6f80, #2457c5, #6b48c9);
 
-    --wash: 6%;
-    --edge: 22%;
-    --pill: 12%;
-    --wash-strong: 10%;
-    --edge-strong: 34%;
-    --wash-hover: 12%;
-    --wash-strong-hover: 12%;
-    --card-shadow: 0 10px 24px rgba(20,30,60,0.12);
-  }
+  --wash: 6%;
+  --edge: 22%;
+  --pill: 12%;
+  --wash-strong: 10%;
+  --edge-strong: 34%;
+  --wash-hover: 12%;
+  --wash-strong-hover: 12%;
+  --card-shadow: 0 10px 24px rgba(20,30,60,0.12);
 }
 
 /* Meaning classes. The c-teal / c-gold / c-indigo names predate the palette. */
