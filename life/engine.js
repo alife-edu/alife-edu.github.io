@@ -218,7 +218,14 @@
       rows.push(row.replace(/\d*b$/, ''));
     }
     var body = rows.join('$').replace(/(\$+)/g, function (m) { return m.length > 1 ? m.length + '$' : '$'; }) + '!';
-    var lines = body.match(/.{1,70}/g).join('\n');
+    // wrap at 70 characters, but only between whole items ("12bo" stays together):
+    // LifeViewer rejects a run count split across lines
+    var lines = '', line = '';
+    body.match(/\d*[bo$!]/g).forEach(function (t) {
+      if (line.length + t.length > 70) { lines += line + '\n'; line = ''; }
+      line += t;
+    });
+    lines += line;
     return (comment ? '#C ' + comment + '\n' : '') +
       'x = ' + (maxx - minx + 1) + ', y = ' + (maxy - miny + 1) + ', rule = B3/S23\n' + lines;
   }

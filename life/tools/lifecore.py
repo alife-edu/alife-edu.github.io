@@ -149,4 +149,12 @@ def rle(cells):
     rows = [enc(''.join('o' if (x + mx, y + my) in cells else 'b' for x in range(W)).rstrip('b'))
             for y in range(H)]
     body = re.sub(r'\${2,}', lambda m: f"{len(m.group(0))}$", '$'.join(rows) + '!')
-    return f"x = {W}, y = {H}, rule = B3/S23\n" + '\n'.join(body[i:i + 70] for i in range(0, len(body), 70))
+    # wrap at 70 characters, but only between whole items ("12bo" stays together):
+    # LifeViewer rejects a run count split across lines
+    lines, line = [], ''
+    for t in re.findall(r'\d*[bo$!]', body):
+        if len(line) + len(t) > 70:
+            lines.append(line); line = ''
+        line += t
+    lines.append(line)
+    return f"x = {W}, y = {H}, rule = B3/S23\n" + '\n'.join(lines)
