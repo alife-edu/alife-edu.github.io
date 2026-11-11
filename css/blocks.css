@@ -325,3 +325,9 @@ main.event-page { padding-top: 2.5rem; }
 .event-row:first-child .event-row-date span { color: var(--on-up); }
 .event-row:first-child .event-row-year { opacity: 0.8; }
 @media (prefers-reduced-motion: reduce) { .event-row:hover, .event-row:focus-visible { transform: none; } }
+
+/* Home page: the archive / resources / community cards under the featured event */
+.home-cards { margin-top: 1rem; }
+.home-cards .card { padding: 1.6rem 1.75rem; }
+.home-cards .card-title { font-size: 1.25rem; }
+.home-cards .card-body { margin-bottom: 1.25rem; }

@@ -30,7 +30,8 @@ extra_css:
 
 <main class="home">
 
-  <!-- UPCOMING EVENTS -->
+  <!-- UPCOMING EVENTS: the next event, featured, then one card each for the archive,
+       resources and community. Colours follow the four meanings (see css/base.css). -->
   <section class="section" id="events">
     <div class="section-header">
       <h2>Upcoming events</h2>
@@ -44,6 +45,31 @@ extra_css:
     {% else %}
     <p class="section-intro">Nothing is scheduled right now. <a href="community.html">Join the mailing list</a> to hear about the next event.</p>
     {% endif %}
+
+    <div class="card-grid card-grid--3 home-cards">
+      {% assign last = past_events.first %}
+      {% if last %}
+      {% assign href = last.event_url | default: last.url | remove_first: "/" %}
+      <a href="{{ href }}" class="card c-arch">
+        <div class="card-eyebrow">Archive · {{ last.eyebrow }}</div>
+        <div class="card-title">{{ last.card_title | default: last.nav_label }}</div>
+        <div class="card-body">{{ last.description | strip_html | truncatewords: 16 }}</div>
+        <div class="card-link">{{ last.link_text | default: "See the event" }} →</div>
+      </a>
+      {% endif %}
+      <a href="resources.html#topics" class="card c-res">
+        <div class="card-eyebrow">Resources</div>
+        <div class="card-title">Topic collections</div>
+        <div class="card-body">Readings, exercises and assignments by ALife topic.</div>
+        <div class="card-link">Browse resources →</div>
+      </a>
+      <a href="https://discord.gg/jEtVQCMYjh" target="_blank" rel="noopener" class="card c-com">
+        <div class="card-eyebrow">Community</div>
+        <div class="card-title">Join the Discord</div>
+        <div class="card-body">Share syllabi and course ideas, and find collaborators.</div>
+        <div class="card-link">Join the conversation ↗</div>
+      </a>
+    </div>
   </section>
 
   <!-- MISSION -->
@@ -56,16 +82,6 @@ extra_css:
       <p>Because of ALife's distribution across fields, many people teaching ALife classes don't have the chance to talk with any other ALife educators. That means that they have to reinvent teaching ALife from the ground up and we end up duplicating work and lacking a shared understanding of core learning goals.</p>
       <p>To remedy that problem, we ran a free virtual workshop in May 2026, held in two time zones. Sessions ranged from <a href="schedule-west.html">“Reaching (for) Critical Maths”</a> to <a href="schedule-west.html">“Grading as it could be”</a>, and participants drafted learning goals together in a <a href="assets/brainwriting-all.pdf">brainwriting activity</a>. We met again at ALIFE 2026 in Waterloo and have continued to develop shared learning goals and materials ever since.</p>
       <p>Anyone who teaches, or wants to teach, the principles of living systems is enthusiastically welcome. Come to an event, or find us on Discord and join the mailing list through the <a href="community.html">community page</a>.</p>
-    </div>
-  </section>
-
-  <section class="section" id="previous-events">
-    <div class="section-header">
-      <h2>Previous events</h2>
-    </div>
-
-    <div class="card-grid card-grid--2">
-      {% for e in past_events %}{% include event-card.html event=e past=true %}{% endfor %}
     </div>
   </section>
 
