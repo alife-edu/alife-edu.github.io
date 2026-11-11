@@ -29,15 +29,17 @@
   background: color-mix(in srgb, var(--m) var(--wash), var(--surface));
   border-color: color-mix(in srgb, var(--m) var(--edge), transparent);
 }
-a.card:hover, a.card:focus-visible {
+/* A card can also be a <button> (the home page's Archive card opens a popup). */
+button.card { font: inherit; color: inherit; text-align: left; cursor: pointer; width: 100%; }
+a.card:hover, a.card:focus-visible, button.card:hover, button.card:focus-visible {
   background: color-mix(in srgb, var(--m, var(--text-mid)) var(--wash-hover), var(--surface));
   border-color: var(--m, var(--border-hover));
   box-shadow: var(--card-shadow);
   transform: translateY(-3px);
 }
 .card[class*="c-"] .card-date { color: var(--text-mid); }
-a.card:hover .card-link, a.card:focus-visible .card-link { text-decoration: underline; text-underline-offset: 3px; }
-@media (prefers-reduced-motion: reduce) { a.card:hover, a.card:focus-visible { transform: none; } }
+a.card:hover .card-link, a.card:focus-visible .card-link, button.card:hover .card-link, button.card:focus-visible .card-link { text-decoration: underline; text-underline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) { a.card:hover, a.card:focus-visible, button.card:hover, button.card:focus-visible { transform: none; } }
 
 /* Card content elements */
 .card-eyebrow {
