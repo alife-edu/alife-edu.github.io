@@ -17,6 +17,14 @@
     d.showModal();
   });
 
+  // Other controls on the page (the colour key's Archive chip) can open a dialog directly.
+  Array.prototype.forEach.call(document.querySelectorAll('[data-open-dialog]'), function (b) {
+    b.addEventListener('click', function () {
+      var d = document.getElementById(b.getAttribute('data-open-dialog'));
+      if (d && d.showModal) d.showModal();
+    });
+  });
+
   // Close buttons, clicks on the backdrop, and in-page links inside a dialog close it.
   Array.prototype.forEach.call(document.querySelectorAll('dialog.block-modal'), function (d) {
     d.querySelector('.bm-close').addEventListener('click', function () { d.close(); });

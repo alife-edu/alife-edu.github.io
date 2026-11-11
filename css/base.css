@@ -23,6 +23,7 @@
 :root {
   color-scheme: dark;
   --bg: #0e0f14;
+  --panel: #0e0f14;                 /* Life panel background */
   --surface: #171922;
   --surface2: #1e212c;
   --border: rgba(255,255,255,0.08);
@@ -70,6 +71,7 @@
   :root {
     color-scheme: light;
     --bg: #f6f7fb;
+    --panel: #ffffff;
     --surface: #ffffff;
     --surface2: #eef0f6;
     --border: rgba(19,20,26,0.10);

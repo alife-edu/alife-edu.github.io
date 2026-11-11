@@ -4,11 +4,10 @@
 <nav>
   <a href="index.html" class="nav-brand">ALife-Edu</a>
   <ul class="nav-links">
-    <li><a href="index.html"{% if page.url == '/' %} class="active"{% endif %}>Home</a></li>
 
     {% if upcoming_events.size > 0 %}
     <li class="nav-has-sub">
-      <a href="index.html#events">Upcoming Events</a>
+      <a href="index.html#events"><i class="nav-dot c-up" aria-hidden="true"></i>Upcoming</a>
       <ul class="nav-sub">
         {% for e in upcoming_events %}
         {% assign href = e.event_url | default: e.url | remove_first: "/" %}
@@ -24,12 +23,12 @@
     </li>
     {% endif %}
 
-    <li><a href="resources.html"{% if page.url == '/resources.html' %} class="active"{% endif %}>Resources</a></li>
-    <li><a href="community.html"{% if page.url == '/community.html' %} class="active"{% endif %}>Community</a></li>
+    <li><a href="resources.html"{% if page.url == '/resources.html' %} class="active"{% endif %}><i class="nav-dot c-res" aria-hidden="true"></i>Resources</a></li>
+    <li><a href="community.html"{% if page.url == '/community.html' %} class="active"{% endif %}><i class="nav-dot c-com" aria-hidden="true"></i>Community</a></li>
 
     {% if past_events.size > 0 %}
     <li class="nav-has-sub">
-      <a href="#">Event Archive</a>
+      <a href="#"><i class="nav-dot c-arch" aria-hidden="true"></i>Archive</a>
       <ul class="nav-sub">
         {% for e in past_events %}
         {% assign href = e.event_url | default: e.url | remove_first: "/" %}

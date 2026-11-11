@@ -331,3 +331,15 @@ main.event-page { padding-top: 2.5rem; }
 .home-cards .card { padding: 1.6rem 1.75rem; }
 .home-cards .card-title { font-size: 1.25rem; }
 .home-cards .card-body { margin-bottom: 1.25rem; }
+
+/* Colour key under the home page cards: one chip per meaning */
+.meaning-key { list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+.meaning-key .chip {
+  display: inline-flex; align-items: center; gap: 0.45rem;
+  padding: 0.3rem 0.8rem; border-radius: 999px; border: 0;
+  font: 500 0.8rem/1.4 var(--font-body); text-decoration: none; cursor: pointer;
+  color: var(--m); background: color-mix(in srgb, var(--m) var(--pill), transparent);
+  transition: background 0.18s;
+}
+.meaning-key .chip i { width: 7px; height: 7px; background: var(--m); }
+.meaning-key .chip:hover, .meaning-key .chip:focus-visible { background: color-mix(in srgb, var(--m) calc(var(--pill) + 10%), transparent); }

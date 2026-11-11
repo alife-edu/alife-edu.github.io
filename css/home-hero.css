@@ -23,7 +23,7 @@
 /* Site colours for the Life panel (defaults are in life/panel.css). Each link block
    takes the colour of what it opens. */
 .life-panel.life-home {
-  --life-bg: var(--bg);
+  --life-bg: var(--panel);
   --life-word: var(--text);
   --life-live: var(--up);
   --life-ui: var(--text);

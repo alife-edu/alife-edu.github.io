@@ -41,7 +41,10 @@ nav {
   transition: color 0.2s;
 }
 .nav-links a:hover { color: var(--text); }
-.nav-links a.active { color: var(--accent); }
+/* Colour key: a small square in each section's meaning colour (see css/base.css) */
+.nav-links > li > a { display: inline-flex; align-items: center; gap: 0.45rem; }
+.nav-dot { width: 7px; height: 7px; background: var(--m); flex: none; }
+.nav-links a.active { color: var(--text); font-weight: 500; }
 .nav-links a.active--gold { color: var(--up); }
 
 /* ── Dropdown subnav ─────────────────────────────────── */
