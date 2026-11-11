@@ -1,0 +1,5 @@
+Eduardo Izquierdo - Design Decisions for a Hands-on Evolutionary Robotics Course for Undergraduates
+Corné van Leuveren - Soup of Life: Watch Life Unfold in your Browser
+Stephen Kelley - Evolutionary Reinforcement Learning in C++
+Matthew Andres Moreno - Building Cohort Community in a Virtual Classroom: Lessons Learned from the WAVES Workshop
+Imy Khan - Overview of ALife Online Expo

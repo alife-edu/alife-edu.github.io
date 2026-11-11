@@ -1,0 +1,138 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/*
+  Colour tokens. The site follows the reader's system setting: dark by default,
+  light under prefers-color-scheme: light.
+
+  Four colours carry meaning and read left to right as a time ramp:
+    --up    upcoming events (green: alive, coming next); also the primary action
+    --com   community (teal: here and now, join in)
+    --res   resources (blue: kept, for reference)
+    --arch  archived events (violet: behind us)
+  The full ramp (--ramp) appears only in the band across the top of every page and in
+  the wordmark. Everywhere else the colours are used one at a time.
+
+  Tinted cards: give an element --m (a meaning colour, e.g. class="card c-up") and the
+  card styles mix its wash, border and label pill from it. --wash / --edge / --pill /
+  --wash-strong / --edge-strong (and the -hover washes) are the mixing percentages for the
+  theme; they are capped so that coloured text on a wash still passes WCAG AA (4.5:1).
+
+  The older names --accent, --gold and --indigo are kept as aliases so page-specific
+  styles keep working: accent = up, gold = res, indigo = com.
+*/
+:root {
+  color-scheme: dark;
+  --bg: #0e0f14;
+  --panel: #0e0f14;                 /* Life panel background */
+  --surface: #171922;
+  --surface2: #1e212c;
+  --border: rgba(255,255,255,0.08);
+  --border-strong: rgba(255,255,255,0.16);
+  --border-hover: rgba(255,255,255,0.32);
+  --text: #f0f1f5;
+  --text-mid: #a6a9b8;
+  --text-dim: #8a8ea0;
+  --shadow: rgba(0,0,0,0.45);
+  --scrim: rgba(6,7,10,0.72);
+
+  --up: #4fe0a0;
+  --com: #3cc6d8;
+  --res: #6f9cf7;
+  --arch: #a58cf0;
+  --on-up: #0e0f14;                 /* text on a solid --up fill */
+  --ramp: linear-gradient(90deg, #4fe0a0, #3cc6d8, #6f9cf7, #a58cf0);
+
+  --wash: 10%;
+  --edge: 28%;
+  --pill: 18%;
+  --wash-strong: 16%;
+  --edge-strong: 42%;
+  --wash-hover: 16%;
+  --wash-strong-hover: 22%;
+  --card-shadow: 0 10px 24px rgba(0,0,0,0.45);
+
+  --accent: var(--up);
+  --accent-dim: color-mix(in srgb, var(--up) 12%, transparent);
+  --accent-mid: color-mix(in srgb, var(--up) 30%, transparent);
+  --gold: var(--res);
+  --gold-dim: color-mix(in srgb, var(--res) 14%, transparent);
+  --gold-mid: color-mix(in srgb, var(--res) 32%, transparent);
+  --indigo: var(--com);
+  --indigo-dim: color-mix(in srgb, var(--com) 12%, transparent);
+  --indigo-mid: color-mix(in srgb, var(--com) 30%, transparent);
+
+  /* Type: squared, chamfered display face; Lexend for body text,
+     a face designed to improve reading fluency. */
+  --font-display: 'Chakra Petch', 'Arial Narrow', sans-serif;
+  --font-body: 'Lexend', 'Segoe UI', system-ui, sans-serif;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color-scheme: light;
+    --bg: #f6f7fb;
+    --panel: #ffffff;
+    --surface: #ffffff;
+    --surface2: #eef0f6;
+    --border: rgba(19,20,26,0.10);
+    --border-strong: rgba(19,20,26,0.18);
+    --border-hover: rgba(19,20,26,0.36);
+    --text: #13141a;
+    --text-mid: #555a6b;
+    --text-dim: #636878;
+    --shadow: rgba(20,30,60,0.14);
+    --scrim: rgba(19,20,26,0.45);
+
+    --up: #0f7a4f;
+    --com: #0b6f80;
+    --res: #2457c5;
+    --arch: #6b48c9;
+    --on-up: #ffffff;
+    --ramp: linear-gradient(90deg, #0f7a4f, #0b6f80, #2457c5, #6b48c9);
+
+    --wash: 6%;
+    --edge: 22%;
+    --pill: 12%;
+    --wash-strong: 10%;
+    --edge-strong: 34%;
+    --wash-hover: 12%;
+    --wash-strong-hover: 12%;
+    --card-shadow: 0 10px 24px rgba(20,30,60,0.12);
+  }
+}
+
+/* Meaning classes. The c-teal / c-gold / c-indigo names predate the palette. */
+.c-up   { --m: var(--up); }
+.c-com, .c-indigo { --m: var(--com); }
+.c-res, .c-teal   { --m: var(--res); }
+.c-arch { --m: var(--arch); }
+.c-gold { --m: var(--up); }
+
+html { font-size: 16px; scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 300;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+}
+
+/* The ramp band across the top of every page. */
+body::before {
+  content: "";
+  display: block;
+  height: 6px;
+  background: var(--ramp);
+}
+
+a:not([class]) {
+  color: var(--up);
+}
+
+a:not([class]):visited {
+  color: var(--up);
+}
+
+:focus-visible { outline: 2px solid var(--res); outline-offset: 3px; }

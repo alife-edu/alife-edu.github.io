@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<!--
+  life/playground.html — the Life panel on its own, with nothing from the rest of the site.
+
+  Everything it needs is in this folder:
+    engine.js    the Life rule (B3/S23), no drawing
+    panel.js     the viewer: canvas, tabs, playback, link blocks
+    panel.css    the viewer's styles
+    scenes/      the scenes, as JSON
+
+  Browsers won't load the scene files from a file:// address, so to open this locally,
+  start a small web server in this folder (or the repository root) and visit it:
+      python3 -m http.server        then open http://localhost:8000/playground.html
+-->
+<html lang="en">
+<head>
+  <meta name="robots" content="noindex, nofollow">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Life Playground — ALife-Edu</title>
+<meta name="description" content="Conway's Game of Life scenes from the ALife-Edu home page, on their own, with step-by-step controls and the starting patterns.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700&family=Lexend:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="panel.css">
+<style>
+  :root {
+    color-scheme: dark;
+    --bg: #0e0f14; --surface: #171922; --text: #f0f1f5; --mid: #a6a9b8; --dim: #8a8ea0;
+    --line: rgba(255, 255, 255, 0.08); --accent: #4fe0a0; --focus: #6f9cf7;
+    --ramp: linear-gradient(90deg, #4fe0a0, #3cc6d8, #6f9cf7, #a58cf0);
+  }
+  @media (prefers-color-scheme: light) {
+    :root {
+      color-scheme: light;
+      --bg: #f6f7fb; --surface: #ffffff; --text: #13141a; --mid: #555a6b; --dim: #636878;
+      --line: rgba(19, 20, 26, 0.10); --accent: #0f7a4f; --focus: #2457c5;
+      --ramp: linear-gradient(90deg, #0f7a4f, #0b6f80, #2457c5, #6b48c9);
+    }
+  }
+  body::before { content: ""; display: block; height: 6px; background: var(--ramp); }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 300 1rem/1.7 'Lexend', 'Segoe UI', system-ui, sans-serif; }
+  a { color: var(--accent); }
+  :focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
+  header, main { max-width: 1100px; margin: 0 auto; padding-left: max(1.25rem, env(safe-area-inset-left, 0px)); padding-right: max(1.25rem, env(safe-area-inset-right, 0px)); }
+  header { padding-block: 1.25rem; display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; flex-wrap: wrap; border-bottom: 1px solid var(--line); max-width: none; }
+  header .brand { font-family: 'Chakra Petch', 'Arial Narrow', sans-serif; font-weight: 700; font-size: 1.2rem; color: var(--text); text-decoration: none; background: var(--ramp); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  header nav a { color: var(--mid); text-decoration: none; font-size: 0.9rem; margin-left: 1.25rem; }
+  header nav a:hover { color: var(--text); }
+  main { padding-block: 2.5rem 4rem; display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 3rem; align-items: start; }
+  h1 { font-family: 'Chakra Petch', 'Arial Narrow', sans-serif; font-weight: 600; font-size: clamp(2rem, 4vw, 2.8rem); line-height: 1.05; margin: 0 0 1rem; text-wrap: balance; }
+  h2 { font-family: 'Chakra Petch', 'Arial Narrow', sans-serif; font-weight: 600; font-size: 1.15rem; margin: 2rem 0 0.5rem; }
+  .notes p, .notes li { color: var(--mid); font-size: 0.95rem; max-width: 62ch; }
+  .notes ul { padding-left: 1.1rem; margin: 0.5rem 0; }
+  .notes strong { color: var(--text); font-weight: 500; }
+  .rule { display: grid; grid-template-columns: auto 1fr; gap: 0.35rem 0.9rem; font-size: 0.9rem; color: var(--mid); margin: 0.75rem 0; }
+  .rule b { color: var(--text); font-weight: 500; font-variant-numeric: tabular-nums; }
+  .panel-col { min-width: 0; position: sticky; top: 1rem; }
+  .panel-col h1 { font-size: clamp(1.6rem, 3vw, 2.1rem); margin-bottom: 1rem; }
+  /* Until someone presses "More info", only the simulator shows. */
+  main.is-collapsed { grid-template-columns: minmax(0, 760px); justify-content: center; }
+  .notes[hidden] { display: none; }
+  .linkmsg { font-size: 0.8rem; color: var(--accent); min-height: 1.3em; margin-top: 0.5rem; }
+  @media (max-width: 880px) { main { grid-template-columns: minmax(0, 1fr); } .panel-col { position: static; } }
+</style>
+</head>
+<body>
+<header>
+  <a class="brand" href="../index.html">ALife-Edu</a>
+  <nav><a href="../index.html">Home</a><a href="https://github.com/alife-edu/alife-edu.github.io/tree/main/life">Source and README</a></nav>
+</header>
+
+<main class="is-collapsed">
+  <div class="panel-col">
+    <h1>Life playground</h1>
+    <div data-life-panel data-extras="step rle" data-details="button"
+         data-scenes="scenes/turner-chain.json scenes/alife-edu.json scenes/soup.json"></div>
+    <p class="linkmsg" id="linkmsg" aria-live="polite"></p>
+  </div>
+
+  <div class="notes" id="notes" hidden>
+    <p>These are the three Game of Life scenes from the ALife-Edu home page, on their own. Pause, slow them down to ¼ speed, or press <strong>Step</strong> to go one generation at a time. Open "Starting pattern as RLE" to copy any scene into <a href="https://golly.sourceforge.io/">Golly</a> or <a href="https://conwaylife.com/wiki/LifeViewer">LifeViewer</a> and check it yourself.</p>
+
+    <h2>The only rule</h2>
+    <div class="rule">
+      <b>Birth</b><span>A dead cell with exactly 3 live neighbours comes alive.</span>
+      <b>Survival</b><span>A live cell with 2 or 3 live neighbours stays alive.</span>
+      <b>Otherwise</b><span>The cell is dead in the next generation.</span>
+    </div>
+    <p>Each cell has eight neighbours, diagonals included, and every cell updates at the same moment. After generation 0 nothing is scripted. The page only applies this rule, then compares its final state with the one stored in the scene file. A <strong>✓</strong> in the readout means they match.</p>
+
+    <h2>The scenes</h2>
+    <ul>
+      <li><strong>Turner chain.</strong> A single glider meets a series of <a href="https://conwaylife.com/wiki/One-time_turner">one-time turners</a>, small still lifes that send it off in a new direction and are destroyed doing it. Four of the collisions leave a 2×2 block behind; on the home page those blocks are links. Here they're labelled Block 1 to 4.</li>
+      <li><strong>ALIFE·EDU.</strong> 142 gliders start outside the window. They arrive in pairs, and each pair collides into one block (a <a href="https://conwaylife.com/wiki/Glider_synthesis">glider synthesis</a>), writing the words one pixel at a time.</li>
+      <li><strong>Soup.</strong> A 20×20 square of random cells, about half of them alive, run until they settle into still lifes and oscillators. Click or drag on the grid to draw, press Clear to start from nothing, or try another seed.</li>
+    </ul>
+
+    <h2>How the scenes were found</h2>
+    <p>The starting patterns came from small search programs in <code>life/tools/</code>. They test reactions, chain them together, and simulate every step to make sure it works. The <a href="https://github.com/alife-edu/alife-edu.github.io/tree/main/life">README</a> explains each method and lists the references behind them.</p>
+  </div>
+</main>
+
+<script src="engine.js"></script>
+<script src="panel.js"></script>
+<script>
+  // The panel's "More info" button also reveals the notes beside it.
+  document.addEventListener('life:details', function (e) {
+    document.querySelector('main').classList.toggle('is-collapsed', !e.detail.open);
+    document.getElementById('notes').hidden = !e.detail.open;
+    window.dispatchEvent(new Event('resize'));   // the panel's column changed width
+  });
+  // On the home page these blocks open dialogs. Here we just say which block was clicked.
+  document.addEventListener('life:link', function (e) {
+    document.getElementById('linkmsg').textContent =
+      'Block ' + (e.detail.index + 1) + ' clicked. It settled at generation ' + e.detail.block.t +
+      ' at cells (' + e.detail.block.x + ', ' + e.detail.block.y + ').';
+  });
+</script>
+</body>
+</html>
