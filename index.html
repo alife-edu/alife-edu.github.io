@@ -31,9 +31,7 @@ extra_css:
 <main class="home">
 
   <!-- UPCOMING EVENTS: the next event, featured, then one card each for the archive,
-       resources and community. Colours follow the four meanings (see css/base.css).
-       The cards and the colour key open the same modals as the Life panel's blocks
-       (data-open-dialog); their hrefs are the fallback without JavaScript. -->
+       resources and community. Colours follow the four meanings (see css/base.css). -->
   <section class="section" id="events">
     <div class="section-header">
       <h2>Upcoming events</h2>
@@ -52,20 +50,20 @@ extra_css:
       {% assign last = past_events.first %}
       {% if last %}
       {% assign href = last.event_url | default: last.url | remove_first: "/" %}
-      <a href="{{ href }}" class="card c-arch" data-open-dialog="dlg-archive">
+      <a href="{{ href }}" class="card c-arch">
         <div class="card-eyebrow">Archive · {{ last.eyebrow }}</div>
         <div class="card-title">{{ last.card_title | default: last.nav_label }}</div>
         <div class="card-body">{{ last.description | strip_html | truncatewords: 16 }}</div>
         <div class="card-link">{{ last.link_text | default: "See the event" }} →</div>
       </a>
       {% endif %}
-      <a href="resources.html#topics" class="card c-res" data-open-dialog="dlg-resources">
+      <a href="resources.html#topics" class="card c-res">
         <div class="card-eyebrow">Resources</div>
         <div class="card-title">Topic collections</div>
         <div class="card-body">Readings, exercises and assignments by ALife topic.</div>
         <div class="card-link">Browse resources →</div>
       </a>
-      <a href="https://discord.gg/jEtVQCMYjh" target="_blank" rel="noopener" class="card c-com" data-open-dialog="dlg-community">
+      <a href="https://discord.gg/jEtVQCMYjh" target="_blank" rel="noopener" class="card c-com">
         <div class="card-eyebrow">Community</div>
         <div class="card-title">Join the Discord</div>
         <div class="card-body">Share syllabi and course ideas, and find collaborators.</div>
@@ -74,9 +72,9 @@ extra_css:
     </div>
 
     <ul class="meaning-key" aria-label="Colour key">
-      <li><a class="chip c-up" href="#events" data-open-dialog="dlg-events"><i aria-hidden="true"></i>Upcoming</a></li>
-      <li><a class="chip c-res" href="resources.html" data-open-dialog="dlg-resources"><i aria-hidden="true"></i>Resources</a></li>
-      <li><a class="chip c-com" href="community.html" data-open-dialog="dlg-community"><i aria-hidden="true"></i>Community</a></li>
+      <li><a class="chip c-up" href="#events"><i aria-hidden="true"></i>Upcoming</a></li>
+      <li><a class="chip c-res" href="resources.html"><i aria-hidden="true"></i>Resources</a></li>
+      <li><a class="chip c-com" href="community.html"><i aria-hidden="true"></i>Community</a></li>
       <li><button type="button" class="chip c-arch" data-open-dialog="dlg-archive"><i aria-hidden="true"></i>Archive</button></li>
     </ul>
   </section>

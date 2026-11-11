@@ -47,8 +47,9 @@
 #dlg-community { --m: var(--com); }
 #dlg-resources { --m: var(--res); }
 #dlg-archive   { --m: var(--arch); }
-/* Text accents: grey in dark mode (the border, stripe and squares carry the colour),
-   the block's colour in light mode. */
+/* The eyebrow's text: grey in dark mode (the border, stripe and squares carry the colour),
+   the block's colour in light mode. In the mini-cards, titles are var(--text) and
+   everything else is var(--text-mid), in both modes. */
 dialog.block-modal { --bm-accent: var(--text-mid); --bm-accent-hover: var(--text); }
 :root[data-theme="light"] dialog.block-modal { --bm-accent: var(--m); --bm-accent-hover: var(--m); }
 dialog.block-modal {
@@ -80,11 +81,10 @@ dialog.block-modal[open] { animation: life-dlg 0.22s ease-out; }
   transition: background 0.18s, border-color 0.18s;
 }
 .bm-list a:hover, .bm-list a:focus-visible { background: color-mix(in srgb, var(--m) var(--wash-hover), var(--surface)); border-color: var(--m); }
-.bm-list .when { grid-column: 1; color: var(--bm-accent); font-size: 0.78rem; font-weight: 500; }
+.bm-list .when { grid-column: 1; color: var(--text-mid); font-size: 0.78rem; font-weight: 500; }
 .bm-list .t { grid-column: 1; font-weight: 400; font-size: 0.95rem; line-height: 1.4; }
 .bm-list .d { grid-column: 1; font-size: 0.8rem; color: var(--text-mid); line-height: 1.5; }
-.bm-list .arr { grid-column: 2; grid-row: 1 / span 3; align-self: center; color: var(--text-dim); font-size: 0.9rem; }
-.bm-list a:hover .arr { color: var(--bm-accent-hover); }
+.bm-list .arr { grid-column: 2; grid-row: 1 / span 3; align-self: center; color: var(--text-mid); font-size: 0.9rem; }
 .bm-list a.sub { padding-left: 2rem; }
 .bm-empty { color: var(--text-mid); font-size: 0.95rem; }
 .bm-empty a { color: var(--bm-accent-hover); }
