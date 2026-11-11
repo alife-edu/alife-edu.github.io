@@ -17,17 +17,11 @@
     d.showModal();
   });
 
-  // Other controls on the page (the home cards and the colour key) open a dialog directly.
-  // Plain clicks only: a modified click (new tab) still follows the link's href.
+  // Other controls on the page (the colour key's Archive chip) can open a dialog directly.
   Array.prototype.forEach.call(document.querySelectorAll('[data-open-dialog]'), function (b) {
-    b.addEventListener('click', function (e) {
-      if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    b.addEventListener('click', function () {
       var d = document.getElementById(b.getAttribute('data-open-dialog'));
-      if (!d || !d.showModal) return;
-      e.preventDefault();
-      var origin = d.querySelector('.bm-origin');
-      if (origin) origin.textContent = d.getAttribute('data-name');
-      d.showModal();
+      if (d && d.showModal) d.showModal();
     });
   });
 

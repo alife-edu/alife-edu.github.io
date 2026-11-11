@@ -140,10 +140,10 @@
 
 
 
-<dialog class="block-modal" id="dlg-events" data-name="Upcoming" aria-labelledby="dlg-events-h">
+<dialog class="block-modal" id="dlg-events" aria-labelledby="dlg-events-h">
   <div class="bm">
     <div class="bm-top">
-      <div><div class="bm-eyebrow"><i></i><span class="bm-origin">Upcoming</span></div><h2 id="dlg-events-h">Upcoming events</h2></div>
+      <div><div class="bm-eyebrow"><i></i><span class="bm-origin">Block 1 of 4</span></div><h2 id="dlg-events-h">Upcoming events</h2></div>
       <button type="button" class="bm-close" aria-label="Close">×</button>
     </div>
     <p>Talks, meetups and workshops for people who teach artificial life. Everything is free, and most of it is online.</p>
@@ -164,10 +164,10 @@
   </div>
 </dialog>
 
-<dialog class="block-modal" id="dlg-resources" data-name="Resources" aria-labelledby="dlg-resources-h">
+<dialog class="block-modal" id="dlg-resources" aria-labelledby="dlg-resources-h">
   <div class="bm">
     <div class="bm-top">
-      <div><div class="bm-eyebrow"><i></i><span class="bm-origin">Resources</span></div><h2 id="dlg-resources-h">Resources for teaching artificial life</h2></div>
+      <div><div class="bm-eyebrow"><i></i><span class="bm-origin">Block 2 of 4</span></div><h2 id="dlg-resources-h">Resources for teaching artificial life</h2></div>
       <button type="button" class="bm-close" aria-label="Close">×</button>
     </div>
     <p>A curated, living collection of references, tools, courses and interactive explorables for anyone teaching or learning about artificial life. Contributions welcome.</p>
@@ -182,10 +182,10 @@
   </div>
 </dialog>
 
-<dialog class="block-modal" id="dlg-community" data-name="Community" aria-labelledby="dlg-community-h">
+<dialog class="block-modal" id="dlg-community" aria-labelledby="dlg-community-h">
   <div class="bm">
     <div class="bm-top">
-      <div><div class="bm-eyebrow"><i></i><span class="bm-origin">Community</span></div><h2 id="dlg-community-h">A permanent home for ALife educators</h2></div>
+      <div><div class="bm-eyebrow"><i></i><span class="bm-origin">Block 3 of 4</span></div><h2 id="dlg-community-h">A permanent home for ALife educators</h2></div>
       <button type="button" class="bm-close" aria-label="Close">×</button>
     </div>
     <p>We gather on a Discord server and an email list. Share syllabi and assignments, workshop course ideas, coordinate around conferences like ALIFE, and find collaborators for education research. Both are open to anyone with an interest in teaching artificial life.</p>
@@ -197,10 +197,10 @@
   </div>
 </dialog>
 
-<dialog class="block-modal" id="dlg-archive" data-name="Archive" aria-labelledby="dlg-archive-h">
+<dialog class="block-modal" id="dlg-archive" aria-labelledby="dlg-archive-h">
   <div class="bm">
     <div class="bm-top">
-      <div><div class="bm-eyebrow"><i></i><span class="bm-origin">Archive</span></div><h2 id="dlg-archive-h">Event archive</h2></div>
+      <div><div class="bm-eyebrow"><i></i><span class="bm-origin">Block 4 of 4</span></div><h2 id="dlg-archive-h">Event archive</h2></div>
       <button type="button" class="bm-close" aria-label="Close">×</button>
     </div>
     <p>Recordings, slides and artifacts from past events.</p>
@@ -247,9 +247,7 @@
 <main class="home">
 
   <!-- UPCOMING EVENTS: the next event, featured, then one card each for the archive,
-       resources and community. Colours follow the four meanings (see css/base.css).
-       The cards and the colour key open the same modals as the Life panel's blocks
-       (data-open-dialog); their hrefs are the fallback without JavaScript. -->
+       resources and community. Colours follow the four meanings (see css/base.css). -->
   <section class="section" id="events">
     <div class="section-header">
       <h2>Upcoming events</h2>
@@ -288,20 +286,20 @@
       
       
       
-      <a href="interdisciplinary-2026.html" class="card c-arch" data-open-dialog="dlg-archive">
+      <a href="interdisciplinary-2026.html" class="card c-arch">
         <div class="card-eyebrow">Archive · Virtual Oct 2026</div>
         <div class="card-title">Teaching in Interdisciplinary Settings: The hows, whens, and whys?</div>
         <div class="card-body">Interdisciplinarity is becoming a fundamental element of both academia and industry — but teaching in interdisciplinary...</div>
         <div class="card-link">Talk details →</div>
       </a>
       
-      <a href="resources.html#topics" class="card c-res" data-open-dialog="dlg-resources">
+      <a href="resources.html#topics" class="card c-res">
         <div class="card-eyebrow">Resources</div>
         <div class="card-title">Topic collections</div>
         <div class="card-body">Readings, exercises and assignments by ALife topic.</div>
         <div class="card-link">Browse resources →</div>
       </a>
-      <a href="https://discord.gg/jEtVQCMYjh" target="_blank" rel="noopener" class="card c-com" data-open-dialog="dlg-community">
+      <a href="https://discord.gg/jEtVQCMYjh" target="_blank" rel="noopener" class="card c-com">
         <div class="card-eyebrow">Community</div>
         <div class="card-title">Join the Discord</div>
         <div class="card-body">Share syllabi and course ideas, and find collaborators.</div>
@@ -310,9 +308,9 @@
     </div>
 
     <ul class="meaning-key" aria-label="Colour key">
-      <li><a class="chip c-up" href="#events" data-open-dialog="dlg-events"><i aria-hidden="true"></i>Upcoming</a></li>
-      <li><a class="chip c-res" href="resources.html" data-open-dialog="dlg-resources"><i aria-hidden="true"></i>Resources</a></li>
-      <li><a class="chip c-com" href="community.html" data-open-dialog="dlg-community"><i aria-hidden="true"></i>Community</a></li>
+      <li><a class="chip c-up" href="#events"><i aria-hidden="true"></i>Upcoming</a></li>
+      <li><a class="chip c-res" href="resources.html"><i aria-hidden="true"></i>Resources</a></li>
+      <li><a class="chip c-com" href="community.html"><i aria-hidden="true"></i>Community</a></li>
       <li><button type="button" class="chip c-arch" data-open-dialog="dlg-archive"><i aria-hidden="true"></i>Archive</button></li>
     </ul>
   </section>
