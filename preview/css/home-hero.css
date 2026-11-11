@@ -47,6 +47,10 @@
 #dlg-community { --m: var(--com); }
 #dlg-resources { --m: var(--res); }
 #dlg-archive   { --m: var(--arch); }
+/* Text accents: grey in dark mode (the border, stripe and squares carry the colour),
+   the block's colour in light mode. */
+dialog.block-modal { --bm-accent: var(--text-mid); --bm-accent-hover: var(--text); }
+:root[data-theme="light"] dialog.block-modal { --bm-accent: var(--m); --bm-accent-hover: var(--m); }
 dialog.block-modal {
   margin: auto; border: 1px solid color-mix(in srgb, var(--m) var(--edge), transparent); border-radius: 12px; padding: 0;
   background: var(--surface); color: var(--text); width: min(36rem, calc(100vw - 32px));
@@ -58,7 +62,7 @@ dialog.block-modal[open] { animation: life-dlg 0.22s ease-out; }
 .bm { position: relative; padding: 2rem 2rem 1.75rem; display: flex; flex-direction: column; gap: 1.1rem; }
 .bm::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--m); }
 .bm-top { display: flex; justify-content: space-between; align-items: start; gap: 1rem; }
-.bm-eyebrow { font-size: 0.78rem; font-weight: 500; color: var(--m); display: flex; align-items: center; gap: 0.5rem; }
+.bm-eyebrow { font-size: 0.78rem; font-weight: 500; color: var(--bm-accent); display: flex; align-items: center; gap: 0.5rem; }
 .bm-eyebrow i { width: 9px; height: 9px; background: var(--m); display: inline-block; border-radius: 1px; }
 .bm h2 { font-family: var(--font-display); font-weight: 600; font-size: 1.7rem; line-height: 1.1; text-wrap: balance; margin-top: 0.35rem; }
 .bm > p { color: var(--text-mid); font-size: 0.95rem; line-height: 1.75; }
@@ -76,13 +80,14 @@ dialog.block-modal[open] { animation: life-dlg 0.22s ease-out; }
   transition: background 0.18s, border-color 0.18s;
 }
 .bm-list a:hover, .bm-list a:focus-visible { background: color-mix(in srgb, var(--m) var(--wash-hover), var(--surface)); border-color: var(--m); }
-.bm-list .when { grid-column: 1; color: var(--m); font-size: 0.78rem; font-weight: 500; }
+.bm-list .when { grid-column: 1; color: var(--bm-accent); font-size: 0.78rem; font-weight: 500; }
 .bm-list .t { grid-column: 1; font-weight: 400; font-size: 0.95rem; line-height: 1.4; }
 .bm-list .d { grid-column: 1; font-size: 0.8rem; color: var(--text-mid); line-height: 1.5; }
 .bm-list .arr { grid-column: 2; grid-row: 1 / span 3; align-self: center; color: var(--text-dim); font-size: 0.9rem; }
-.bm-list a:hover .arr { color: var(--m); }
+.bm-list a:hover .arr { color: var(--bm-accent-hover); }
 .bm-list a.sub { padding-left: 2rem; }
 .bm-empty { color: var(--text-mid); font-size: 0.95rem; }
+.bm-empty a { color: var(--bm-accent-hover); }
 .bm-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; padding-top: 0.25rem; }
 .bm-actions .btn-primary { background: var(--m); }
 

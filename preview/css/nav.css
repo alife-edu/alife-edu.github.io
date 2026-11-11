@@ -41,10 +41,14 @@ nav {
   transition: color 0.2s;
 }
 .nav-links a:hover { color: var(--text); }
-/* Colour key: a small square in each section's meaning colour (see css/base.css) */
+/* Colour key: each section's link and its small square in the section's meaning colour
+   (see css/base.css); hover and the current page lean toward the text colour. */
 .nav-links > li > a { display: inline-flex; align-items: center; gap: 0.45rem; }
+.nav-links > li > a[class*="c-"] { color: var(--m); }
+.nav-links > li > a[class*="c-"]:hover { color: color-mix(in srgb, var(--m) 60%, var(--text)); }
 .nav-dot { width: 7px; height: 7px; background: var(--m); flex: none; }
 .nav-links a.active { color: var(--text); font-weight: 500; }
+.nav-links > li > a[class*="c-"].active { color: var(--m); }
 .nav-links a.active--gold { color: var(--up); }
 
 /* ── Dropdown subnav ─────────────────────────────────── */
