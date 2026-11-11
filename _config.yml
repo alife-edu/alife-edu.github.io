@@ -41,3 +41,4 @@ exclude:
   - "_events/README.md"
   - node_modules
   - scripts
+  - life/tools

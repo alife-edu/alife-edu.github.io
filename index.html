@@ -4,26 +4,37 @@ title: "ALife-Edu — Artificial Life Educators Community"
 description: "A growing community of educators, researchers, and practitioners dedicated to teaching and advancing Artificial Life."
 footer_orgs: short
 footer_message: "Spring 2026"
+extra_css:
+  - life/panel.css
+  - css/home-hero.css
 ---
 
-<!-- HERO -->
+<!-- HERO: headline on the left, Game of Life panel on the right -->
 <div class="hero-band">
-  <canvas class="hero-life" aria-hidden="true"></canvas>
-  <div class="hero hero--home">
-    <h1>A community for those who teach about life as it could be</h1>
-    <p class="hero-sub">ALife-Edu is a network of educators, researchers, and practitioners who teach artificial life. We share course materials, run workshops, and meet regularly.</p>
-    <div class="hero-actions">
-      <a href="#events" class="btn-primary">See upcoming events</a>
-      <a href="community.html" class="btn-ghost">Join the community</a>
+  <div class="hero-split">
+    <div class="hero hero--home">
+      <h1>A community for those who teach about life as it could be</h1>
+      <p class="hero-sub">ALife-Edu is a network of educators, researchers, and practitioners who teach artificial life. We share course materials, run workshops, and meet regularly.</p>
+      <div class="hero-actions">
+        <a href="#events" class="btn-primary">See upcoming events</a>
+        <a href="community.html" class="btn-ghost">Join the community</a>
+      </div>
+    </div>
+    <div class="life-col">
+      {% include life-panel.html %}
+      <p class="life-more"><a href="life/playground.html">Open the simulator on its own page</a> · <a href="https://github.com/alife-edu/alife-edu.github.io/tree/main/life">how it works and the source</a></p>
     </div>
   </div>
-  <p class="hero-life-caption">Gray–Scott reaction–diffusion, F&nbsp;0.0367, k&nbsp;0.0649. Click to add a seed.</p>
 </div>
-<script src="js/life.js" defer></script>
+{% include life-nav-modals.html %}
 
 <main class="home">
 
-  <!-- UPCOMING EVENTS -->
+  <!-- UPCOMING EVENTS: the next event, featured, then one card each for the archive,
+       resources and community. Colours follow the four meanings (see css/base.css).
+       Nothing here is written by hand: events come from _events/, the Resources card from
+       the section marked home_card in _data/resource_sections.yml, and the Community card
+       from _data/community.yml. The Archive card opens the Event archive popup. -->
   <section class="section" id="events">
     <div class="section-header">
       <h2>Upcoming events</h2>
@@ -37,6 +48,38 @@ footer_message: "Spring 2026"
     {% else %}
     <p class="section-intro">Nothing is scheduled right now. <a href="community.html">Join the mailing list</a> to hear about the next event.</p>
     {% endif %}
+
+    <div class="card-grid card-grid--3 home-cards">
+      {% if past_events.size > 0 %}
+      <button type="button" class="card c-arch" data-open-dialog="dlg-archive">
+        <span class="card-eyebrow">Archive</span>
+        <span class="card-title">Past events</span>
+        <span class="card-body">Recordings, slides and artifacts from past events.</span>
+        <span class="card-link">Browse the archive →</span>
+      </button>
+      {% endif %}
+      {% assign rs = site.data.resource_sections | where: "home_card", true | first %}
+      <a href="resources.html#{{ rs.id }}" class="card c-res">
+        <div class="card-eyebrow">Resources</div>
+        <div class="card-title">{{ rs.title }}</div>
+        <div class="card-body">{{ rs.summary }}.</div>
+        <div class="card-link">Browse resources →</div>
+      </a>
+      {% assign discord = site.data.community.discord %}
+      <a href="{{ discord.url }}" target="_blank" rel="noopener" class="card c-com">
+        <div class="card-eyebrow">Community</div>
+        <div class="card-title">{{ discord.card_title }}</div>
+        <div class="card-body">{{ discord.card_body }}</div>
+        <div class="card-link">{{ discord.card_link }}</div>
+      </a>
+    </div>
+
+    <ul class="meaning-key" aria-label="Colour key">
+      <li><button type="button" class="chip c-up" data-open-dialog="dlg-events"><i aria-hidden="true"></i>Upcoming</button></li>
+      <li><button type="button" class="chip c-res" data-open-dialog="dlg-resources"><i aria-hidden="true"></i>Resources</button></li>
+      <li><button type="button" class="chip c-com" data-open-dialog="dlg-community"><i aria-hidden="true"></i>Community</button></li>
+      <li><button type="button" class="chip c-arch" data-open-dialog="dlg-archive"><i aria-hidden="true"></i>Archive</button></li>
+    </ul>
   </section>
 
   <!-- MISSION -->
@@ -49,16 +92,6 @@ footer_message: "Spring 2026"
       <p>Because of ALife's distribution across fields, many people teaching ALife classes don't have the chance to talk with any other ALife educators. That means that they have to reinvent teaching ALife from the ground up and we end up duplicating work and lacking a shared understanding of core learning goals.</p>
       <p>To remedy that problem, we ran a free virtual workshop in May 2026, held in two time zones. Sessions ranged from <a href="schedule-west.html">“Reaching (for) Critical Maths”</a> to <a href="schedule-west.html">“Grading as it could be”</a>, and participants drafted learning goals together in a <a href="assets/brainwriting-all.pdf">brainwriting activity</a>. We met again at ALIFE 2026 in Waterloo and have continued to develop shared learning goals and materials ever since.</p>
       <p>Anyone who teaches, or wants to teach, the principles of living systems is enthusiastically welcome. Come to an event, or find us on Discord and join the mailing list through the <a href="community.html">community page</a>.</p>
-    </div>
-  </section>
-
-  <section class="section" id="previous-events">
-    <div class="section-header">
-      <h2>Previous events</h2>
-    </div>
-
-    <div class="card-grid card-grid--2">
-      {% for e in past_events %}{% include event-card.html event=e past=true %}{% endfor %}
     </div>
   </section>
 

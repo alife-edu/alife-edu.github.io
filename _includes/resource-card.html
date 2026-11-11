@@ -1,13 +1,21 @@
 {% assign r = include.resource %}
+{% comment %} `color` names one of the four meaning colours (see css/base.css). The old names
+  teal, indigo and gold still work: they were Resources, Community and Upcoming. {% endcomment %}
+{% case r.color %}
+  {% when "upcoming", "gold" %}{% assign m = "c-up" %}
+  {% when "community", "indigo" %}{% assign m = "c-com" %}
+  {% when "archive" %}{% assign m = "c-arch" %}
+  {% else %}{% assign m = "c-res" %}
+{% endcase %}
 {% if r.link %}
-<a href="{{ r.link }}" target="_blank" rel="noopener" class="card c-{{ r.color | default: "teal" }}">
+<a href="{{ r.link }}" target="_blank" rel="noopener" class="card {{ m }}">
   <div class="card-eyebrow">{{ r.eyebrow }}</div>
   <div class="card-title">{{ r.title }}</div>
   <div class="card-body">{{ r.description }}</div>
   <div class="card-link">{{ r.link_text | default: "Visit ↗" }}</div>
 </a>
 {% else %}
-<div class="card c-{{ r.color | default: "teal" }}" style="cursor: default;">
+<div class="card {{ m }}" style="cursor: default;">
   <div class="card-eyebrow">{{ r.eyebrow }}</div>
   <div class="card-title">{{ r.title }}</div>
   <div class="card-body">{{ r.description }}</div>

@@ -16,9 +16,19 @@ nav {
   font-family: var(--font-display);
   font-weight: 700;
   font-size: 1.3rem;
-  color: var(--accent);
+  color: var(--text);
   text-decoration: none;
   letter-spacing: 0.01em;
+}
+/* Gradient wordmark: the time ramp, clipped to the letters. */
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .nav-brand {
+    background: var(--ramp);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
 }
 
 .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
@@ -31,8 +41,15 @@ nav {
   transition: color 0.2s;
 }
 .nav-links a:hover { color: var(--text); }
-.nav-links a.active { color: var(--accent); }
-.nav-links a.active--gold { color: var(--gold); }
+/* Colour key: each section's link and its small square in the section's meaning colour
+   (see css/base.css); hover and the current page lean toward the text colour. */
+.nav-links > li > a { display: inline-flex; align-items: center; gap: 0.45rem; }
+.nav-links > li > a[class*="c-"] { color: var(--m); }
+.nav-links > li > a[class*="c-"]:hover { color: color-mix(in srgb, var(--m) 60%, var(--text)); }
+.nav-dot { width: 7px; height: 7px; background: var(--m); flex: none; }
+.nav-links a.active { color: var(--text); font-weight: 500; }
+.nav-links > li > a[class*="c-"].active { color: var(--m); }
+.nav-links a.active--gold { color: var(--up); }
 
 /* ── Dropdown subnav ─────────────────────────────────── */
 .nav-has-sub {
@@ -61,7 +78,7 @@ nav {
   min-width: 168px;
   padding: 0.3rem 0;
   z-index: 200;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.45);
+  box-shadow: 0 8px 24px var(--shadow);
 }
 
 .nav-has-sub:hover .nav-sub,
@@ -73,7 +90,9 @@ nav {
   border-top: 1px solid var(--border);
 }
 
-.nav-sub li a {
+/* :link and :visited too, so links keep the menu colour whether or not you've been
+   there (base.css colours visited links green). Hover and .active below still win. */
+.nav-sub li a, .nav-sub li a:is(:link, :visited) {
   display: block;
   padding: 0.5rem 1.25rem;
   font-size: 0.8rem;
@@ -85,7 +104,7 @@ nav {
 }
 
 .nav-sub li a:hover { color: var(--text); background: var(--surface2); }
-.nav-sub li a.active { color: var(--accent); }
+.nav-sub li a.active { color: var(--text); font-weight: 500; }
 
 .nav-sub li.nav-sub-group-label {
   padding: 0.5rem 1.25rem 0.2rem;
@@ -111,8 +130,37 @@ nav {
 .nav-sub li a .nav-sub-date {
   display: block;
   font-size: 0.8rem;
-  color: var(--gold);
+  color: var(--up);
   letter-spacing: 0.01em;
   margin-bottom: 0.15rem;
 }
 .nav-sub li a.nav-sub-child { padding-left: 2rem; }
+
+/* Light/dark toggle (js/theme.js): shows the sun in dark mode, the moon in light mode */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  background: none;
+  border: 1px solid var(--border-strong);
+  border-radius: 50%;
+  color: var(--text-mid);
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+}
+.theme-toggle:hover { color: var(--text); border-color: var(--border-hover); }
+.theme-toggle svg {
+  width: 1rem;
+  height: 1rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.theme-toggle .theme-icon-moon { display: none; }
+:root[data-theme="light"] .theme-toggle .theme-icon-sun { display: none; }
+:root[data-theme="light"] .theme-toggle .theme-icon-moon { display: block; }

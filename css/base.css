@@ -1,29 +1,143 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+/*
+  ── THE COLOUR PALETTE ─────────────────────────────────────────────────────────────
+
+  Every colour on the site is set in this file, in two blocks below: `:root` is dark
+  mode (the default) and `:root[data-theme="light"]` is light mode (the nav's sun/moon
+  button). To change a colour, change it in both blocks. Values can be any CSS colour:
+  #4fe0a0, rgb(79 224 160), or a name like seagreen.
+
+  The four meaning colours are the ones you're most likely to change. Each stands for
+  one part of the site, everywhere it appears: its nav link, its cards and their
+  borders, its popup and its block in the Game of Life panel.
+    --up    Upcoming events (green: alive, coming next); also the main buttons
+    --com   Community (teal: here and now, join in)
+    --res   Resources (blue: kept, for reference)
+    --arch  Archived events (violet: behind us)
+  The gradient bar across the top of every page and the ALife-Edu wordmark (--ramp)
+  are built from these four, so they follow along. Use them only for their meaning,
+  so a colour always tells you which part of the site you're looking at.
+
+  Content colours are for everything else that needs colour on a content page, with
+  no site-wide meaning: workshop talks vs. discussions, West vs. East cohorts, day
+  labels, highlighted boxes, a page's small accents.
+    --c1    first content colour (amber; e.g. talks, West, accents)
+    --c2    second content colour (magenta; e.g. discussions, East)
+  Both were taken from the AEDU poster's glow.
+
+  The rest:
+    --bg, --surface, --surface2   page background, cards and popups, hover fills
+    --panel                       the Game of Life panel's background
+    --text, --text-mid, --text-dim  main text, secondary text, faint text
+    --border, --border-strong, --border-hover  lines, from faintest to strongest
+    --on-up                       text on a solid --up button
+    --shadow, --scrim, --card-shadow  shadows and the dimming behind a popup
+    --wash, --edge, --pill ...    how strongly a card is tinted with its meaning
+                                  colour (its background, border and label). They are
+                                  set so coloured text on a tint still passes WCAG AA
+                                  (4.5:1); if you change a meaning colour, check that
+                                  text on its cards is still easy to read.
+
+  Using the meaning colours in a page: give an element class="c-up" (or c-com, c-res,
+  c-arch), and a card with that class is tinted in that colour. The older card names
+  c-teal (= c-res), c-indigo (= c-com) and c-gold (= c-up) still work.
+
+  Older stylesheets use --accent and --gold (with -dim and -mid tints); they now mean
+  --c1 and --c2. --indigo means --com (it's only used on the Community page).
+*/
 :root {
-  --bg: #0e0e0c;
-  --surface: #161614;
-  --surface2: #1d1d1a;
+  color-scheme: dark;
+  --bg: #0e0f14;
+  --panel: #0e0f14;                 /* Life panel background */
+  --surface: #171922;
+  --surface2: #1e212c;
   --border: rgba(255,255,255,0.08);
-  --border-strong: rgba(255,255,255,0.15);
-  --text: #f0ede6;
-  --text-mid: #a09d96;
-  --text-dim: #5a5854;
-  --accent: #3dcba0;
-  --accent-dim: rgba(61, 203, 160, 0.12);
-  --accent-mid: rgba(61, 203, 160, 0.25);
-  --gold: #c8a96a;
-  --gold-dim: rgba(200, 169, 106, 0.15);
-  --gold-mid: rgba(200, 169, 106, 0.3);
-  --indigo: #7b8cde;
-  --indigo-dim: rgba(123, 140, 222, 0.12);
-  --indigo-mid: rgba(123, 140, 222, 0.28);
+  --border-strong: rgba(255,255,255,0.16);
+  --border-hover: rgba(255,255,255,0.32);
+  --text: #f0f1f5;
+  --text-mid: #a6a9b8;
+  --text-dim: #8a8ea0;
+  --shadow: rgba(0,0,0,0.45);
+  --scrim: rgba(6,7,10,0.72);
+
+  --up: #4fe0a0;
+  --com: #3cc6d8;
+  --res: #6f9cf7;
+  --arch: #a58cf0;
+  --on-up: #0e0f14;                 /* text on a solid --up fill */
+
+  --c1: #f5b04a;
+  --c2: #e57ac8;
+
+  --ramp: linear-gradient(90deg, var(--up), var(--com), var(--res), var(--arch));
+
+  --wash: 10%;
+  --edge: 28%;
+  --pill: 18%;
+  --wash-strong: 16%;
+  --edge-strong: 42%;
+  --wash-hover: 16%;
+  --wash-strong-hover: 22%;
+  --card-shadow: 0 10px 24px rgba(0,0,0,0.45);
+
+  /* Older names (see the guide above) */
+  --accent: var(--c1);
+  --accent-dim: color-mix(in srgb, var(--c1) 12%, transparent);
+  --accent-mid: color-mix(in srgb, var(--c1) 30%, transparent);
+  --gold: var(--c2);
+  --gold-dim: color-mix(in srgb, var(--c2) 14%, transparent);
+  --gold-mid: color-mix(in srgb, var(--c2) 32%, transparent);
+  --indigo: var(--com);
+  --indigo-dim: color-mix(in srgb, var(--com) 12%, transparent);
+  --indigo-mid: color-mix(in srgb, var(--com) 30%, transparent);
 
   /* Type: squared, chamfered display face; Lexend for body text,
      a face designed to improve reading fluency. */
   --font-display: 'Chakra Petch', 'Arial Narrow', sans-serif;
   --font-body: 'Lexend', 'Segoe UI', system-ui, sans-serif;
 }
+
+:root[data-theme="light"] {
+  color-scheme: light;
+  --bg: #f6f7fb;
+  --panel: #ffffff;
+  --surface: #ffffff;
+  --surface2: #eef0f6;
+  --border: rgba(19,20,26,0.10);
+  --border-strong: rgba(19,20,26,0.18);
+  --border-hover: rgba(19,20,26,0.36);
+  --text: #13141a;
+  --text-mid: #555a6b;
+  --text-dim: #636878;
+  --shadow: rgba(20,30,60,0.14);
+  --scrim: rgba(19,20,26,0.45);
+
+  --up: #0f7a4f;
+  --com: #0b6f80;
+  --res: #2457c5;
+  --arch: #6b48c9;
+  --on-up: #ffffff;
+
+  --c1: #8f5a00;
+  --c2: #a3327f;
+
+  --wash: 6%;
+  --edge: 22%;
+  --pill: 12%;
+  --wash-strong: 10%;
+  --edge-strong: 34%;
+  --wash-hover: 12%;
+  --wash-strong-hover: 12%;
+  --card-shadow: 0 10px 24px rgba(20,30,60,0.12);
+}
+
+/* Meaning classes. The c-teal / c-gold / c-indigo names predate the palette. */
+.c-up   { --m: var(--up); }
+.c-com, .c-indigo { --m: var(--com); }
+.c-res, .c-teal   { --m: var(--res); }
+.c-arch { --m: var(--arch); }
+.c-gold { --m: var(--up); }
 
 html { font-size: 16px; scroll-behavior: smooth; }
 
@@ -36,12 +150,20 @@ body {
   line-height: 1.7;
 }
 
+/* The ramp band across the top of every page. */
+body::before {
+  content: "";
+  display: block;
+  height: 6px;
+  background: var(--ramp);
+}
+
 a:not([class]) {
-  color: var(--accent);
+  color: var(--up);
 }
 
 a:not([class]):visited {
-  color: var(--accent);
+  color: var(--up);
 }
 
-:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+:focus-visible { outline: 2px solid var(--res); outline-offset: 3px; }

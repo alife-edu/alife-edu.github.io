@@ -1,0 +1,26 @@
+{% comment %}
+  The Game of Life panel in the home page hero.
+
+  The simulator itself lives in life/ and knows nothing about this site:
+    life/engine.js   the Life rule (B3/S23)
+    life/panel.js    the viewer: canvas, scene tabs, playback, link blocks
+    life/panel.css   its styles
+    life/scenes/     the scenes, as JSON files (see life/README.md)
+
+  This include only supplies site-specific pieces:
+    • one button per link block, in order. data-life-link names the dialog it opens
+      (see _includes/life-nav-modals.html and js/home-life-links.js)
+    • data-details="hide": no caption here. The scene descriptions, generation readout and
+      rule are on the simulator's own page (life/playground.html), behind "More info".
+{% endcomment %}
+<div class="life-home" data-life-panel data-details="hide"
+     data-scenes="life/scenes/turner-chain.json life/scenes/alife-edu.json life/scenes/soup.json">
+  <button data-life-link="dlg-events">Upcoming events</button>
+  <button data-life-link="dlg-resources">Resources</button>
+  <button data-life-link="dlg-community">Community</button>
+  <button data-life-link="dlg-archive">Event archive</button>
+  <noscript><p>An animation of Conway's Game of Life (needs JavaScript).</p></noscript>
+</div>
+<script src="life/engine.js" defer></script>
+<script src="life/panel.js" defer></script>
+<script src="js/home-life-links.js" defer></script>

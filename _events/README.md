@@ -1,6 +1,6 @@
 # Adding an event
 
-Every event on the site — its row in the home page's "Upcoming Events" schedule, its card under "Previous Events", its nav link, and (usually) its own page — comes from one `.md` file in this folder.
+Every event on the site — its row in the home page's "Upcoming events" schedule, its entry in the nav menus and in the home page's Upcoming events and Event archive popups, and (usually) its own page — comes from one `.md` file in this folder.
 
 ## Adding a new event
 
@@ -14,11 +14,12 @@ The file becomes its own page at `my-talk-2027.html` (named after the file), and
 ## Upcoming vs. previous is automatic
 
 Events are sorted by `date`. Once an event's `end_date` (or `date`, for a one-day event) is in the past, the site automatically:
-- Moves it from the "Upcoming Events" schedule to the "Previous Events" cards on the home page.
-- Moves its nav link from the "Upcoming Events" dropdown into the "Event Archive" dropdown.
+- Takes it off the home page's "Upcoming events" schedule (the soonest upcoming event is shown first and largest).
+- Moves it from the Upcoming events popup to the Event archive popup. Both popups open from the blocks in the home page's Game of Life panel; the archive also opens from the home page's Archive card, which counts past events for you.
+- Moves its nav link from the "Upcoming" dropdown into the "Archive" dropdown.
 - Adds a "this event has concluded" banner (with its `concluded_message`) to the top of the event's page.
 
-**Note:** GitHub Pages only rebuilds the site when something is pushed, so an event moves to "Previous" on the first push after it ends. To archive one early, add `archived: true`.
+**Note:** GitHub Pages only rebuilds the site when something is pushed, so an event moves to the archive on the first push after it ends. To archive one early, add `archived: true`.
 
 ## Fields
 
@@ -38,7 +39,7 @@ Events are sorted by `date`. Once an event's `end_date` (or `date`, for a one-da
 | `concluded_message` | no | Shown in the "this event has concluded" banner once it's over. |
 | `event_url` | no | Only if the event's page lives somewhere else — a hand-built `.html` page (like `tal-alife-2026.html`) or an external site. The schedule, card, and nav then link there instead. **No leading slash.** (Called `event_url`, not `url`, because Jekyll reserves `url`.) |
 | `children` | no | Only for events with several sub-pages (like AEDU's West/East schedule archives). A list of `{label, url}` shown under the event in the nav. |
-| `archived` | no | `true` forces an event into "Previous Events" before its date passes. |
+| `archived` | no | `true` moves an event into the archive before its date passes. |
 
 ## Example
 
